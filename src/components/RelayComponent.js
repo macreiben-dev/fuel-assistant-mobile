@@ -1,17 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
-/**
- * 
-    style={[
-        styles.container,
-        {
-            // Try setting `flexDirection` to `"row"`.
-            flexDirection: 'column',
-        },
-    ]}
- */
-
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -20,7 +8,18 @@ const styles = StyleSheet.create({
     rowView: {
         flexDirection: 'row',
         rowGap: 5,
-        columnGap: 5
+        columnGap: 5,
+        minHeight: 40,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textLabel: {
+        fontWeight: 'bold'
+    },
+    textInputLaptimesMinute: {
+        width: 40,
+        borderWidth: 1,
+        padding: 5
     }
 })
     
@@ -34,9 +33,26 @@ const RelayComponent = () => {
             }
         ]}>
             <View style={styles.rowView}>
-                <View><Text>##Row 00 - Col00##</Text></View>
-                <View><Text>##Row 00 - Col01##</Text></View>
-                <View><Text>##Row 00 - Col02##</Text></View>
+                <View><Text style={styles.textLabel}>Laptime</Text></View>
+                {/* ---------------------------------------------------- */}
+                <View>
+                    <TextInput 
+                        keyboardType='numeric'
+                        maxLength={2}
+                        style={styles.textInputLaptimesMinute}
+                        placeholder='mm' ></TextInput>
+                </View>
+                {/* ---------------------------------------------------- */}
+                <View><Text>:</Text></View>
+                {/* ---------------------------------------------------- */}
+                <View>
+                    <TextInput 
+                        keyboardType='numeric'
+                        maxLength={2}
+                        style={styles.textInputLaptimesMinute}
+                        placeholder='ss' ></TextInput>
+                </View>
+                {/* ---------------------------------------------------- */}
             </View>
 
             <View style={styles.rowView}>
