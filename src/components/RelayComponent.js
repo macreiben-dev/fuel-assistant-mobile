@@ -1,6 +1,12 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
+
+import { changeLaptimeMinute } from '../stores/stintdetails/actions/laptimes';
 
 const RelayComponent = () => {
     return (
@@ -16,7 +22,9 @@ const RelayComponent = () => {
             {/* ======================================================== */}
             <View style={styles.rowView}>
                 {/* ================== LAPTIMES TYPING ================= */}
-                <View><Text style={styles.textLabel}>Laptime&nbsp;:</Text></View>
+                <View>
+                    <Text style={styles.textLabel}>Laptime&nbsp;:</Text>
+                </View>
                 {/* ---------------------------------------------------- */}
                 <View>
                     <TextInput 
@@ -26,7 +34,9 @@ const RelayComponent = () => {
                         placeholder='mm' ></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
-                <View><Text>:</Text></View>
+                <View>
+                    <Text>:</Text>
+                </View>
                 {/* ---------------------------------------------------- */}
                 <View>
                     <TextInput 
@@ -141,6 +151,7 @@ const RelayComponent = () => {
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {
