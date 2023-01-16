@@ -1,5 +1,9 @@
 # fuel-assistant-mobile
 
+## Redux integration
+
+- [How to implement Redux in React Native apps](https://enappd.com/blog/redux-in-react-native-app/92/)
+
 ## Pre requisite
 
 - Install Android Studio
