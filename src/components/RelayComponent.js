@@ -33,6 +33,8 @@ const RelayComponent = () => {
                 {/* ---------------------------------------------------- */}
             </View>
             {/* ======================================================== */}
+            {/* ======================================================== */}
+            {/* ======================================================== */}
             <View style={styles.rowView}>
                 <View>
                     <Text style={styles.textLabel}>Consumption Liter/Lap&nbsp;:</Text>
@@ -43,7 +45,19 @@ const RelayComponent = () => {
                         keyboardType='numeric'
                         maxLength={4}
                         style={styles.textInputLaptimesMinute}
-                        placeholder='0.00' ></TextInput>
+                        placeholder='0.00'></TextInput>
+                </View>
+                {/* ---------------------------------------------------- */}
+                <View>
+                    <Text style={styles.textLabel}>Fuel tank (Liter)&nbsp;:</Text>                    
+                </View>
+                 {/* ---------------------------------------------------- */}
+                 <View>
+                    <TextInput 
+                        keyboardType='numeric'
+                        maxLength={2}
+                        style={styles.textInputLaptimesMinute}
+                        placeholder='0'></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
             </View>
