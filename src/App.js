@@ -6,7 +6,6 @@ import RelayComponent from './components/RelayComponent'
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Some text up !</Text>
       <StatusBar style="auto" />
 
       <RelayComponent/>

@@ -1,28 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    rowView: {
-        flexDirection: 'row',
-        rowGap: 5,
-        columnGap: 5,
-        minHeight: 40,
-        alignItems: 'center',
-        justifyContent: 'flex-start'
-    },
-    textLabel: {
-        fontWeight: 'bold'
-    },
-    textInputLaptimesMinute: {
-        width: 40,
-        borderWidth: 1,
-        padding: 5
-    }
-})
-    
 const RelayComponent = () => {
     return (
         <View  style={[
@@ -72,4 +50,27 @@ const RelayComponent = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    rowView: {
+        flexDirection: 'row',
+        rowGap: 5,
+        columnGap: 5,
+        minHeight: 40,
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+    },
+    textLabel: {
+        fontWeight: 'bold'
+    },
+    textInputLaptimesMinute: {
+        width: 40,
+        borderWidth: 1,
+        padding: 5
+    }
+})
+
 export default RelayComponent;
