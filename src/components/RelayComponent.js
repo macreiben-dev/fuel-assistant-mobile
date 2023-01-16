@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         columnGap: 5,
         minHeight: 40,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-start'
     },
     textLabel: {
         fontWeight: 'bold'
@@ -33,7 +33,7 @@ const RelayComponent = () => {
             }
         ]}>
             <View style={styles.rowView}>
-                <View><Text style={styles.textLabel}>Laptime</Text></View>
+                <View><Text style={styles.textLabel}>Laptime&nbsp;:</Text></View>
                 {/* ---------------------------------------------------- */}
                 <View>
                     <TextInput 
@@ -54,11 +54,20 @@ const RelayComponent = () => {
                 </View>
                 {/* ---------------------------------------------------- */}
             </View>
-
+            {/* ======================================================== */}
             <View style={styles.rowView}>
-                <View><Text>##Row 01 - Col00##</Text></View>
-                <View><Text>##Row 01 - Col01##</Text></View>
-                <View><Text>##Row 01 - Col02##</Text></View>
+                <View>
+                    <Text style={styles.textLabel}>Consumption Liter/Lap&nbsp;:</Text>
+                </View>
+                {/* ---------------------------------------------------- */}
+                <View>
+                    <TextInput 
+                        keyboardType='numeric'
+                        maxLength={4}
+                        style={styles.textInputLaptimesMinute}
+                        placeholder='0.00' ></TextInput>
+                </View>
+                {/* ---------------------------------------------------- */}
             </View>
         </View>
     )
