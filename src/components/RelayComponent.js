@@ -11,7 +11,11 @@ const RelayComponent = () => {
                 columnGap: 5
             }
         ]}>
+            {/* ======================================================== */}
+            {/* ======================================================== */}
+            {/* ======================================================== */}
             <View style={styles.rowView}>
+                {/* ================== LAPTIMES TYPING ================= */}
                 <View><Text style={styles.textLabel}>Laptime&nbsp;:</Text></View>
                 {/* ---------------------------------------------------- */}
                 <View>
@@ -37,6 +41,7 @@ const RelayComponent = () => {
             {/* ======================================================== */}
             {/* ======================================================== */}
             <View style={styles.rowView}>
+                {/* ==================== CONSUMPTION =================== */}
                 <View>
                     <Text style={styles.textLabel}>Consumption Liter/Lap&nbsp;:</Text>
                 </View>
@@ -49,6 +54,7 @@ const RelayComponent = () => {
                         placeholder='0.00'></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
+                {/* ==================== FUEL TANK ===================== */}
                 <View>
                     <Text style={styles.textLabel}>Fuel tank (Liter)&nbsp;:</Text>                    
                 </View>
