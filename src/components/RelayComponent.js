@@ -8,7 +8,7 @@ import { DataTable } from 'react-native-paper';
 
 import { changeLaptimeMinute } from '../stores/stintdetails/actions/laptimes';
 
-const RelayComponent = () => {
+const RelayComponent = ({ laptimeMinute }) => {
     return (
         <View  style={[
             {
@@ -151,6 +151,8 @@ const RelayComponent = () => {
         </View>
     )
 }
+
+const CounterContainer = connect(state => ({ laptimeMinute: state.laptimeMinute }))(RelayComponent);
 
 const styles = StyleSheet.create({
     container: {
