@@ -5,7 +5,7 @@ import { DataTable } from 'react-native-paper';
 
 import { connect } from 'react-redux'
 
-class RelayComponent extends React.Component {
+class StintComponent extends React.Component {
     render() { 
 
         return (<View  style={[
@@ -182,4 +182,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(RelayComponent);
+export default connect(mapStateToProps)(StintComponent);

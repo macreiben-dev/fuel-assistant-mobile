@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-import RelayComponent from './components/RelayComponent'
+import StintComponent from './components/StintComponent'
 
 import setupStore from './stores/stintdetails/configureStore';
 
@@ -24,7 +24,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
       <RootStack.Navigator>
-          <RootStack.Screen name="StintDetail" component={RelayComponent} />
+          <RootStack.Screen name="StintDetail" component={StintComponent} />
       </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
