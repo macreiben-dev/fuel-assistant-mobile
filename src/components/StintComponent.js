@@ -1,33 +1,47 @@
 import React from 'react';
+
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
-const RelayComponent = () => {
-    return (
-        <View  style={[
+import { connect } from 'react-redux'
+
+class StintComponent extends React.Component {
+    render() { 
+
+        return (<View  style={[
             {
                 flexDirection: 'column',
                 rowGap: 5,
                 columnGap: 5
             }
         ]}>
+            {/* ======================================================== */}
+            {/* ======================================================== */}
+            {/* ======================================================== */}
             <View style={styles.rowView}>
-                <View><Text style={styles.textLabel}>Laptime&nbsp;:</Text></View>
+                {/* ================== LAPTIMES TYPING ================= */}
+                <View>
+                    <Text style={styles.textLabel}>Laptime&nbsp;:</Text>
+                </View>
                 {/* ---------------------------------------------------- */}
                 <View>
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
+                        value={this.props.stintDetails.laptimeMinutes}
                         style={styles.textInputLaptimesMinute}
                         placeholder='mm' ></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
-                <View><Text>:</Text></View>
+                <View>
+                    <Text>:</Text>
+                </View>
                 {/* ---------------------------------------------------- */}
                 <View>
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
+                        value={this.props.stintDetails.laptimeSeconds}
                         style={styles.textInputLaptimesMinute}
                         placeholder='ss'></TextInput>
                 </View>
@@ -37,6 +51,7 @@ const RelayComponent = () => {
             {/* ======================================================== */}
             {/* ======================================================== */}
             <View style={styles.rowView}>
+                {/* ==================== CONSUMPTION =================== */}
                 <View>
                     <Text style={styles.textLabel}>Consumption Liter/Lap&nbsp;:</Text>
                 </View>
@@ -45,10 +60,12 @@ const RelayComponent = () => {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={4}
+                        value={this.props.stintDetails.consumptionLiterPerLap}
                         style={styles.textInputLaptimesMinute}
                         placeholder='0.00'></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
+                {/* ==================== FUEL TANK ===================== */}
                 <View>
                     <Text style={styles.textLabel}>Fuel tank (Liter)&nbsp;:</Text>                    
                 </View>
@@ -57,6 +74,7 @@ const RelayComponent = () => {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
+                        value={this.props.stintDetails.fuelTankCapacityLiter}
                         style={styles.textInputLaptimesMinute}
                         placeholder='0'></TextInput>
                 </View>
@@ -71,9 +89,9 @@ const RelayComponent = () => {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={4}
+                        value={this.props.stintDetails.wouldBeStintDurationMinutes}
                         style={styles.textInputLaptimesMinute}
-                        placeholder='0'
-                        value='55'></TextInput>
+                        placeholder='0'></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
             </View>
@@ -132,8 +150,8 @@ const RelayComponent = () => {
                     </DataTable.Row>
                 </DataTable>
             </View>
-        </View>
-    )
+        </View>)
+    }
 }
 
 const styles = StyleSheet.create({
@@ -158,4 +176,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default RelayComponent;
+const mapStateToProps = (state) => {
+    return { 
+        stintDetails: state.stintDetails
+    }
+}
+
+export default connect(mapStateToProps)(StintComponent);

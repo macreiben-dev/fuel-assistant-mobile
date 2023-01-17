@@ -1,16 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import RelayComponent from './components/RelayComponent'
+import { StyleSheet, View } from 'react-native';
+import { Provider, connect } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
+import StintComponent from './components/StintComponent'
+
+import setupStore from './stores/stintdetails/configureStore';
+
+// ==============================================
+
+const store = setupStore();
+
+// ==============================================
+
+// Create stack navigator
+let RootStack = createNativeStackNavigator();
+
+// ==============================================
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-
-      <RelayComponent/>
-
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+      <RootStack.Navigator>
+          <RootStack.Screen name="StintDetail" component={StintComponent} />
+      </RootStack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
