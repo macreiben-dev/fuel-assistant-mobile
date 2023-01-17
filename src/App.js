@@ -4,20 +4,16 @@ import { Provider } from 'react-redux';
 
 import RelayComponent from './components/RelayComponent'
 
-import setupStore from './store';
-
-const store = setupStore()
-
 export default function App() {
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <View style={styles.container}>
         <StatusBar style="auto" />
 
         <RelayComponent/>
 
       </View>
-    </Provider>
+    // </Provider>
   );
 }
 
