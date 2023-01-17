@@ -1,16 +1,22 @@
-import { LAPTIME_MINUTE_UPDATE } from '../constants';
+import { LAPTIME_MINUTES_UPDATE, LAPTIME_SECONDS_UPDATE } from '../constants';
 
 const initialState = {
-    laptimeMinute: 0
+    laptimeMinutes: 0,
+    laptimeSeconds: 0
 };
 
 const laptimeReducer = (state = initialState, action) => {
     switch(action.type) {
-        case LAPTIME_MINUTE_UPDATE:
+        case LAPTIME_MINUTES_UPDATE:
             return {
-            ...state,
-            count:action.payload
+                ...state,
+                laptimeMinutes: action.payload
             };
+        case LAPTIME_SECONDS_UPDATE:
+            return {
+                ...state,
+                laptimeSeconds: action.payload
+            }
         default:
             return state;
     }

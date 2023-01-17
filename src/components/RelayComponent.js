@@ -28,7 +28,7 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
-                        value={this.props.laptime.laptimeMinute}
+                        value={this.props.laptime.laptimeMinutes}
                         style={styles.textInputLaptimesMinute}
                         placeholder='mm' ></TextInput>
                 </View>
@@ -41,6 +41,7 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
+                        value={this.props.laptime.laptimeSeconds}
                         style={styles.textInputLaptimesMinute}
                         placeholder='ss'></TextInput>
                 </View>
