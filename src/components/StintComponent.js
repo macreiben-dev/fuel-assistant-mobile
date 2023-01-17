@@ -3,7 +3,10 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
+
+import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
 
 class StintComponent extends React.Component {
     render() { 
@@ -30,6 +33,7 @@ class StintComponent extends React.Component {
                         maxLength={2}
                         value={this.props.stintDetails.laptimeMinutes}
                         style={styles.textInputLaptimesMinute}
+                        onChange={() => this.props.changeLaptimeMinutes}
                         placeholder='mm' ></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
@@ -180,6 +184,13 @@ const mapStateToProps = (state) => {
     return { 
         stintDetails: state.stintDetails
     }
+}
+
+const mapDispatchToProps = dispatch => {
+    bindActionCreators({
+        changeLaptimeMinutes,
+    }, 
+    dispatch)
 }
 
 export default connect(mapStateToProps)(StintComponent);
