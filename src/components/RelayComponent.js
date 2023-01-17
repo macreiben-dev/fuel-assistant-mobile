@@ -28,7 +28,7 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
-                        value={this.props.laptime.laptimeMinutes}
+                        value={this.props.stintDetails.laptimeMinutes}
                         style={styles.textInputLaptimesMinute}
                         placeholder='mm' ></TextInput>
                 </View>
@@ -41,7 +41,7 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
-                        value={this.props.laptime.laptimeSeconds}
+                        value={this.props.stintDetails.laptimeSeconds}
                         style={styles.textInputLaptimesMinute}
                         placeholder='ss'></TextInput>
                 </View>
@@ -60,6 +60,7 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={4}
+                        value={this.props.stintDetails.consumptionLiterPerLap}
                         style={styles.textInputLaptimesMinute}
                         placeholder='0.00'></TextInput>
                 </View>
@@ -73,6 +74,7 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
+                        value={this.props.stintDetails.fuelTankCapacityLiter}
                         style={styles.textInputLaptimesMinute}
                         placeholder='0'></TextInput>
                 </View>
@@ -87,9 +89,9 @@ class RelayComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={4}
+                        value={this.props.stintDetails.wouldBeStintDurationMinutes}
                         style={styles.textInputLaptimesMinute}
-                        placeholder='0'
-                        value='55'></TextInput>
+                        placeholder='0'></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
             </View>
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return { 
-        laptime: state.laptime
+        stintDetails: state.stintDetails
     }
 }
 

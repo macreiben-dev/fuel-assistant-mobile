@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import laptimeReducer from './reducers/laptimeReducer';
 
 const rootReducer = combineReducers(
-    { laptime: laptimeReducer }
+    { stintDetails : laptimeReducer }
 );
 
 const setupStore = () => {
