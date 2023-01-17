@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
 
 import RelayComponent from './components/RelayComponent'
 
@@ -10,14 +11,16 @@ const store = setupStore();
 
 export default function App() {
   return (
-    // <Provider store={store}>
-      <View style={styles.container}>
-        <StatusBar style="auto" />
+    <Provider store={store}>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <StatusBar style="auto" />
 
-        <RelayComponent/>
+          <RelayComponent/>
 
-      </View>
-    // </Provider>
+        </View>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
