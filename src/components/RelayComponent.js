@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
-import { changeLaptimeMinute } from '../stores/stintdetails/actions/laptimes';
+import { connect } from 'react-redux'
 
-const RelayComponent = ({ laptimeMinute }) => {
-    return (
-        <View  style={[
+class RelayComponent extends React.Component {
+    render() { 
+
+        return (<View  style={[
             {
                 flexDirection: 'column',
                 rowGap: 5,
@@ -30,6 +28,7 @@ const RelayComponent = ({ laptimeMinute }) => {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
+                        value={this.props.laptime.laptimeMinute}
                         style={styles.textInputLaptimesMinute}
                         placeholder='mm' ></TextInput>
                 </View>
@@ -148,11 +147,9 @@ const RelayComponent = ({ laptimeMinute }) => {
                     </DataTable.Row>
                 </DataTable>
             </View>
-        </View>
-    )
+        </View>)
+    }
 }
-
-const CounterContainer = connect(state => ({ laptimeMinute: state.laptimeMinute }))(RelayComponent);
 
 const styles = StyleSheet.create({
     container: {
@@ -176,4 +173,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default RelayComponent;
+const mapStateToProps = (state) => {
+    return { 
+        laptime: state.laptime
+    }
+}
+
+export default connect(mapStateToProps)(RelayComponent);

@@ -3,13 +3,12 @@ import { Provider, connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
 import RelayComponent from './components/RelayComponent'
 
 import setupStore from './stores/stintdetails/configureStore';
 
 // ==============================================
-
-let LaptimeMinuteContainer = connect((state) => ({ laptimeMinute: state.laptimeMinute }))(RelayComponent);
 
 const store = setupStore();
 
