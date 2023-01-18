@@ -1,4 +1,4 @@
-import { stintService } from "../../business/laptimeStintDetailService"
+import { stintService } from "../../business/stintService"
 
 
 describe('Laptime stint Service', () => {
