@@ -6,4 +6,4 @@ const laptimeStintService = (input, props, converter, validator) => {
     }
 }
 
-export const stintService = laptimeStintService
+export const stintServiceLaptimeMinutes = laptimeStintService

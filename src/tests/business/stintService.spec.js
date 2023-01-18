@@ -1,9 +1,9 @@
-import { stintService } from "../../business/stintService"
+import { stintServiceLaptimeMinutes } from "../../business/stintService"
 
 
 describe('Laptime stint Service', () => {
-    describe('Given invalid number', () => {
-        test('Then do not update store.', () => {
+    describe('Given invalid number for laptimeMinutes', () => {
+        test('Then do not update laptimeMinutes in store.', () => {
 
             // ARRANGE
             let isStoreInvoked = false
@@ -30,8 +30,8 @@ describe('Laptime stint Service', () => {
         })
     })
 
-    describe('Given a valid number', () => {
-        test('and the number value is 12 then update store with 13', () => {
+    describe('Given a valid number for laptimeMinutes', () => {
+        test('and the number value is 12 then update laptimeMinutes store with 13', () => {
              // ARRANGE
             let changeLaptimeMinutes = {
                 actualInput: undefined,

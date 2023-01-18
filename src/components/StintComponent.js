@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
-import { stintService } from '../business/stintService';
+import { stintServiceLaptimeMinutes } from '../business/stintService';
 import { floatValidator } from '../business/validators'
 import { floatConverter } from '../business/converter'
 
