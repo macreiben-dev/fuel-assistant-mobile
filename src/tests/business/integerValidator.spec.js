@@ -1,5 +1,5 @@
 
-import { integerValidator } from "../../business/validators/validators"
+import { integerValidator } from "../../business/validators"
 
 describe('Given input is a text', () => {
     test('and input is hello then returns error message', () => {
