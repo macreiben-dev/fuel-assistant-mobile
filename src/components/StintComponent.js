@@ -31,9 +31,9 @@ class StintComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
-                        value={this.props.stintDetails.laptimeMinutes}
+                        
                         style={styles.textInputLaptimesMinute}
-                        onChange={() => this.props.changeLaptimeMinutes}
+                        onChangeText={this.onLapTimeMinuteChange}
                         placeholder='mm' ></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
@@ -155,6 +155,10 @@ class StintComponent extends React.Component {
                 </DataTable>
             </View>
         </View>)
+    }
+
+    onLapTimeMinuteChange(event) {
+        console.log('laptime minute changed')
     }
 }
 
