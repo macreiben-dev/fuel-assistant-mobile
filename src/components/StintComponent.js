@@ -4,11 +4,9 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
 import { bindActionCreators } from 'redux';
-import { useSelector } from 'react-redux'
 import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
-import { selectLaptimeMinute } from '../stores/stintdetails/selectors/laptimeSelectors';
 
 class StintComponent extends React.Component {
     
@@ -203,11 +201,13 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    bindActionCreators({
-        changeLaptimeMinutes,
-    }, 
-    dispatch)
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const boundActions = bindActionCreators({ changeLaptimeMinutes }, dispatch)
+
+    return { 
+        ...boundActions,
+        dispatch
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StintComponent);
