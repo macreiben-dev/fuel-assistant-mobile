@@ -17,7 +17,7 @@ class StintComponent extends React.Component {
         super()
         this.onLapTimeMinuteChange = (text, componentProps) => {
             console.log('onLapTimeMinuteChange invoked')
-            stintService(text, componentProps, floatConverter, floatValidator)
+            stintServiceLaptimeMinutes(text, componentProps, floatConverter, floatValidator)
         }
     }
 
