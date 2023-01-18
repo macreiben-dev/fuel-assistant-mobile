@@ -28,7 +28,7 @@ describe('Given input is a text', () => {
         expect(actual).toBe("Given value [helloAgain] is not a number. Type is [string].")
     })
 })
-
+ 
 describe('Given input is a number as text', () => {
     test('and input is string "13" then fail', () => {
         
