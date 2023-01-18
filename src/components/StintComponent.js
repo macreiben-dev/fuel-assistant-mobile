@@ -12,8 +12,6 @@ class StintComponent extends React.Component {
     
     constructor() {
         super()
-        // this.selectorLaptimeMinute = useSelector(selectLaptimeMinute)
-
         this.onLapTimeMinuteChange = (text, componentProps) => {
             console.log('laptime minute changed')
             componentProps.changeLaptimeMinutes(text)
