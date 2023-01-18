@@ -1,10 +1,4 @@
-const laptimeStintService = (input, props, converter, validator) => {
-    
-    if(validator(input) === undefined) {
-
-        props.changeLaptimeMinutes(converter(input))    
-    }
-}
+import { stintService } from "../../business/laptimeStintDetailService"
 
 
 describe('Laptime stint Service', () => {
@@ -29,7 +23,7 @@ describe('Laptime stint Service', () => {
             }
             
             // ACT
-            laptimeStintService("hello", originalProps, undefined, validator)
+            stintService("hello", originalProps, undefined, validator)
 
             // ASSERT
             expect(isStoreInvoked).toBe(false)
@@ -67,7 +61,7 @@ describe('Laptime stint Service', () => {
             }
 
             // ACT
-            laptimeStintService(12, originalProps, converter, validator)
+            stintService(12, originalProps, converter, validator)
 
             // ASSERT
             expect(changeLaptimeMinutes.actualInput).toBe(12)
