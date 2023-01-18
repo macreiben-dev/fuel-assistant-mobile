@@ -11,7 +11,7 @@
 
 ## Pre requisite
 
-- Install Android Studio
+- VSCode
 - Go to src
 - Download dependencies
 ```
