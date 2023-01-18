@@ -1,0 +1,1 @@
+export const selectLaptimeMinute = state => state.laptimeMinutes;

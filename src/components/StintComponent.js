@@ -4,11 +4,24 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
 
 import { bindActionCreators } from 'redux';
+import { useSelector } from 'react-redux'
 import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
+import { selectLaptimeMinute } from '../stores/stintdetails/selectors/laptimeSelectors';
 
 class StintComponent extends React.Component {
+    
+    constructor() {
+        super()
+        // this.selectorLaptimeMinute = useSelector(selectLaptimeMinute)
+
+        this.onLapTimeMinuteChange = (text, componentProps) => {
+            console.log('laptime minute changed')
+            componentProps.changeLaptimeMinutes(text)
+        }
+    }
+
     render() { 
 
         return (<View  style={[
@@ -31,9 +44,9 @@ class StintComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
-                        
+                        defaultValue={this.props.stintDetails.laptimeMinutes}
+                        onChangeText={text => this.onLapTimeMinuteChange(text, this.props)}
                         style={styles.textInputLaptimesMinute}
-                        onChangeText={this.onLapTimeMinuteChange}
                         placeholder='mm' ></TextInput>
                 </View>
                 {/* ---------------------------------------------------- */}
@@ -157,8 +170,8 @@ class StintComponent extends React.Component {
         </View>)
     }
 
-    onLapTimeMinuteChange(event) {
-        console.log('laptime minute changed')
+    readLaptimeMinutes() {
+        return this.selectorLaptimeMinute()
     }
 }
 
@@ -197,4 +210,4 @@ const mapDispatchToProps = dispatch => {
     dispatch)
 }
 
-export default connect(mapStateToProps)(StintComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(StintComponent);
