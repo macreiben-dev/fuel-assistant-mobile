@@ -1,6 +1,6 @@
 # fuel-assistant-mobile
 
-## Redux integration
+## Redux integration documentation
 
 - [How to implement Redux in React Native apps](https://enappd.com/blog/redux-in-react-native-app/92/)
 - [Introduction to Using Redux in a React Native App](https://www.digitalocean.com/community/tutorials/react-react-native-redux)
@@ -8,7 +8,15 @@
 ## Pre requisite
 
 - Install Android Studio
-
+- Go to src
+- Download dependencies
+```
+npm install
+```
+- Run application in web mode
+```
+npm run web
+```
 ## Configuration to use openssl legacy provider
 
 There is an issue ssl on the most recent version of node.
