@@ -5,6 +5,10 @@
 - [How to implement Redux in React Native apps](https://enappd.com/blog/redux-in-react-native-app/92/)
 - [Introduction to Using Redux in a React Native App](https://www.digitalocean.com/community/tutorials/react-react-native-redux)
 
+### Redux integration official documentation
+
+- [Official react-redux connect](https://react-redux.js.org/api/connect)
+
 ## Pre requisite
 
 - Install Android Studio
