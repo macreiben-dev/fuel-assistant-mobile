@@ -17,11 +17,11 @@ describe('Given input is a text', () => {
 })
  
 describe('Given input is a number as text', () => {
-    test('and input is string "13" then returns error message', () => {
+    test('and input is string "13" then returns undefined', () => {
         
         var actual = floatValidator("13")
 
-        expect(actual).toBe("Given value [13] is not a number. Type is [string].")
+        expect(actual).toBe(undefined)
     })
 })
 

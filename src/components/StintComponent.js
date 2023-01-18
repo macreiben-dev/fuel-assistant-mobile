@@ -7,14 +7,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
+import { stintService } from '../business/stintService';
+import { floatValidator } from '../business/validators'
+import { floatConverter } from '../business/converter'
 
 class StintComponent extends React.Component {
     
     constructor() {
         super()
         this.onLapTimeMinuteChange = (text, componentProps) => {
-            console.log('laptime minute changed')
-            componentProps.changeLaptimeMinutes(text)
+            console.log('onLapTimeMinuteChange invoked')
+            stintService(text, componentProps, floatConverter, floatValidator)
         }
     }
 
