@@ -1,4 +1,4 @@
-import { stintServiceLaptimeMinutes } from "../../business/stintService"
+import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from "../../business/stintService"
 
 
 describe('Laptime stint Service', () => {
@@ -9,7 +9,7 @@ describe('Laptime stint Service', () => {
             let isStoreInvoked = false
 
             var originalProps = {
-                changeLaptimeMinutes:  (input) => {
+                changeLaptimeSeconds:  (input) => {
                     isStoreInvoked = true
                 }
             }
@@ -23,7 +23,7 @@ describe('Laptime stint Service', () => {
             }
             
             // ACT
-            stintService("hello", originalProps, undefined, validator)
+            stintServiceLaptimeMinutes("hello", originalProps, undefined, validator)
 
             // ASSERT
             expect(isStoreInvoked).toBe(false)
@@ -33,15 +33,15 @@ describe('Laptime stint Service', () => {
     describe('Given a valid number for laptimeMinutes', () => {
         test('and the number value is 12 then update laptimeMinutes store with 13', () => {
              // ARRANGE
-            let changeLaptimeMinutes = {
+            let changeLaptimeSeconds = {
                 actualInput: undefined,
                 isStoreInvoked : false
             }
 
             var originalProps = {
-                changeLaptimeMinutes:  (input) => {
-                    changeLaptimeMinutes.actualInput = input
-                    changeLaptimeMinutes.isStoreInvoked = true
+                changeLaptimeSeconds:  (input) => {
+                    changeLaptimeSeconds.actualInput = input
+                    changeLaptimeSeconds.isStoreInvoked = true
                 }
             }
 
@@ -61,11 +61,41 @@ describe('Laptime stint Service', () => {
             }
 
             // ACT
-            stintService(12, originalProps, converter, validator)
+            stintServiceLaptimeSeconds(12, originalProps, converter, validator)
 
             // ASSERT
-            expect(changeLaptimeMinutes.actualInput).toBe(12)
-            expect(changeLaptimeMinutes.isStoreInvoked).toBe(true)
+            expect(changeLaptimeSeconds.actualInput).toBe(12)
+            expect(changeLaptimeSeconds.isStoreInvoked).toBe(true)
         })
     })
+
+
+    describe('Given invalid number for laptimeSeconds', () => {
+        test('Then do not update laptimeSeconds in store.', () => {
+
+            // ARRANGE
+            let isStoreInvoked = false
+
+            var originalProps = {
+                changeLaptimeSeconds:  (input) => {
+                    isStoreInvoked = true
+                }
+            }
+
+            var validator = (input) => {
+                if(input == "hello") {
+                    return "Some error message"
+                }
+
+                return undefined
+            }
+            
+            // ACT
+            stintServiceLaptimeSeconds("hello", originalProps, undefined, validator)
+
+            // ASSERT
+            expect(isStoreInvoked).toBe(false)
+        })
+    })
+
 })
