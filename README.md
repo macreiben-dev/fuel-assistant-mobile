@@ -11,6 +11,12 @@
 
 ## Configuration to use openssl legacy provider
 
+There is an issue ssl on the most recent version of node.
+
+One solution is to downgrade node version, the other is to use legacy version of the provider.
+
+Here are the command line to make the recenter version work with react-native.
+
 ### Linux and macOS (Windows Git Bash)-
 
 ```Shell
