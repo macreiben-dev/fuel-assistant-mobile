@@ -7,14 +7,23 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
+import { changeLaptimeSeconds } from '../stores/stintdetails/actions/laptimeSecond'
+import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from '../business/stintService';
+import { floatValidator } from '../business/validators'
+import { floatConverter } from '../business/converter'
 
 class StintComponent extends React.Component {
     
     constructor() {
         super()
         this.onLapTimeMinuteChange = (text, componentProps) => {
-            console.log('laptime minute changed')
-            componentProps.changeLaptimeMinutes(text)
+            console.log('onLapTimeMinuteChange invoked')
+            stintServiceLaptimeMinutes(text, componentProps, floatConverter, floatValidator)
+        }
+
+        this.onLaptimeSecondsChange = (text, componentProps) => {
+            console.log('onLaptimeSecondsChange invoked')
+            stintServiceLaptimeSeconds(text, componentProps, floatConverter, floatValidator)
         }
     }
 
@@ -54,7 +63,8 @@ class StintComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={2}
-                        value={this.props.stintDetails.laptimeSeconds}
+                        defaultValue={this.props.stintDetails.laptimeSeconds}
+                        onChangeText={text => this.onLaptimeSecondsChange(text, this.props)}
                         style={styles.textInputLaptimesMinute}
                         placeholder='ss'></TextInput>
                 </View>
@@ -200,7 +210,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    const boundActions = bindActionCreators({ changeLaptimeMinutes }, dispatch)
+    const boundActions = bindActionCreators(
+        { 
+            changeLaptimeMinutes, 
+            changeLaptimeSeconds 
+        }, dispatch)
 
     return { 
         ...boundActions,
