@@ -1,4 +1,4 @@
-const integerValidation = function validateInteger(input) {
+const floatValidation = function validate(input) {
 
     const formatError = (input, inputType) => {
         return "Given value [" + input + "] is not a number. Type is [" + inputType + "]."
@@ -13,4 +13,4 @@ const integerValidation = function validateInteger(input) {
     return formatError(input, inputType)
 }
 
-export const integerValidator = integerValidation
+export const floatValidator = floatValidation
