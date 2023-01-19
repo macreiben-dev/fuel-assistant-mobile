@@ -41,6 +41,6 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish artifact'
       inputs:
-       PathtoPublish: $(outputDirectory)
+       PathtoPublish: $(srcDirectory)/web-build
        ArtifactName: 'drop'
        publishLocation: 'Container'
