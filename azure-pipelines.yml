@@ -6,6 +6,7 @@
 
 variables:
   outputDirectory: $(Build.ArtifactStagingDirectory)
+  srcDirectory: './src'
 
 trigger:
 - main
@@ -21,17 +22,22 @@ stages:
       displayName: 'Install Node.js'
       inputs:
         versionSpec: '16.x'
+
     - script: npm install
       displayName: 'Install packages'
-      workingDirectory: 'src'
+      workingDirectory: $(srcDirectory)
+
     - script: npm install -g expo-cli
       displayName: 'Install expo'
+
     - script: expo build:web $(outputDirectory)
-      workingDirectory: 'src'
       displayName: 'Generating web version'
+      workingDirectory: $(srcDirectory)
+
     - script: npm run test
       displayName: 'Run unit tests'
-      workingDirectory: 'src'
+      workingDirectory: $(srcDirectory)
+
     - task: PublishBuildArtifacts@1
       displayName: 'Publish artifact'
       inputs:
