@@ -12,7 +12,7 @@ import setupStore from './stores/stintdetails/configureStore';
 
 const store = setupStore();
 
-// ==============================================
+// =============================================
 
 // Create stack navigator
 let RootStack = createNativeStackNavigator();
