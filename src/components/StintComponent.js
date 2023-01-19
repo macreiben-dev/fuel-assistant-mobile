@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
 import { changeLaptimeSeconds } from '../stores/stintdetails/actions/laptimeSecond'
-import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from '../business/stintService';
+import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from '../business/laptimeStintService';
 import { floatValidator } from '../business/validators'
 import { floatConverter } from '../business/converter'
 
