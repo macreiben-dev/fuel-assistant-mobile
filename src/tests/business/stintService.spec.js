@@ -1,4 +1,4 @@
-import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from "../../business/stintService"
+import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from "../../business/laptimeStintService"
 
 
 describe('Laptime minutes', () => {
