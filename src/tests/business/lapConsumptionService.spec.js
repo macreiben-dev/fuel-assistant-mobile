@@ -1,9 +1,4 @@
-const lapConsumptionService = (input, props, converter, validator) => {
-
-    if(validator(input) === undefined) {
-        props.changeLaptimeMinutes(converter(input))    
-    }
-}
+import { lapConsumptionService } from "../../business/lapConsumptionService"
 
 describe('Lap Consumption', () => {
     test('Given consumption is "hello" then do not update store.', () => {
@@ -11,7 +6,7 @@ describe('Lap Consumption', () => {
         let isStoreInvoked = false
 
         var originalProps = {
-            changeLaptimeSeconds:  (input) => {
+            changeLapConsumption:  (input) => {
                 isStoreInvoked = true
             }
         }
@@ -39,7 +34,7 @@ describe('Lap Consumption', () => {
         }
 
         var originalProps = {
-            changeLaptimeMinutes:  (input) => {
+            changeLapConsumption:  (input) => {
                 storeSpy.actualInput = input
                 storeSpy.isStoreInvoked = true
             }

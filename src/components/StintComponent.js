@@ -8,7 +8,9 @@ import { connect } from 'react-redux'
 
 import { changeLaptimeMinutes } from '../stores/stintdetails/actions/laptimeMinute'
 import { changeLaptimeSeconds } from '../stores/stintdetails/actions/laptimeSecond'
+import { changeLapConsumption } from '../stores/stintdetails/actions/lapConsumption'
 import { stintServiceLaptimeMinutes, stintServiceLaptimeSeconds } from '../business/laptimeStintService';
+import { lapConsumptionService } from '../business/lapConsumptionService';
 import { floatValidator } from '../business/validators'
 import { floatConverter } from '../business/converter'
 
@@ -17,13 +19,16 @@ class StintComponent extends React.Component {
     constructor() {
         super()
         this.onLapTimeMinuteChange = (text, componentProps) => {
-            console.log('onLapTimeMinuteChange invoked')
             stintServiceLaptimeMinutes(text, componentProps, floatConverter, floatValidator)
         }
 
         this.onLaptimeSecondsChange = (text, componentProps) => {
-            console.log('onLaptimeSecondsChange invoked')
             stintServiceLaptimeSeconds(text, componentProps, floatConverter, floatValidator)
+        }
+
+        this.onLapConsumptionChange = (text, componentProps) => {
+            console.log('consumption change.')
+            lapConsumptionService(text, componentProps, floatConverter, floatValidator)
         }
     }
 
@@ -83,7 +88,8 @@ class StintComponent extends React.Component {
                     <TextInput 
                         keyboardType='numeric'
                         maxLength={4}
-                        value={this.props.stintDetails.consumptionLiterPerLap}
+                        defaultValue={this.props.stintDetails.consumptionLiterPerLap}
+                        onChangeText={text => this.onLapConsumptionChange(text, this.props)}
                         style={styles.textInputLaptimesMinute}
                         placeholder='0.00'></TextInput>
                 </View>
@@ -213,7 +219,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     const boundActions = bindActionCreators(
         { 
             changeLaptimeMinutes, 
-            changeLaptimeSeconds 
+            changeLaptimeSeconds,
+            changeLapConsumption
         }, dispatch)
 
     return { 
