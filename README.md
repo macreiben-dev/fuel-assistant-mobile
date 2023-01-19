@@ -46,3 +46,6 @@ set NODE_OPTIONS=--openssl-legacy-provider
 ```Shell
 $env:NODE_OPTIONS = "--openssl-legacy-provider"
 ```
+## AzDev integration
+
+* [Expo-CLI Export web](https://docs.expo.dev/workflow/expo-cli/#exporting)
