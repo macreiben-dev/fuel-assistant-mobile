@@ -22,3 +22,6 @@ stages:
       workingDirectory: 'src'
     - script: npm install -g expo-cli
       displayName: 'Install expo'
+    - script: expo export:web --output-dir ./public
+      workingDirectory: 'src'
+      displayName: 'Generating web version'
