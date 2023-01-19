@@ -1,6 +1,6 @@
 # fuel-assistant-mobile
 
-- [Visit application](https://macreibendev-fuel-assistant-front.azurewebsites.net)
+- [Visit application](https://macreibendev-fuel-assistant-front.azurewebsites.net/)
 
 ## Redux integration documentation
 
