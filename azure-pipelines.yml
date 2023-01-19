@@ -1,4 +1,5 @@
 # Node.js
+
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -22,9 +23,15 @@ stages:
       workingDirectory: 'src'
     - script: npm install -g expo-cli
       displayName: 'Install expo'
-    - script: expo export:web --output-dir ./public
+    - script: expo export:web --output-dir $(Build.ArtifactStagingDirectory)'
       workingDirectory: 'src'
       displayName: 'Generating web version'
     - script: npm run test
       displayName: 'Run unit tests'
       workingDirectory: 'src'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish artifact'
+      inputs:
+       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+       ArtifactName: 'drop'
+       publishLocation: 'Container'
