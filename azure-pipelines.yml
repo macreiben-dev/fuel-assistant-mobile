@@ -19,3 +19,5 @@ stages:
         versionSpec: '10.x'
     - script: npm install
       displayName: 'Install packages'
+      workingDirectory: 'src'
+
