@@ -25,3 +25,6 @@ stages:
     - script: expo export:web --output-dir ./public
       workingDirectory: 'src'
       displayName: 'Generating web version'
+    - script: npm run test
+      displayName: 'Run unit tests'
+      workingDirectory: 'src'
