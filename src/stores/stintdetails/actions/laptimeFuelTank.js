@@ -1,8 +1,8 @@
-import { LAPTIME_FUELTANK_CAPACITY_UPDATE } from "../constants";
+import { LAPTIME_FUELTANK_CONTENT_UPDATE } from "../constants";
 
-export function changeFuelTankCapacity(fuelTankLiter) {
-    return {
-        type: LAPTIME_FUELTANK_CAPACITY_UPDATE,
-        payload: fuelTankLiter
-    }
+export function changeFuelTankContent(fuelTankLiter) {
+  return {
+    type: LAPTIME_FUELTANK_CONTENT_UPDATE,
+    payload: fuelTankLiter,
+  };
 }
