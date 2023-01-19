@@ -1,0 +1,6 @@
+{
+    "jest.rootPath": "./src",
+    "jest.jestCommandLine": "npm run test --",
+    "jest.debugMode": true,
+    "jest.showCoverageOnLoad": true
+}
