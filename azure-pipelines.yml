@@ -30,7 +30,7 @@ stages:
     - script: npm install -g expo-cli
       displayName: 'Install expo'
 
-    - script: expo build:web $(outputDirectory)
+    - script: expo build:web
       displayName: 'Generating web version'
       workingDirectory: $(srcDirectory)
 
