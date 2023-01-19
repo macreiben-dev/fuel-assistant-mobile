@@ -4,6 +4,9 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+variables:
+  outputDirectory: $(Build.ArtifactStagingDirectory)'
+
 trigger:
 - main
 
@@ -23,7 +26,7 @@ stages:
       workingDirectory: 'src'
     - script: npm install -g expo-cli
       displayName: 'Install expo'
-    - script: expo export:web --output-dir $(Build.ArtifactStagingDirectory)'
+    - script: expo export:web --output-dir $(outputDirectory)'
       workingDirectory: 'src'
       displayName: 'Generating web version'
     - script: npm run test
@@ -32,6 +35,6 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish artifact'
       inputs:
-       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+       PathtoPublish: $(outputDirectory)
        ArtifactName: 'drop'
        publishLocation: 'Container'
