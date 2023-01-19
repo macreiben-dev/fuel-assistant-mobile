@@ -12,15 +12,20 @@ import { floatConverter } from "../business/converter";
 import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
 import { changeFuelTankContent } from "../stores/stintdetails/actions/laptimeFuelTank";
+import { changeStintDuration } from "../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
+import { changeLapConsumption } from "../stores/stintdetails/actions/lapConsumption";
 
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-} from "../business/laptimeStintService";
+} from "../business/stint/laptimeStintService";
+
 import {
   lapConsumptionService,
   lapFuelTankContentService,
-} from "../business/lapConsumptionService";
+} from "../business/stint/lapConsumptionService";
+
+import { stintDurationService } from "../business/stint/stintDurationService";
 
 class StintComponent extends React.Component {
   constructor() {
@@ -54,6 +59,15 @@ class StintComponent extends React.Component {
 
     this.onFuelTankContentchange = (text, componentProps) => {
       lapFuelTankContentService(
+        text,
+        componentProps,
+        floatConverter,
+        floatValidator
+      );
+    };
+
+    this.onStintDurationChange = (text, componentProps) => {
+      stintDurationService(
         text,
         componentProps,
         floatConverter,
@@ -163,7 +177,10 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={4}
-              value={this.props.stintDetails.wouldBeStintDurationMinutes}
+              defaultValue={this.props.stintDetails.wouldBeStintDurationMinutes}
+              onChangeText={(text) =>
+                this.onStintDurationChange(text, this.props)
+              }
               style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
@@ -268,6 +285,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       changeLaptimeMinutes,
       changeLaptimeSeconds,
       changeFuelTankContent,
+      changeStintDuration,
+      changeLapConsumption,
     },
     dispatch
   );

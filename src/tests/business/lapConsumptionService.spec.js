@@ -1,7 +1,7 @@
 import {
   lapConsumptionService,
   lapFuelTankContentService,
-} from "../../business/lapConsumptionService";
+} from "../../business/stint/lapConsumptionService";
 
 describe("Lap Consumption", () => {
   test('Given consumption is "hello" then do not update store.', () => {
@@ -68,7 +68,7 @@ describe("Lap Consumption", () => {
 });
 
 describe("Fuel tank content", () => {
-  test('Given consumption is "hello" then do not update store.', () => {
+  test('Given fuel tank content is "hello" then do not update store.', () => {
     // ARRANGE
     let isStoreInvoked = false;
 
@@ -93,7 +93,7 @@ describe("Fuel tank content", () => {
     expect(isStoreInvoked).toBe(false);
   });
 
-  test("Given consumption is 12 then update store with 12.", () => {});
+  test("Given fuel tank content is 12 then update store with 12.", () => {});
   // ARRANGE
   let storeSpy = {
     actualInput: undefined,
