@@ -29,7 +29,7 @@ describe("Store - stint details", () => {
     expect(actual).toBe(6);
   });
 
-  test("Given action changeFuelTankCapacity is used Then set fuelTankLiter", () => {
+  test("Given action fuelTankLiter is used Then set fuelTankLiter", () => {
     let action = changefuelTankLiter(6);
 
     store.dispatch(action);
