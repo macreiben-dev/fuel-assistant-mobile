@@ -15,13 +15,14 @@ import { changeWouldBeStintDuration } from "../stores/stintdetails/actions/lapti
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-  stintServiceSetWouldBeStintDuraction,
 } from "../business/stint/laptimeStintService";
 
 import {
   stintSetLiterPerLap,
   stintSetFuelTankLiter,
 } from "../business/stint/stintConsumptionService";
+
+import { stintSetStintDuration } from "../business/stint/stintDurationService";
 
 import { floatValidator } from "../business/validators";
 import { floatConverter } from "../business/converter";
@@ -66,7 +67,7 @@ class StintComponent extends React.Component {
 
     this.onChangeWouldBeStintDuraction = (text, componentProps) => {
       console.log("onChangeWouldBeStintDuraction invoked");
-      stintServiceSetWouldBeStintDuraction(
+      stintSetStintDuration(
         text,
         componentProps,
         floatConverter,

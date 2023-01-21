@@ -1,7 +1,7 @@
 const stintDuration = (input, props, converter, validator) => {
   if (validator(input) === undefined) {
-    props.changeStintDuration(converter(input));
+    props.changeWouldBeStintDuration(converter(input));
   }
 };
 
-export const stintDurationService = stintDuration;
+export const stintSetStintDuration = stintDuration;
