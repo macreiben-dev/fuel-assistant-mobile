@@ -9,13 +9,18 @@ import { connect } from "react-redux";
 import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
 import { changeConsumption } from "../stores/stintdetails/actions/laptimeConsumption";
+import { changeFuelTankLiter } from "../stores/stintdetails/actions/laptimeFuelTank";
 
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
+  setWouldBeStintDuration,
 } from "../business/laptimeStintService";
 
-import { stintSetLiterPerLap } from "../business/stintConsumptionService";
+import {
+  stintSetLiterPerLap,
+  stintSetFuelTankLiter,
+} from "../business/stintConsumptionService";
 
 import { floatValidator } from "../business/validators";
 import { floatConverter } from "../business/converter";
@@ -46,6 +51,16 @@ class StintComponent extends React.Component {
     this.onConsumptionLiterPerLap = (text, componentProps) => {
       console.log("onConsumptionLiterPerLap invoked");
       stintSetLiterPerLap(text, componentProps, floatConverter, floatValidator);
+    };
+
+    this.onchangefuelTankLiter = (text, componentProps) => {
+      console.log("onConsumptionLiterPerLap invoked");
+      stintSetFuelTankLiter(
+        text,
+        componentProps,
+        floatConverter,
+        floatValidator
+      );
     };
   }
 
@@ -131,7 +146,10 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={2}
-              value={this.props.stintDetails.fuelTankCapacityLiter}
+              defaultValue={this.props.stintDetails.fuelTankLiter}
+              onChangeText={(text) =>
+                this.onchangefuelTankLiter(text, this.props)
+              }
               style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
@@ -147,7 +165,7 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={4}
-              value={this.props.stintDetails.wouldBeStintDurationMinutes}
+              defaultValue={this.props.stintDetails.wouldBeStintDurationMinutes}
               style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
@@ -252,6 +270,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       changeLaptimeMinutes,
       changeLaptimeSeconds,
       changeConsumption,
+      changeFuelTankLiter,
     },
     dispatch
   );
