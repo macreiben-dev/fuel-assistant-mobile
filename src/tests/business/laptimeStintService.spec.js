@@ -7,7 +7,16 @@ describe("Laptime minutes", () => {
   test('Given laptime minutes is "hello" then do not update laptimeMinutes in store.', () => {
     // ARRANGE
     let isStoreInvoked = false;
+describe("Laptime minutes", () => {
+  test('Given laptime minutes is "hello" then do not update laptimeMinutes in store.', () => {
+    // ARRANGE
+    let isStoreInvoked = false;
 
+    var originalProps = {
+      changeLaptimeSeconds: (input) => {
+        isStoreInvoked = true;
+      },
+    };
     var originalProps = {
       changeLaptimeSeconds: (input) => {
         isStoreInvoked = true;
@@ -113,6 +122,12 @@ describe("Laptime seconds", () => {
       return "Some validation error message.";
     };
 
+    var converter = (input) => {
+      if (input == 12) {
+        return 12;
+      }
+      return undefined;
+    };
     var converter = (input) => {
       if (input == 12) {
         return 12;

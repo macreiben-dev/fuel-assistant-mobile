@@ -1,6 +1,6 @@
 # fuel-assistant-mobile
 
-- [Visit application](https://macreibendev-fuel-assistant-front.azurewebsites.net)
+- [Visit application](https://macreibendev-fuel-assistant-front.azurewebsites.net/)
 
 ## Redux integration documentation
 
@@ -23,6 +23,7 @@ npm install
 ```
 npm run web
 ```
+
 ## Configuration to use openssl legacy provider
 
 There is an issue ssl on the most recent version of node.
@@ -51,3 +52,17 @@ $env:NODE_OPTIONS = "--openssl-legacy-provider"
 ## AzDev integration
 
 * [Expo-CLI Export web](https://docs.expo.dev/workflow/expo-cli/#exporting)
+
+## Git tricks and tips
+
+Detect merged branches and prune them:
+```Shell
+git remote prune origin
+```
+
+Delete local branch
+```Shell
+git branch -D branch_name_here
+```
+
+
