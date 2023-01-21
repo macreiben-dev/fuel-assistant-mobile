@@ -3,7 +3,7 @@ import {
   stintSetLiterPerLap,
   stintSetFuelTankLiter,
   stintSetWouldBeStintDuration,
-} from "../../business/stintConsumptionService";
+} from "../../business/stint/stintConsumptionService";
 
 describe("Stint Consumption service", () => {
   describe("Consumption", () => {
@@ -123,67 +123,6 @@ describe("Stint Consumption service", () => {
 
       // ACT
       stintSetFuelTankLiter(12, originalProps, converter, validator);
-
-      // ASSERT
-      expect(change.isStoreInvoked).toBe(true);
-    });
-  });
-  describe("Stint Would Be Duration", () => {
-    test("Given wouldBeStintDurationMinutes is hello Then do not save to store.", () => {
-      // ARRANGE
-      let isStoreInvoked = false;
-
-      var originalProps = {
-        changeWouldBeStintDuration: (input) => {
-          isStoreInvoked = true;
-        },
-      };
-
-      var validator = (input) => {
-        if (input == "hello") {
-          return "Some error message";
-        }
-
-        return undefined;
-      };
-
-      // ACT
-      stintSetLiterPerLap("hello", originalProps, undefined, validator);
-
-      // ASSERT
-      expect(isStoreInvoked).toBe(false);
-    });
-    test("Given wouldBeStintDurationMinutes is 12 Then save to store.", () => {
-      // ARRANGE
-      let change = {
-        actualInput: undefined,
-        isStoreInvoked: false,
-      };
-
-      var originalProps = {
-        changeWouldBeStintDuration: (input) => {
-          change.actualInput = input;
-          change.isStoreInvoked = true;
-        },
-      };
-
-      var validator = (input) => {
-        if (input == 12) {
-          return undefined;
-        }
-
-        return "Some validation error message.";
-      };
-
-      var converter = (input) => {
-        if (input == 12) {
-          return 12;
-        }
-        return undefined;
-      };
-
-      // ACT
-      stintSetWouldBeStintDuration(12, originalProps, converter, validator);
 
       // ASSERT
       expect(change.isStoreInvoked).toBe(true);

@@ -21,7 +21,7 @@ import {
 import {
   stintSetLiterPerLap,
   stintSetFuelTankLiter,
-} from "../business/stint/lapConsumptionService";
+} from "../business/stint/stintConsumptionService";
 
 import { floatValidator } from "../business/validators";
 import { floatConverter } from "../business/converter";
