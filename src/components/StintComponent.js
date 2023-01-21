@@ -10,11 +10,12 @@ import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinu
 import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
 import { changeConsumption } from "../stores/stintdetails/actions/laptimeConsumption";
 import { changeFuelTankLiter } from "../stores/stintdetails/actions/laptimeFuelTank";
+import { changeWouldBeStintDuration } from "../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
 
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-  setWouldBeStintDuration,
+  stintServiceSetWouldBeStintDuraction,
 } from "../business/laptimeStintService";
 
 import {
