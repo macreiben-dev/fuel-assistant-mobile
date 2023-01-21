@@ -55,8 +55,18 @@ class StintComponent extends React.Component {
     };
 
     this.onchangefuelTankLiter = (text, componentProps) => {
-      console.log("onConsumptionLiterPerLap invoked");
+      console.log("onchangefuelTankLiter invoked");
       stintSetFuelTankLiter(
+        text,
+        componentProps,
+        floatConverter,
+        floatValidator
+      );
+    };
+
+    this.onChangeWouldBeStintDuraction = (text, componentProps) => {
+      console.log("onChangeWouldBeStintDuraction invoked");
+      stintServiceSetWouldBeStintDuraction(
         text,
         componentProps,
         floatConverter,
@@ -167,6 +177,9 @@ class StintComponent extends React.Component {
               keyboardType="numeric"
               maxLength={4}
               defaultValue={this.props.stintDetails.wouldBeStintDurationMinutes}
+              onChangeText={(text) => {
+                this.onChangeWouldBeStintDuraction(text, this.props);
+              }}
               style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
@@ -272,6 +285,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       changeLaptimeSeconds,
       changeConsumption,
       changeFuelTankLiter,
+      changeWouldBeStintDuration,
     },
     dispatch
   );
