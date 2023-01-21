@@ -4,6 +4,7 @@ import { changeConsumption } from "../../stores/stintdetails/actions/laptimeCons
 import { changefuelTankLiter } from "../../stores/stintdetails/actions/laptimeFuelTank";
 import { changeLaptimeMinutes } from "../../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../../stores/stintdetails/actions/laptimeSecond";
+import { changeWouldBeStintDuration } from "../../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
 
 let store = undefined;
 
@@ -54,6 +55,18 @@ describe("Store - stint details", () => {
     store.dispatch(action);
 
     let actual = store.getState().stintDetails.laptimeSeconds;
+
+    console.log(store.getState());
+
+    expect(actual).toBe(6);
+  });
+
+  test("Given action changeWouldBeStintDuration is used Then set fuelTankLiter", () => {
+    let action = changeWouldBeStintDuration(6);
+
+    store.dispatch(action);
+
+    let actual = store.getState().stintDetails.wouldBeStintDurationMinutes;
 
     console.log(store.getState());
 

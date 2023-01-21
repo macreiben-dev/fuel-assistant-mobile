@@ -1,5 +1,5 @@
 import {
-  LAPTIME_WOULDBE_STINT_DURATION,
+  WOULDBE_STINT_DURATION_UPDATE,
   FUELTANK_LITER_UPDATE,
   STINT_CONSUMPTION_UPDATE,
   LAPTIME_MINUTES_UPDATE,
@@ -36,7 +36,7 @@ const laptimeReducer = (state = initialState, action) => {
         ...state,
         fuelTankLiter: action.payload,
       };
-    case LAPTIME_WOULDBE_STINT_DURATION:
+    case WOULDBE_STINT_DURATION_UPDATE:
       return {
         ...state,
         wouldBeStintDurationMinutes: action.payload,
