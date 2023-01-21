@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
-import { changeConsumption } from "../stores/stintdetails/actions/laptimeConsumption";
+import { changeConsumption } from "../stores/stintdetails/actions/lapConsumption";
 import { changeFuelTankLiter } from "../stores/stintdetails/actions/laptimeFuelTank";
 import { changeWouldBeStintDuration } from "../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
 
@@ -16,12 +16,12 @@ import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
   stintServiceSetWouldBeStintDuraction,
-} from "../business/laptimeStintService";
+} from "../business/stint/laptimeStintService";
 
 import {
   stintSetLiterPerLap,
   stintSetFuelTankLiter,
-} from "../business/stintConsumptionService";
+} from "../business/stint/lapConsumptionService";
 
 import { floatValidator } from "../business/validators";
 import { floatConverter } from "../business/converter";

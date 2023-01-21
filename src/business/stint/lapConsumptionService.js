@@ -1,14 +1,14 @@
-const lapConsumption = (input, props, converter, validator) => {
+const setConsumption = (input, props, converter, validator) => {
   if (validator(input) === undefined) {
-    props.changeLapConsumption(converter(input));
+    props.changeConsumption(converter(input));
   }
 };
 
-const lapFuelTankContent = (input, props, converter, validator) => {
+const setFuelTankContent = (input, props, converter, validator) => {
   if (validator(input) === undefined) {
-    props.changeFuelTankContent(converter(input));
+    props.changeFuelTankLiter(converter(input));
   }
 };
 
-export const lapConsumptionService = lapConsumption;
-export const lapFuelTankContentService = lapFuelTankContent;
+export const stintSetLiterPerLap = setConsumption;
+export const stintSetFuelTankLiter = setFuelTankContent;

@@ -1,24 +1,15 @@
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-} from "../../business/laptimeStintService";
+} from "../../business/stint/laptimeStintService";
 
-describe("Laptime minutes", () => {
-  test('Given laptime minutes is "hello" then do not update laptimeMinutes in store.', () => {
-    // ARRANGE
-    let isStoreInvoked = false;
 describe("Laptime minutes", () => {
   test('Given laptime minutes is "hello" then do not update laptimeMinutes in store.', () => {
     // ARRANGE
     let isStoreInvoked = false;
 
     var originalProps = {
-      changeLaptimeSeconds: (input) => {
-        isStoreInvoked = true;
-      },
-    };
-    var originalProps = {
-      changeLaptimeSeconds: (input) => {
+      changeLaptimeMinutes: (input) => {
         isStoreInvoked = true;
       },
     };
@@ -100,7 +91,7 @@ describe("Laptime seconds", () => {
     // ASSERT
     expect(isStoreInvoked).toBe(false);
   });
-  test("Given laptime minutes is 12 then update laptimeMinutes store with 13", () => {
+  test("Given laptimeSeconds is 12 then update laptimeMinutes store with 13", () => {
     // ARRANGE
     let changeLaptimeSeconds = {
       actualInput: undefined,

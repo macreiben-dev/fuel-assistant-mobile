@@ -2,7 +2,7 @@ import { describe, test, expect, beforeEach } from "@jest/globals";
 
 import setupStore from "../../stores/stintdetails/configureStore";
 
-import { changeConsumption } from "../../stores/stintdetails/actions/laptimeConsumption";
+import { changeConsumption } from "../../stores/stintdetails/actions/lapConsumption";
 import { changeFuelTankLiter } from "../../stores/stintdetails/actions/laptimeFuelTank";
 import { changeLaptimeMinutes } from "../../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../../stores/stintdetails/actions/laptimeSecond";
