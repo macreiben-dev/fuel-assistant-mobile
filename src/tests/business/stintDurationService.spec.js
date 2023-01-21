@@ -1,4 +1,4 @@
-import { stintDurationService } from "../../business/stint/stintDurationService";
+import { stintSetStintDuration } from "../../business/stint/stintDurationService";
 
 describe("Stint duration", () => {
   test('Given stint duration is "hello" then do not update stint duration in store.', () => {
@@ -6,7 +6,7 @@ describe("Stint duration", () => {
     let isStoreInvoked = false;
 
     var originalProps = {
-      changeStintDuration: (input) => {
+      changeWouldBeStintDuration: (input) => {
         isStoreInvoked = true;
       },
     };
@@ -20,7 +20,7 @@ describe("Stint duration", () => {
     };
 
     // ACT
-    stintDurationService("hello", originalProps, undefined, validator);
+    stintSetStintDuration("hello", originalProps, undefined, validator);
 
     // ASSERT
     expect(isStoreInvoked).toBe(false);
@@ -34,7 +34,7 @@ describe("Stint duration", () => {
     };
 
     var originalProps = {
-      changeStintDuration: (input) => {
+      changeWouldBeStintDuration: (input) => {
         storeSpy.actualInput = input;
         storeSpy.isStoreInvoked = true;
       },
@@ -56,7 +56,7 @@ describe("Stint duration", () => {
     };
 
     // ACT
-    stintDurationService(12, originalProps, converter, validator);
+    stintSetStintDuration(12, originalProps, converter, validator);
 
     // ASSERT
     expect(storeSpy.actualInput).toBe(12);
