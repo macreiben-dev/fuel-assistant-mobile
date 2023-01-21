@@ -15,7 +15,7 @@ import { changeWouldBeStintDuration } from "../stores/stintdetails/actions/lapti
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-} from "../business/stint/laptimeStintService";
+} from "../business/stint/stintLaptimeService";
 
 import {
   stintSetLiterPerLap,
