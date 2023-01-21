@@ -1,7 +1,7 @@
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-} from "../../business/stint/laptimeStintService";
+} from "../../business/stint/stintLaptimeService";
 
 describe("Laptime minutes", () => {
   test('Given laptime minutes is "hello" then do not update laptimeMinutes in store.', () => {
