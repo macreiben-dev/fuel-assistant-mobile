@@ -6,13 +6,7 @@ import {
   LAPTIME_SECONDS_UPDATE,
 } from "../constants";
 
-const initialState = {
-  laptimeMinutes: 0,
-  laptimeSeconds: 0,
-  consumptionLiterPerLap: 0.0,
-  fuelTankLiter: 0,
-  wouldBeStintDurationMinutes: 0,
-};
+import { initialState } from "./stintDetailsInitialState";
 
 const laptimeReducer = (state = initialState, action) => {
   switch (action.type) {
