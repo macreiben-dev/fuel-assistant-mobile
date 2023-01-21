@@ -1,18 +1,12 @@
 import {
-  LAPTIME_WOULDBE_STINT_DURATION,
-  LAPTIME_FUELTANK_CONTENT_UPDATE,
-  LAPTIME_CONSUMPTION_UPDATE,
+  WOULDBE_STINT_DURATION_UPDATE,
+  FUELTANK_LITER_UPDATE,
+  STINT_CONSUMPTION_UPDATE,
   LAPTIME_MINUTES_UPDATE,
   LAPTIME_SECONDS_UPDATE,
 } from "../constants";
 
-const initialState = {
-  laptimeMinutes: 0,
-  laptimeSeconds: 0,
-  consumptionLiterPerLap: 0.0,
-  fuelTankCapacityLiter: 0,
-  wouldBeStintDurationMinutes: 0,
-};
+import { initialState } from "./stintDetailsInitialState";
 
 const laptimeReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -26,17 +20,17 @@ const laptimeReducer = (state = initialState, action) => {
         ...state,
         laptimeSeconds: action.payload,
       };
-    case LAPTIME_CONSUMPTION_UPDATE:
+    case STINT_CONSUMPTION_UPDATE:
       return {
         ...state,
         consumptionLiterPerLap: action.payload,
       };
-    case LAPTIME_FUELTANK_CONTENT_UPDATE:
+    case FUELTANK_LITER_UPDATE:
       return {
         ...state,
-        fuelTankCapacityLiter: action.payload,
+        fuelTankLiter: action.payload,
       };
-    case LAPTIME_WOULDBE_STINT_DURATION:
+    case WOULDBE_STINT_DURATION_UPDATE:
       return {
         ...state,
         wouldBeStintDurationMinutes: action.payload,

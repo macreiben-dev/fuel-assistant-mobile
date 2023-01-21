@@ -1,7 +1,7 @@
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-} from "../../business/stint/laptimeStintService";
+} from "../../business/stint/stintLaptimeService";
 
 describe("Laptime minutes", () => {
   test('Given laptime minutes is "hello" then do not update laptimeMinutes in store.', () => {
@@ -9,7 +9,7 @@ describe("Laptime minutes", () => {
     let isStoreInvoked = false;
 
     var originalProps = {
-      changeLaptimeSeconds: (input) => {
+      changeLaptimeMinutes: (input) => {
         isStoreInvoked = true;
       },
     };
@@ -66,9 +66,8 @@ describe("Laptime minutes", () => {
     expect(changeLaptimeMinutes.isStoreInvoked).toBe(true);
   });
 });
-
 describe("Laptime seconds", () => {
-  test('Given laptime seconds is "hello" then do not update laptimeSeconds in store.', () => {
+  test('Given laptimeSeconds is "hello" then do not update laptimeSeconds in store.', () => {
     // ARRANGE
     let isStoreInvoked = false;
 
@@ -92,7 +91,7 @@ describe("Laptime seconds", () => {
     // ASSERT
     expect(isStoreInvoked).toBe(false);
   });
-  test("Given laptime seconds is 12 then update laptimeMinutes store with 13", () => {
+  test("Given laptimeSeconds is 12 then update laptimeMinutes store with 13", () => {
     // ARRANGE
     let changeLaptimeSeconds = {
       actualInput: undefined,
@@ -114,6 +113,12 @@ describe("Laptime seconds", () => {
       return "Some validation error message.";
     };
 
+    var converter = (input) => {
+      if (input == 12) {
+        return 12;
+      }
+      return undefined;
+    };
     var converter = (input) => {
       if (input == 12) {
         return 12;

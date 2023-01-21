@@ -1,8 +1,8 @@
-import { LAPTIME_WOULDBE_STINT_DURATION } from "../constants";
+import { WOULDBE_STINT_DURATION_UPDATE } from "../constants";
 
-export function changeStintDuration(durationMinutes) {
-    return {
-        type: LAPTIME_WOULDBE_STINT_DURATION,
-        payload: durationMinutes
-    }
+export function changeWouldBeStintDuration(durationMinutes) {
+  return {
+    type: WOULDBE_STINT_DURATION_UPDATE,
+    payload: durationMinutes,
+  };
 }

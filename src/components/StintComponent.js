@@ -6,31 +6,32 @@ import { DataTable } from "react-native-paper";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { floatValidator } from "../business/validators";
-import { floatConverter } from "../business/converter";
-
 import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
-import { changeFuelTankContent } from "../stores/stintdetails/actions/laptimeFuelTank";
-import { changeStintDuration } from "../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
-import { changeLapConsumption } from "../stores/stintdetails/actions/lapConsumption";
+import { changeConsumption } from "../stores/stintdetails/actions/lapConsumption";
+import { changeFuelTankLiter } from "../stores/stintdetails/actions/laptimeFuelTank";
+import { changeWouldBeStintDuration } from "../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
 
 import {
   stintServiceLaptimeMinutes,
   stintServiceLaptimeSeconds,
-} from "../business/stint/laptimeStintService";
+} from "../business/stint/stintLaptimeService";
 
 import {
-  lapConsumptionService,
-  lapFuelTankContentService,
-} from "../business/stint/lapConsumptionService";
+  stintSetLiterPerLap,
+  stintSetFuelTankLiter,
+} from "../business/stint/stintConsumptionService";
 
-import { stintDurationService } from "../business/stint/stintDurationService";
+import { stintSetStintDuration } from "../business/stint/stintDurationService";
+
+import { floatValidator } from "../business/validators";
+import { floatConverter } from "../business/converter";
 
 class StintComponent extends React.Component {
   constructor() {
     super();
     this.onLapTimeMinuteChange = (text, componentProps) => {
+      console.log("onLapTimeMinuteChange invoked");
       stintServiceLaptimeMinutes(
         text,
         componentProps,
@@ -40,6 +41,7 @@ class StintComponent extends React.Component {
     };
 
     this.onLaptimeSecondsChange = (text, componentProps) => {
+      console.log("onLaptimeSecondsChange invoked");
       stintServiceLaptimeSeconds(
         text,
         componentProps,
@@ -48,8 +50,14 @@ class StintComponent extends React.Component {
       );
     };
 
-    this.onLapConsumptionChange = (text, componentProps) => {
-      lapConsumptionService(
+    this.onConsumptionLiterPerLap = (text, componentProps) => {
+      console.log("onConsumptionLiterPerLap invoked");
+      stintSetLiterPerLap(text, componentProps, floatConverter, floatValidator);
+    };
+
+    this.onchangefuelTankLiter = (text, componentProps) => {
+      console.log("onchangefuelTankLiter invoked");
+      stintSetFuelTankLiter(
         text,
         componentProps,
         floatConverter,
@@ -57,17 +65,9 @@ class StintComponent extends React.Component {
       );
     };
 
-    this.onFuelTankContentchange = (text, componentProps) => {
-      lapFuelTankContentService(
-        text,
-        componentProps,
-        floatConverter,
-        floatValidator
-      );
-    };
-
-    this.onStintDurationChange = (text, componentProps) => {
-      stintDurationService(
+    this.onChangeWouldBeStintDuraction = (text, componentProps) => {
+      console.log("onChangeWouldBeStintDuraction invoked");
+      stintSetStintDuration(
         text,
         componentProps,
         floatConverter,
@@ -142,7 +142,7 @@ class StintComponent extends React.Component {
               maxLength={4}
               defaultValue={this.props.stintDetails.consumptionLiterPerLap}
               onChangeText={(text) =>
-                this.onLapConsumptionChange(text, this.props)
+                this.onConsumptionLiterPerLap(text, this.props)
               }
               style={styles.textInputLaptimesMinute}
               placeholder="0.00"
@@ -158,9 +158,9 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.stintDetails.fuelTankCapacityLiter}
+              defaultValue={this.props.stintDetails.fuelTankLiter}
               onChangeText={(text) =>
-                this.onFuelTankContentchange(text, this.props)
+                this.onchangefuelTankLiter(text, this.props)
               }
               style={styles.textInputLaptimesMinute}
               placeholder="0"
@@ -178,9 +178,9 @@ class StintComponent extends React.Component {
               keyboardType="numeric"
               maxLength={4}
               defaultValue={this.props.stintDetails.wouldBeStintDurationMinutes}
-              onChangeText={(text) =>
-                this.onStintDurationChange(text, this.props)
-              }
+              onChangeText={(text) => {
+                this.onChangeWouldBeStintDuraction(text, this.props);
+              }}
               style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
@@ -284,9 +284,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     {
       changeLaptimeMinutes,
       changeLaptimeSeconds,
-      changeFuelTankContent,
-      changeStintDuration,
-      changeLapConsumption,
+      changeConsumption,
+      changeFuelTankLiter,
+      changeWouldBeStintDuration,
     },
     dispatch
   );
