@@ -1,6 +1,6 @@
 import {
   LAPTIME_WOULDBE_STINT_DURATION,
-  LAPTIME_FUELTANK_CAPACITY,
+  FUELTANK_LITER_UPDATE,
   STINT_CONSUMPTION_UPDATE,
   LAPTIME_MINUTES_UPDATE,
   LAPTIME_SECONDS_UPDATE,
@@ -10,7 +10,7 @@ const initialState = {
   laptimeMinutes: 0,
   laptimeSeconds: 0,
   consumptionLiterPerLap: 0.0,
-  fuelTankCapacityLiter: 0,
+  fuelTankLiter: 0,
   wouldBeStintDurationMinutes: 0,
 };
 
@@ -27,15 +27,14 @@ const laptimeReducer = (state = initialState, action) => {
         laptimeSeconds: action.payload,
       };
     case STINT_CONSUMPTION_UPDATE:
-      console.log("consumption update.");
       return {
         ...state,
         consumptionLiterPerLap: action.payload,
       };
-    case LAPTIME_FUELTANK_CAPACITY:
+    case FUELTANK_LITER_UPDATE:
       return {
         ...state,
-        fuelTankCapacityLiter: action.payload,
+        fuelTankLiter: action.payload,
       };
     case LAPTIME_WOULDBE_STINT_DURATION:
       return {

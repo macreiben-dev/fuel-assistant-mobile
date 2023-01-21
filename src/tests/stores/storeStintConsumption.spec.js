@@ -7,30 +7,37 @@ import {
   afterAll,
 } from "@jest/globals";
 import setupStore from "../../stores/stintdetails/configureStore";
-import { STINT_CONSUMPTION_UPDATE } from "../../stores/stintdetails/constants";
 import { changeConsumption } from "../../stores/stintdetails/actions/laptimeConsumption";
+import { changefuelTankLiter } from "../../stores/stintdetails/actions/laptimeFuelTank";
 
 let store = undefined;
-let unsubscribe = undefined;
-beforeAll(() => {
+
+beforeEach(() => {
   store = setupStore();
-  unsubscribe = store.subscribe(() =>
-    console.log("State after dispatch: ", store.getState())
-  );
 });
 
 describe("Store - stint details", () => {
-  describe("Store - Consumption", () => {
-    test("Given action changeConsumption is used Then set store consumptionLiterPerLap", () => {
-      let action = changeConsumption(6);
+  test("Given action changeConsumption is used Then set store consumptionLiterPerLap", () => {
+    let action = changeConsumption(6);
 
-      store.dispatch(action);
+    store.dispatch(action);
 
-      let actual = store.getState().stintDetails.consumptionLiterPerLap;
+    let actual = store.getState().stintDetails.consumptionLiterPerLap;
 
-      console.log(store.getState());
+    console.log(store.getState());
 
-      expect(actual).toBe(6);
-    });
+    expect(actual).toBe(6);
+  });
+
+  test("Given action changeFuelTankCapacity is used Then set fuelTankLiter", () => {
+    let action = changefuelTankLiter(6);
+
+    store.dispatch(action);
+
+    let actual = store.getState().stintDetails.fuelTankLiter;
+
+    console.log(store.getState());
+
+    expect(actual).toBe(6);
   });
 });
