@@ -59,19 +59,23 @@ $env:NODE_OPTIONS = "--openssl-legacy-provider"
 
 ## Git tricks and tips
 
-Detect merged branches and prune them:
+### Detect remote deleted branches and prune them:
 
 ```Shell
 git remote prune origin
 ```
 
-Delete local branch
+```Shell
+git fetch --prune origin
+```
+
+### Delete local branch
 
 ```Shell
 git branch -D branch_name_here
 ```
 
-See local branches
+### See local branches as graph
 
 ```Shell
 git log --graph --pretty=oneline --abbrev-commit
