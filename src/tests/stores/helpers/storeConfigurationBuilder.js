@@ -21,22 +21,28 @@ export default class StoreConfigurationBuilder {
       }
 
       storeCtxt.store = store;
+      return this;
     };
 
     this.withConsumption = function (data) {
       storeCtxt.consumption = data;
+      return this;
     };
     this.withFuelTankLiter = function (data) {
       storeCtxt.fuelTankLiter = data;
+      return this;
     };
     this.withLaptimeMinutes = function (data) {
       storeCtxt.laptimeMinutes = data;
+      return this;
     };
     this.withLapTimeSeconds = function (data) {
       storeCtxt.lapTimeSeconds = data;
+      return this;
     };
     this.withWouldBeStintDuration = function (data) {
       storeCtxt.wouldBeStintDuration = data;
+      return this;
     };
 
     this.build = function () {
