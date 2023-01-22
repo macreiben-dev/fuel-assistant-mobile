@@ -16,10 +16,13 @@
 - VSCode
 - Go to src
 - Download dependencies
+
 ```
 npm install
 ```
+
 - Run application in web mode
+
 ```
 npm run web
 ```
@@ -38,7 +41,7 @@ Here are the command line to make the recenter version work with react-native.
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
-###  Windows command prompt-
+### Windows command prompt-
 
 ```Shell
 set NODE_OPTIONS=--openssl-legacy-provider
@@ -49,20 +52,27 @@ set NODE_OPTIONS=--openssl-legacy-provider
 ```Shell
 $env:NODE_OPTIONS = "--openssl-legacy-provider"
 ```
+
 ## AzDev integration
 
-* [Expo-CLI Export web](https://docs.expo.dev/workflow/expo-cli/#exporting)
+- [Expo-CLI Export web](https://docs.expo.dev/workflow/expo-cli/#exporting)
 
 ## Git tricks and tips
 
 Detect merged branches and prune them:
+
 ```Shell
 git remote prune origin
 ```
 
 Delete local branch
+
 ```Shell
 git branch -D branch_name_here
 ```
 
+See local branches
 
+```Shell
+git log --graph --pretty=oneline --abbrev-commit
+```
