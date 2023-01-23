@@ -9,7 +9,7 @@ export const DisplayStintDataComponent = () => {
 
   let dataItems = selector.map((element) => {
     return (
-      <DataTable.Row>
+      <DataTable.Row key={element.stintPercent}>
         <DataTable.Title>{element.stintPercent}</DataTable.Title>
         <DataTable.Cell numeric>NA</DataTable.Cell>
         <DataTable.Cell numeric>{element.previsionalLapCount}</DataTable.Cell>
