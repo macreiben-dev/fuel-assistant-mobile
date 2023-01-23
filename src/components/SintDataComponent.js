@@ -12,7 +12,7 @@ export const DisplayStintDataComponent = () => {
       <DataTable.Row>
         <DataTable.Title>{element.stintPercent}</DataTable.Title>
         <DataTable.Cell numeric>NA</DataTable.Cell>
-        <DataTable.Cell numeric>NA</DataTable.Cell>
+        <DataTable.Cell numeric>{element.previsionalLapCount}</DataTable.Cell>
         <DataTable.Cell numeric>{element.consumption}</DataTable.Cell>
       </DataTable.Row>
     );

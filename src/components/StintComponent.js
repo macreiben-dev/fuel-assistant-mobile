@@ -79,8 +79,6 @@ class StintComponent extends React.Component {
   }
 
   render() {
-    // const stintDataSelector = useSelector(selectConsumptionForStint);
-
     return (
       <View
         style={[
