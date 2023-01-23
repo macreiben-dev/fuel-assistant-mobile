@@ -34,7 +34,7 @@ const stintTimeAsSeconds = (wouldBeStintDurationMinutes) => {
   return wouldBeStintDurationMinutes * SECONDS_IN_ONE_MINUTE;
 };
 
-const compute = (
+const computeConsumptionValue = (
   percent,
   totalTimeSeconds,
   laptimeSeconds,
@@ -49,8 +49,22 @@ const compute = (
   return truncatedTwoDecimals(consumption);
 };
 
+const computePrevisionalLapCountValue = (
+  percent,
+  totalTimeSeconds,
+  laptimeSeconds
+) => {
+  let intermediary = (totalTimeSeconds * percent) / laptimeSeconds;
+
+  return truncatedTwoDecimals(intermediary);
+};
+
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
+
+  if (localState.laptimeMinutes == 0 && localState.laptimeSeconds == 0) {
+    return [];
+  }
 
   let laptimeSeconds = laptimeAsSeconds(
     localState.laptimeMinutes,
@@ -64,16 +78,23 @@ const computeConsumption = (state) => {
   let output = [];
 
   percentOfStint.forEach((stintPercent) => {
-    let computedConsumption = compute(
+    let computedConsumption = computeConsumptionValue(
       stintPercent,
       stintTotalTimeSeconds,
       laptimeSeconds,
       localState.consumptionLiterPerLap
     );
 
+    let previsionalLapCount = computePrevisionalLapCountValue(
+      stintPercent,
+      stintTotalTimeSeconds,
+      laptimeSeconds
+    );
+
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
+      previsionalLapCount: previsionalLapCount,
     });
   });
 
