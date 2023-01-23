@@ -183,6 +183,32 @@ describe("Lap Consumption Selectors", () => {
       expect(actual.consumption).toBe(10.0);
     }
   );
+  test(
+    "Given consumption is [0] " +
+      "and laptime is [0] minutes " +
+      "and laptime is [0] minutes " +
+      "and fuelTankContent is [0] liter " +
+      "and stint is [10] minutes " +
+      "Then 50% race consumption is 1.0",
+    () => {
+      let storeConfigBuilder = new StoreConfigurationBuilder();
+
+      storeConfigBuilder
+        .withLaptimeMinutes(0)
+        .withLapTimeSeconds(0)
+        .withConsumption(1)
+        .withFuelTankLiter(10)
+        .withWouldBeStintDuration(10)
+        .withStore(store)
+        .build();
+
+      let state = store.getState();
+
+      let actual = selectConsumptionForStint(state);
+
+      expect(actual.length).toBe(0);
+    }
+  );
   describe("F488 usecase", () => {
     test(
       "Given consumption is [2.77] " +

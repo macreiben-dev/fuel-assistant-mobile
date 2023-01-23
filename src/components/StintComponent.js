@@ -1,10 +1,10 @@
 import React from "react";
 
+import { bindActionCreators } from "redux";
+import { connect, useSelector } from "react-redux";
+
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { DataTable } from "react-native-paper";
-
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
 
 import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
@@ -26,6 +26,8 @@ import { stintSetStintDuration } from "../business/stint/stintDurationService";
 
 import { floatValidator } from "../business/validators";
 import { floatConverter } from "../business/converter";
+
+import { DisplayStintDataComponent } from "./SintDataComponent";
 
 class StintComponent extends React.Component {
   constructor() {
@@ -77,6 +79,8 @@ class StintComponent extends React.Component {
   }
 
   render() {
+    // const stintDataSelector = useSelector(selectConsumptionForStint);
+
     return (
       <View
         style={[
@@ -198,48 +202,8 @@ class StintComponent extends React.Component {
               <DataTable.Title numeric>Lap Prev</DataTable.Title>
               <DataTable.Title numeric>Consumption</DataTable.Title>
             </DataTable.Header>
-            <DataTable.Row>
-              <DataTable.Title>Total Time</DataTable.Title>
-              <DataTable.Cell numeric>55</DataTable.Cell>
-              <DataTable.Cell numeric>26.83</DataTable.Cell>
-              <DataTable.Cell numeric>74.32</DataTable.Cell>
-            </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Title>50% </DataTable.Title>
-              <DataTable.Cell numeric>28</DataTable.Cell>
-              <DataTable.Cell numeric>13.41</DataTable.Cell>
-              <DataTable.Cell numeric>37.16</DataTable.Cell>
-            </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Title>60% </DataTable.Title>
-              <DataTable.Cell numeric>33</DataTable.Cell>
-              <DataTable.Cell numeric>16.10</DataTable.Cell>
-              <DataTable.Cell numeric>44.59</DataTable.Cell>
-            </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Title>80% </DataTable.Title>
-              <DataTable.Cell numeric>44</DataTable.Cell>
-              <DataTable.Cell numeric>21.46</DataTable.Cell>
-              <DataTable.Cell numeric>59.45</DataTable.Cell>
-            </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Title>90% </DataTable.Title>
-              <DataTable.Cell numeric>49.5</DataTable.Cell>
-              <DataTable.Cell numeric>24.15</DataTable.Cell>
-              <DataTable.Cell numeric>66.89</DataTable.Cell>
-            </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Title>95% </DataTable.Title>
-              <DataTable.Cell numeric>52.25</DataTable.Cell>
-              <DataTable.Cell numeric>25.49</DataTable.Cell>
-              <DataTable.Cell numeric>70.60</DataTable.Cell>
-            </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Title>100% </DataTable.Title>
-              <DataTable.Cell numeric>55</DataTable.Cell>
-              <DataTable.Cell numeric>26.83</DataTable.Cell>
-              <DataTable.Cell numeric>74.32</DataTable.Cell>
-            </DataTable.Row>
+            <DisplayStintDataComponent />
+            {/* {displayStintData()} */}
           </DataTable>
         </View>
       </View>

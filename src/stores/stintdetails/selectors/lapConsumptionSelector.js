@@ -52,6 +52,10 @@ const compute = (
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
 
+  if (localState.laptimeMinutes == 0 && localState.laptimeSeconds == 0) {
+    return [];
+  }
+
   let laptimeSeconds = laptimeAsSeconds(
     localState.laptimeMinutes,
     localState.laptimeSeconds
