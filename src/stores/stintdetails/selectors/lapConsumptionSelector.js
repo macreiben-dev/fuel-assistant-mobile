@@ -105,10 +105,18 @@ const computeConsumption = (state) => {
       laptimeSeconds
     );
 
-    let stintDuration = "00:05:00";
+    let stintDuration = computeStintDurationValue(
+      stintTotalTimeSeconds,
+      stintPercent,
+      stintDuration
+    );
 
     if (stintPercent == STINT_SIXTY_PERCENT) {
-      stintDuration = "00:06:00";
+      stintDuration = computeStintDurationValue(
+        stintTotalTimeSeconds,
+        stintPercent,
+        stintDuration
+      );
     }
 
     if (stintPercent == STINT_SEVENTY_PERCENT) {
