@@ -59,6 +59,20 @@ const computePrevisionalLapCountValue = (
   return truncatedTwoDecimals(intermediary);
 };
 
+const computeStintDurationValue = (
+  stintTotalTimeSeconds,
+  stintPercent,
+  stintDuration
+) => {
+  let minutes = Math.trunc(
+    (stintTotalTimeSeconds * stintPercent) / SECONDS_IN_ONE_MINUTE
+  );
+  let minutesAsString = String(minutes).padStart(2, "0");
+
+  stintDuration = "00:" + minutesAsString + ":00";
+  return stintDuration;
+};
+
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
 
@@ -91,10 +105,25 @@ const computeConsumption = (state) => {
       laptimeSeconds
     );
 
+    let stintDuration = "00:05:00";
+
+    if (stintPercent == STINT_SIXTY_PERCENT) {
+      stintDuration = "00:06:00";
+    }
+
+    if (stintPercent == STINT_SEVENTY_PERCENT) {
+      stintDuration = computeStintDurationValue(
+        stintTotalTimeSeconds,
+        stintPercent,
+        stintDuration
+      );
+    }
+
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
       previsionalLapCount: previsionalLapCount,
+      stintDuration: stintDuration,
     });
   });
 

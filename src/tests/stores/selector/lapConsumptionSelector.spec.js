@@ -20,6 +20,93 @@ beforeEach(() => {
 });
 
 describe("Lap Consumption Selectors", () => {
+  describe("Stint duration", () => {
+    test(
+      "Given consumption is [1] " +
+        "and laptime is [1] minutes " +
+        "and fuelTankContent is [10] " +
+        "and stint is [10] minutes " +
+        "Then 50% race stintDuration is 00:05:00",
+      () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withConsumption(1)
+          .withFuelTankLiter(10)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          (element) => element.stintPercent == STINT_FIFTY_PERCENT
+        );
+
+        expect(actual.stintDuration).toBe("00:05:00");
+      }
+    );
+    test(
+      "Given consumption is [1] " +
+        "and laptime is [1] minutes " +
+        "and fuelTankContent is [10] " +
+        "and stint is [10] minutes " +
+        "Then 60% race stintDuration is 00:06:00",
+      () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withConsumption(1)
+          .withFuelTankLiter(10)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          (element) => element.stintPercent == STINT_SIXTY_PERCENT
+        );
+
+        expect(actual.stintDuration).toBe("00:06:00");
+      }
+    );
+    test(
+      "Given consumption is [1] " +
+        "and laptime is [1] minutes " +
+        "and fuelTankContent is [10] " +
+        "and stint is [10] minutes " +
+        "Then 70% race stintDuration is 00:07:00",
+      () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withConsumption(1)
+          .withFuelTankLiter(10)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          (element) => element.stintPercent == STINT_SEVENTY_PERCENT
+        );
+
+        expect(actual.stintDuration).toBe("00:07:00");
+      }
+    );
+  });
+
   describe("Previsional Lap", () => {
     test(
       "Given consumption is [1] " +
