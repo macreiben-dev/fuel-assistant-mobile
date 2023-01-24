@@ -64,12 +64,17 @@ const computeStintDurationValue = (
   stintPercent,
   stintDuration
 ) => {
-  let minutes = Math.trunc(
-    (stintTotalTimeSeconds * stintPercent) / SECONDS_IN_ONE_MINUTE
-  );
+  const stintTimeRatioAsSeconds = stintTotalTimeSeconds * stintPercent;
+
+  let minutes = Math.trunc(stintTimeRatioAsSeconds / SECONDS_IN_ONE_MINUTE);
+
+  let secondsDigit = stintTimeRatioAsSeconds - minutes * SECONDS_IN_ONE_MINUTE;
+
   let minutesAsString = String(minutes).padStart(2, "0");
 
-  stintDuration = "00:" + minutesAsString + ":00";
+  let secondsAsString = String(secondsDigit).padStart(2, "0");
+
+  stintDuration = "00:" + minutesAsString + ":" + secondsAsString;
   return stintDuration;
 };
 
