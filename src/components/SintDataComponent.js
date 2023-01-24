@@ -11,7 +11,7 @@ export const DisplayStintDataComponent = () => {
     return (
       <DataTable.Row key={element.stintPercent}>
         <DataTable.Title>{element.stintPercent}</DataTable.Title>
-        <DataTable.Cell numeric>NA</DataTable.Cell>
+        <DataTable.Cell numeric>{element.stintDuration}</DataTable.Cell>
         <DataTable.Cell numeric>{element.previsionalLapCount}</DataTable.Cell>
         <DataTable.Cell numeric>{element.consumption}</DataTable.Cell>
       </DataTable.Row>

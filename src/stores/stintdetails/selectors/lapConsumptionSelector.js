@@ -1,3 +1,5 @@
+import { padStart } from "./formating";
+
 const SECONDS_IN_ONE_MINUTE = 60.0;
 
 const STINT_FIFTY_PERCENT = 0.5;
@@ -7,6 +9,9 @@ const STINT_EIGHTY_PERCENT = 0.8;
 const STINT_NINETY_PERCENT = 0.9;
 const STINT_NINETYFIVE_PERCENT = 0.95;
 const STINT_HUNDRED_PERCENT = 1.0;
+
+const DURATION_FORMAT_PADDING = 2;
+const DURATION_FORMAT_CHARACTER = "0";
 
 const percentOfStint = [
   STINT_FIFTY_PERCENT,
@@ -59,6 +64,37 @@ const computePrevisionalLapCountValue = (
   return truncatedTwoDecimals(intermediary);
 };
 
+const computeStintDurationValue = (
+  stintTotalTimeSeconds,
+  stintPercent,
+  stintDuration
+) => {
+  const stintTimeRatioAsSeconds = stintTotalTimeSeconds * stintPercent;
+
+  let minutesDigit = Math.trunc(
+    stintTimeRatioAsSeconds / SECONDS_IN_ONE_MINUTE
+  );
+
+  let secondsDigit =
+    stintTimeRatioAsSeconds - minutesDigit * SECONDS_IN_ONE_MINUTE;
+
+  let minutesAsString = padStart(
+    minutesDigit,
+    DURATION_FORMAT_PADDING,
+    DURATION_FORMAT_CHARACTER
+  );
+
+  let secondsAsString = padStart(
+    secondsDigit,
+    DURATION_FORMAT_PADDING,
+    DURATION_FORMAT_CHARACTER
+  );
+
+  stintDuration = "00:" + minutesAsString + ":" + secondsAsString;
+
+  return stintDuration;
+};
+
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
 
@@ -91,10 +127,17 @@ const computeConsumption = (state) => {
       laptimeSeconds
     );
 
+    let stintDuration = computeStintDurationValue(
+      stintTotalTimeSeconds,
+      stintPercent,
+      stintDuration
+    );
+
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
       previsionalLapCount: previsionalLapCount,
+      stintDuration: stintDuration,
     });
   });
 
