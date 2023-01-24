@@ -111,22 +111,6 @@ const computeConsumption = (state) => {
       stintDuration
     );
 
-    if (stintPercent == STINT_SIXTY_PERCENT) {
-      stintDuration = computeStintDurationValue(
-        stintTotalTimeSeconds,
-        stintPercent,
-        stintDuration
-      );
-    }
-
-    if (stintPercent == STINT_SEVENTY_PERCENT) {
-      stintDuration = computeStintDurationValue(
-        stintTotalTimeSeconds,
-        stintPercent,
-        stintDuration
-      );
-    }
-
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
