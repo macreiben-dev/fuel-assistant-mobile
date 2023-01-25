@@ -1,4 +1,5 @@
 import { padStart } from "./formating";
+import computeStintDurationValue from "./computeStintDurationValue";
 
 const SECONDS_IN_ONE_MINUTE = 60.0;
 
@@ -64,37 +65,6 @@ const computePrevisionalLapCountValue = (
   return truncatedTwoDecimals(intermediary);
 };
 
-const computeStintDurationValue = (
-  stintTotalTimeSeconds,
-  stintPercent,
-  stintDuration
-) => {
-  const stintTimeRatioAsSeconds = stintTotalTimeSeconds * stintPercent;
-
-  let minutesDigit = Math.trunc(
-    stintTimeRatioAsSeconds / SECONDS_IN_ONE_MINUTE
-  );
-
-  let secondsDigit =
-    stintTimeRatioAsSeconds - minutesDigit * SECONDS_IN_ONE_MINUTE;
-
-  let minutesAsString = padStart(
-    minutesDigit,
-    DURATION_FORMAT_PADDING,
-    DURATION_FORMAT_CHARACTER
-  );
-
-  let secondsAsString = padStart(
-    secondsDigit,
-    DURATION_FORMAT_PADDING,
-    DURATION_FORMAT_CHARACTER
-  );
-
-  stintDuration = "00:" + minutesAsString + ":" + secondsAsString;
-
-  return stintDuration;
-};
-
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
 
@@ -129,8 +99,7 @@ const computeConsumption = (state) => {
 
     let stintDuration = computeStintDurationValue(
       stintTotalTimeSeconds,
-      stintPercent,
-      stintDuration
+      stintPercent
     );
 
     output.push({
