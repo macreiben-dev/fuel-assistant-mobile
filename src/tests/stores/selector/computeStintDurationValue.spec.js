@@ -13,14 +13,6 @@ describe("Compute stint duration value", () => {
       );
 
       expect(actual).toBe("00:02:05");
-
-      /**
-         * LaptimeMinutes : 5
-LaptimeSecondss : 49
-Consumption Liter/Lap : 2.77
-Fuel tank liter : 10
-Total time : 3
-         */
     });
   });
 });
