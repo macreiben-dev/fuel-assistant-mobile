@@ -27,9 +27,15 @@ npm install
 npm run web
 ```
 
-## Documenting
+## Documentation
+
+### Documenting JS
 
 - [https://jsdoc.app/tags-param.html](https://jsdoc.app/tags-param.html)
+
+### Tab based navigation
+
+- [https://reactnavigation.org/docs/tab-based-navigation/](https://reactnavigation.org/docs/tab-based-navigation/)
 
 ## Configuration to use openssl legacy provider
 
