@@ -530,9 +530,9 @@ describe("Lap Consumption Selectors", () => {
       "Given consumption is [0] " +
         "and laptime is [0] minutes " +
         "and laptime is [0] minutes " +
-        "and fuelTankContent is [0] liter " +
+        "and fuelTankContent is [10] liter " +
         "and stint is [10] minutes " +
-        "Then 50% race consumption is 1.0",
+        "Then no data",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 

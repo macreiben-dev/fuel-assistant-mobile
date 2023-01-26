@@ -27,6 +27,10 @@ npm install
 npm run web
 ```
 
+## Documenting
+
+- [https://jsdoc.app/tags-param.html](https://jsdoc.app/tags-param.html)
+
 ## Configuration to use openssl legacy provider
 
 There is an issue ssl on the most recent version of node.
