@@ -1,12 +1,11 @@
-import { StyleSheet, View } from 'react-native';
-import { Provider, connect } from 'react-redux';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Provider } from "react-redux";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import StintComponent from "./components/StintComponent";
+import PitWallComponent from "./components/PitWallComponent";
 
-import StintComponent from './components/StintComponent'
-
-import setupStore from './stores/stintdetails/configureStore';
+import setupStore from "./stores/stintdetails/configureStore";
 
 // ==============================================
 
@@ -23,19 +22,17 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-      <RootStack.Navigator>
-          <RootStack.Screen name="StintDetail" component={StintComponent} />
-      </RootStack.Navigator>
+        <RootStack.Navigator>
+          <RootStack.Screen
+            name="Stint Consumption Calculator"
+            component={StintComponent}
+          />
+          <RootStack.Screen
+            name="Pit Wall"
+            component={PitWallComponent}
+          ></RootStack.Screen>
+        </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
