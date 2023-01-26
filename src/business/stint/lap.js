@@ -1,4 +1,5 @@
 const SECONDS_IN_ONE_MINUTE = 60.0;
+const ZERO = 0.0;
 
 class Lap {
   /**
@@ -8,8 +9,8 @@ class Lap {
    * @param {number} laptimeMinutes
    */
   constructor(laptimeMinutes, laptimeSeconds) {
-    this.laptimeMinutes = laptimeMinutes;
-    this.laptimeSeconds = laptimeSeconds;
+    this.laptimeMinutes = laptimeMinutes == undefined ? ZERO : laptimeMinutes;
+    this.laptimeSeconds = laptimeSeconds == undefined ? ZERO : laptimeSeconds;
   }
 
   /**

@@ -21,17 +21,6 @@ const percentOfStint = [
   STINT_HUNDRED_PERCENT,
 ];
 
-/**
- *
- * @param {Object} lap
- * @param {number} lap.laptimeMinutes
- * @param {number} lap.laptimeSeconds
- * @returns
- */
-const isLaptimeZero = (lap) => {
-  return lap.laptimeMinutes == 0 && lap.laptimeSeconds == 0;
-};
-
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
 
@@ -41,10 +30,7 @@ const computeConsumption = (state) => {
     return [];
   }
 
-  let laptimeSeconds = laptimeAsSeconds(
-    localState.laptimeMinutes,
-    localState.laptimeSeconds
-  );
+  let laptimeSeconds = lap.laptimeAsSeconds();
 
   let stintTotalTimeSeconds = stintTimeAsSeconds(
     localState.wouldBeStintDurationMinutes
@@ -82,16 +68,8 @@ const computeConsumption = (state) => {
   return output;
 };
 
-const truncatedTwoDecimals = (consumption) => {
+const truncateTwoDecimals = (consumption) => {
   return Math.trunc(consumption * 100) / 100;
-};
-
-const laptimeAsSeconds = (laptimeMinutes, laptimeSeconds) => {
-  let rebaseLaptimeSeconds = laptimeMinutes * SECONDS_IN_ONE_MINUTE;
-
-  let laptimeConvertedInSeconds = rebaseLaptimeSeconds + laptimeSeconds;
-
-  return laptimeConvertedInSeconds;
 };
 
 const stintTimeAsSeconds = (wouldBeStintDurationMinutes) => {
@@ -110,7 +88,7 @@ const computeConsumptionValue = (
 
   let consumption = lapCount * consumptionLiterPerLap;
 
-  return truncatedTwoDecimals(consumption);
+  return truncateTwoDecimals(consumption);
 };
 
 const computePrevisionalLapCountValue = (
@@ -120,7 +98,7 @@ const computePrevisionalLapCountValue = (
 ) => {
   let intermediary = (totalTimeSeconds * percent) / laptimeSeconds;
 
-  return truncatedTwoDecimals(intermediary);
+  return truncateTwoDecimals(intermediary);
 };
 
 export const selectConsumptionForStint = computeConsumption;
