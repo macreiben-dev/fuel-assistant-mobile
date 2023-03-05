@@ -2,4 +2,8 @@ let routeToIcon = (route) => {
   return "battery-half";
 };
 
-export { routeToIcon };
+let screenName = {
+  StintDetail: "StingDetail",
+};
+
+export { routeToIcon, screenName };

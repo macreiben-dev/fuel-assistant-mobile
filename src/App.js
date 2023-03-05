@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import StintComponent from "./components/StintComponent";
 
 import setupStore from "./stores/stintdetails/configureStore";
+import { routeToIcon, screenName } from "./navigation/tabbarIconConfig";
 
 // ==============================================
 
@@ -27,22 +28,18 @@ export default function App() {
         <RootStack.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
+              let iconName = routeToIcon(route.name);
 
-              if (route.name === "StintDetail") {
-                iconName = "battery-half";
-              } else if (route.name === "Settings") {
-                iconName = focused ? "ios-list" : "ios-list-outline";
-              }
-
-              // You can return any component that you like here!
               return <Ionicons name={iconName} size={size} color={color} />;
             },
             tabBarActiveTintColor: "tomato",
             tabBarInactiveTintColor: "gray",
           })}
         >
-          <RootStack.Screen name="StintDetail" component={StintComponent} />
+          <RootStack.Screen
+            name={screenName.StintDetail}
+            component={StintComponent}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
