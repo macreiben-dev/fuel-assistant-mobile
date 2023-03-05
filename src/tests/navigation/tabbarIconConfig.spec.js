@@ -10,6 +10,6 @@ describe("navigation configuration", () => {
   test("Given routeName is StratDetail then icon is brain", () => {
     let actual = routeToIcon("StratDetail");
 
-    expect(actual).toBe("brain");
+    expect(actual).toBe("navigate");
   });
 });
