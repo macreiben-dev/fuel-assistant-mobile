@@ -1,6 +1,6 @@
 let routeToIcon = (route) => {
   if (route == screenName.StratDetail) {
-    return "brain";
+    return "navigate";
   }
   return "battery-half";
 };
