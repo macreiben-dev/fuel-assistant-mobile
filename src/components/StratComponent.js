@@ -9,17 +9,6 @@ import {
 
 import { Button, DataTable, IconButton, TextInput } from "react-native-paper";
 
-const ItemComponent = (oneItem) => {
-  <View style={{ flex: 1, flexDirection: "row" }}>
-    <View style={{ flexDirection: "column" }}>
-      <View>
-        <Text>Pilot name:</Text>
-        <TextInput placeholder="Pilot name" />
-      </View>
-    </View>
-  </View>;
-};
-
 let items = [
   {
     key: 1,
@@ -31,6 +20,19 @@ let items = [
   },
 ];
 
+const ItemComponent = (props) => {
+  return (
+    <View key={props.oneItem.key} style={{ flex: 1, flexDirection: "row" }}>
+      <View style={{ flexDirection: "column" }}>
+        <View>
+          <Text>Pilot name:</Text>
+          <TextInput placeholder="Pilot name" Text={props.oneItem.pilot} />
+        </View>
+      </View>
+    </View>
+  );
+};
+
 class StratComponent extends React.Component {
   constructor() {
     super();
@@ -40,32 +42,11 @@ class StratComponent extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <Text>Strat component coming soon !</Text>
-
           <View style={{ flex: 1, flexDirection: "row" }}>
-            {items.map((item) => (
-              <ItemComponent key={item.id} oneItem={item} />
+            {items.map((currentItem) => (
+              <ItemComponent key={currentItem.key} oneItem={currentItem} />
             ))}
           </View>
-
-          {/* <DataTable>
-            <DataTable.Header>
-              <DataTable.Title></DataTable.Title>
-              <DataTable.Title>Pilot</DataTable.Title>
-              <DataTable.Title>Stint Duration</DataTable.Title>
-              <DataTable.Title>Pit Duration</DataTable.Title>
-              <DataTable.Title>Starts</DataTable.Title>
-              <DataTable.Title>Ends</DataTable.Title>
-            </DataTable.Header>
-            <DataTable.Row>
-              <DataTable.Cell></DataTable.Cell>
-              <DataTable.Cell>CFI</DataTable.Cell>
-              <DataTable.Cell>00:00:00</DataTable.Cell>
-              <DataTable.Cell>00:00:00</DataTable.Cell>
-              <DataTable.Cell>00:00:00</DataTable.Cell>
-              <DataTable.Cell>00:00:00</DataTable.Cell>
-            </DataTable.Row>
-          </DataTable> */}
         </ScrollView>
 
         <View style={styles.fixedView}>
