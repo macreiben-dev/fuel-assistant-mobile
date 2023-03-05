@@ -5,7 +5,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+// ----------------------------------------------------------------
+
 import StintComponent from "./components/StintComponent";
+import StratComponent from "./components/StratComponent";
+
+// ----------------------------------------------------------------
 
 import setupStore from "./stores/stintdetails/configureStore";
 import { routeToIcon, screenName } from "./navigation/tabbarIconConfig";
@@ -39,6 +44,10 @@ export default function App() {
           <RootStack.Screen
             name={screenName.StintDetail}
             component={StintComponent}
+          />
+          <RootStack.Screen
+            name={screenName.StratDetail}
+            component={StratComponent}
           />
         </RootStack.Navigator>
       </NavigationContainer>

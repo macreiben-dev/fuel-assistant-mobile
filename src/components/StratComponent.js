@@ -1,3 +1,5 @@
+import React from "react";
+
 class StratComponent extends React.Component {
   render() {
     return (
@@ -7,3 +9,5 @@ class StratComponent extends React.Component {
     );
   }
 }
+
+export default StratComponent;
