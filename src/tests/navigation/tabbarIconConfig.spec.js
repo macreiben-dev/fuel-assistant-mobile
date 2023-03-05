@@ -7,4 +7,9 @@ describe("navigation configuration", () => {
 
     expect(actual).toBe("battery-half");
   });
+  test("Given routeName is StratDetail then icon is brain", () => {
+    let actual = routeToIcon("StratDetail");
+
+    expect(actual).toBe("brain");
+  });
 });
