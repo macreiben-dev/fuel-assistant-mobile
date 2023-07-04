@@ -9,6 +9,9 @@
     "web": "expo start --web",
     "test": "jest"
   },
+  "directories": {
+    "test": "tests"
+  },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
     "@react-navigation/bottom-tabs": "^6.5.7",
