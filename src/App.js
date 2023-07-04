@@ -11,7 +11,7 @@ import StratComponent from "./components/StratComponent";
 
 // ----------------------------------------------------------------
 
-import setupStore from "./stores/stintdetails/configureStore";
+import setupStore from "./stores/consumption/configureStore";
 import { routeToIcon, screenName } from "./navigation/tabbarIconConfig";
 
 // ==============================================

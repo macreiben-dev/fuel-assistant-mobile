@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { DataTable } from "react-native-paper";
 
-import { selectConsumptionForStint } from "../stores/stintdetails/selectors/lapConsumptionSelector";
+import { selectConsumptionForStint } from "../stores/consumption/selectors/lapConsumptionSelector";
 
 import { formatAsPercent } from "./formating/formating";
 

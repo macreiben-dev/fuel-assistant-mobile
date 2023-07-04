@@ -6,11 +6,11 @@ import { connect, useSelector } from "react-redux";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { DataTable } from "react-native-paper";
 
-import { changeLaptimeMinutes } from "../stores/stintdetails/actions/laptimeMinute";
-import { changeLaptimeSeconds } from "../stores/stintdetails/actions/laptimeSecond";
-import { changeConsumption } from "../stores/stintdetails/actions/lapConsumption";
-import { changeFuelTankLiter } from "../stores/stintdetails/actions/laptimeFuelTank";
-import { changeWouldBeStintDuration } from "../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
+import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
+import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
+import { changeConsumption } from "../stores/consumption/actions/lapConsumption";
+import { changeFuelTankLiter } from "../stores/consumption/actions/laptimeFuelTank";
+import { changeWouldBeStintDuration } from "../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
 
 import {
   stintServiceLaptimeMinutes,
