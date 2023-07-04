@@ -1,9 +1,9 @@
 import { describe, expect, test } from "@jest/globals";
 
-import setupStore from "../../../stores/stintdetails/configureStore";
+import setupStore from "../../../stores/configureStore";
 import StoreConfigurationBuilder from "../helpers/storeConfigurationBuilder";
 
-import { selectConsumptionForStint } from "../../../stores/stintdetails/selectors/lapConsumptionSelector";
+import { selectConsumptionForStint } from "../../../stores/consumption/selectors/lapConsumptionSelector";
 
 let store = undefined;
 
@@ -23,10 +23,10 @@ describe("Lap Consumption Selectors", () => {
   describe("Stint duration", () => {
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 50% race stintDuration is 00:05:00",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 50% race stintDuration is 00:05:00",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -51,10 +51,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 60% race stintDuration is 00:06:00",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 60% race stintDuration is 00:06:00",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -79,10 +79,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 70% race stintDuration is 00:07:00",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 70% race stintDuration is 00:07:00",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -107,10 +107,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 80% race stintDuration is 00:08:00",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 80% race stintDuration is 00:08:00",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -135,10 +135,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 90% race stintDuration is 00:09:00",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 90% race stintDuration is 00:09:00",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -163,10 +163,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 95% race stintDuration is 00:09:30",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 95% race stintDuration is 00:09:30",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -194,10 +194,10 @@ describe("Lap Consumption Selectors", () => {
   describe("Previsional Lap", () => {
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 50% race previsionalLapCount is 5.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 50% race previsionalLapCount is 5.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -222,10 +222,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 60% race previsionalLapCount is 6.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 60% race previsionalLapCount is 6.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -250,10 +250,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 70% race previsionalLapCount is 7.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 70% race previsionalLapCount is 7.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -278,10 +278,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 80% race previsionalLapCount is 8.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 80% race previsionalLapCount is 8.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -306,10 +306,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 90% race previsionalLapCount is 9.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 90% race previsionalLapCount is 9.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -334,10 +334,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then 95% race previsionalLapCount is 9.5",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then 95% race previsionalLapCount is 9.5",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -365,10 +365,10 @@ describe("Lap Consumption Selectors", () => {
   describe("Consumption computing", () => {
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] " +
-        "and stint is [10] minutes " +
-        "Then halfway consumption is 5.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] " +
+      "and stint is [10] minutes " +
+      "Then halfway consumption is 5.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -393,9 +393,9 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and stint is [10] minutes " +
-        "Then 60% race consumption is 6.0",
+      "and laptime is [1] minutes " +
+      "and stint is [10] minutes " +
+      "Then 60% race consumption is 6.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -420,9 +420,9 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and stint is [10] minutes " +
-        "Then 70% race consumption is 7.0",
+      "and laptime is [1] minutes " +
+      "and stint is [10] minutes " +
+      "Then 70% race consumption is 7.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -447,9 +447,9 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and stint is [10] minutes " +
-        "Then 80% race consumption is 8.0",
+      "and laptime is [1] minutes " +
+      "and stint is [10] minutes " +
+      "Then 80% race consumption is 8.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -474,9 +474,9 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and stint is [10] minutes " +
-        "Then 90% race consumption is 9.0",
+      "and laptime is [1] minutes " +
+      "and stint is [10] minutes " +
+      "Then 90% race consumption is 9.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -500,10 +500,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [1] " +
-        "and laptime is [1] minutes " +
-        "and fuelTankContent is [10] liter " +
-        "and stint is [10] minutes " +
-        "Then 100% race consumption is 1.0",
+      "and laptime is [1] minutes " +
+      "and fuelTankContent is [10] liter " +
+      "and stint is [10] minutes " +
+      "Then 100% race consumption is 1.0",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -528,11 +528,11 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [0] " +
-        "and laptime is [0] minutes " +
-        "and laptime is [0] minutes " +
-        "and fuelTankContent is [10] liter " +
-        "and stint is [10] minutes " +
-        "Then no data",
+      "and laptime is [0] minutes " +
+      "and laptime is [0] minutes " +
+      "and fuelTankContent is [10] liter " +
+      "and stint is [10] minutes " +
+      "Then no data",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -556,10 +556,10 @@ describe("Lap Consumption Selectors", () => {
   describe("F488 usecase", () => {
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 50% race consumption is [27.04]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 50% race consumption is [27.04]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -585,10 +585,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 60% race consumption is [32.45]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 60% race consumption is [32.45]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -614,10 +614,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 70% race consumption is [37.86]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 70% race consumption is [37.86]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -643,10 +643,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 80% race consumption is [43.27]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 80% race consumption is [43.27]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -672,10 +672,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 90% race consumption is [48.68]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 90% race consumption is [48.68]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -701,10 +701,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 95% race consumption is [48.68]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 95% race consumption is [48.68]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
@@ -730,10 +730,10 @@ describe("Lap Consumption Selectors", () => {
     );
     test(
       "Given consumption is [2.77] " +
-        "and laptime is [2:49] " +
-        "and totalStintTime is [55] minutes " +
-        "and fuelContent is [78] liter " +
-        "Then 100% race consumption is [48.68]",
+      "and laptime is [2:49] " +
+      "and totalStintTime is [55] minutes " +
+      "and fuelContent is [78] liter " +
+      "Then 100% race consumption is [48.68]",
       () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 

@@ -1,7 +1,6 @@
 import { describe, expect } from "@jest/globals";
 
-import { initialState } from "../../stores/stintdetails/reducers/stintDetailsInitialState";
-import setupStore from "../../stores/stintdetails/configureStore";
+import setupStore from "../../stores/configureStore";
 
 let store = undefined;
 

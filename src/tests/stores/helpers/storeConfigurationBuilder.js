@@ -1,8 +1,8 @@
-import { changeConsumption } from "../../../stores/stintdetails/actions/lapConsumption";
-import { changeFuelTankLiter } from "../../../stores/stintdetails/actions/laptimeFuelTank";
-import { changeLaptimeMinutes } from "../../../stores/stintdetails/actions/laptimeMinute";
-import { changeLaptimeSeconds } from "../../../stores/stintdetails/actions/laptimeSecond";
-import { changeWouldBeStintDuration } from "../../../stores/stintdetails/actions/laptimeWouldBeStintDurationMinutes";
+import { changeConsumption } from "../../../stores/consumption/actions/lapConsumption";
+import { changeFuelTankLiter } from "../../../stores/consumption/actions/laptimeFuelTank";
+import { changeLaptimeMinutes } from "../../../stores/consumption/actions/laptimeMinute";
+import { changeLaptimeSeconds } from "../../../stores/consumption/actions/laptimeSecond";
+import { changeWouldBeStintDuration } from "../../../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
 
 let storeCtxt = {
   store: undefined,
