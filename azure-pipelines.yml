@@ -30,10 +30,6 @@ stages:
     - script: npm install -g expo-cli
       displayName: 'Install expo'
 
-    - script: expo build:web
-      displayName: 'Generating web version'
-      workingDirectory: $(srcDirectory)
-
     - script: npm run test
       displayName: 'Run unit tests'
       workingDirectory: $(srcDirectory)
@@ -44,6 +40,10 @@ stages:
         summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
         pathToSource: '$(System.DefaultWorkingDirectory)/src'
         failIfCoverageEmpty: true
+
+    - script: expo build:web
+      displayName: 'Generating web version'
+      workingDirectory: $(srcDirectory)
 
     - task: PublishBuildArtifacts@1
       displayName: 'Publish artifact'
