@@ -7,7 +7,7 @@ import {
   VirtualizedList,
 } from "react-native";
 
-import { Button, DataTable, IconButton, TextInput } from "react-native-paper";
+import { Button, Checkbox, DataTable, IconButton, TextInput } from "react-native-paper";
 
 let items = [
   {
@@ -21,13 +21,41 @@ let items = [
 ];
 
 const ItemComponent = (props) => {
+  const [isTyre, setIsTyreChecked] = React.useState(false);
+  const [isFuel, setIsFuelChecked] = React.useState(false);
+  const [isPilot, setIsPilotChecked] = React.useState(false);
+
   return (
-    <View key={props.oneItem.key} style={{ flex: 1, flexDirection: "row" }}>
-      <View style={{ flexDirection: "column" }}>
-        <View>
-          <Text>Pilot name:</Text>
-          <TextInput placeholder="Pilot name" Text={props.oneItem.pilot} />
-        </View>
+    <View key={props.oneItem.key} style={styles.inputContainer}>
+      <View>
+        <TextInput placeholder="Pilot Name" Text={props.oneItem.pilot} />
+      </View>
+      <View>
+        <TextInput placeholder="Spotter" Text="SpotterName01" />
+      </View>
+      <View>
+        <TextInput placeholder="Stint Duration" Text="0:00:33" />
+      </View>
+      <View>
+        <Checkbox
+          status={isTyre ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setIsTyreChecked(!isTyre);
+          }}></Checkbox>
+      </View>
+      <View>
+        <Checkbox
+          status={isFuel ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setIsFuelChecked(!isFuel);
+          }}></Checkbox>
+      </View>
+      <View>
+        <Checkbox
+          status={isPilot ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setIsPilotChecked(!isPilot);
+          }}></Checkbox>
       </View>
     </View>
   );
@@ -69,6 +97,11 @@ const styles = StyleSheet.create({
     bottom: 5,
     flexDirection: "row",
     justifyContent: "flex-end",
+  },
+  inputContainer: {
+    gap: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
 
