@@ -57,6 +57,15 @@ const ItemComponent = (props) => {
             setIsPilotChecked(!isPilot);
           }}></Checkbox>
       </View>
+      <View>
+        <TextInput placeholder="Spotter" Text="TyreCompound" />
+      </View>
+      <View>
+        <TextInput placeholder="Stint Start" Text="00:00:00" />
+      </View>
+      <View>
+        <TextInput placeholder="Stint End" Text="00:00:00" />
+      </View>
     </View>
   );
 };
