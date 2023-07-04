@@ -38,6 +38,13 @@ stages:
       displayName: 'Run unit tests'
       workingDirectory: $(srcDirectory)
 
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+        pathToSource: '$(System.DefaultWorkingDirectory)/src'
+        failIfCoverageEmpty: true
+
     - task: PublishBuildArtifacts@1
       displayName: 'Publish artifact'
       inputs:
