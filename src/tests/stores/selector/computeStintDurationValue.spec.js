@@ -1,5 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
-import computeStintDurationValue from "../../../stores/stintdetails/selectors/computeStintDurationValue";
+
+import computeStintDurationValue from "../../../stores/consumption/selectors/computeStintDurationValue";
 
 describe("Compute stint duration value", () => {
   describe("compute seconds", () => {
