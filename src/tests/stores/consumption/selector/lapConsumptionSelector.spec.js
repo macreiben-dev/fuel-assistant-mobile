@@ -1,9 +1,9 @@
 import { describe, expect, test } from "@jest/globals";
 
-import setupStore from "../../../stores/configureStore";
-import StoreConfigurationBuilder from "../helpers/storeConfigurationBuilder";
+import setupStore from "../../../../stores/configureStore";
+import StoreConfigurationBuilder from "../../helpers/storeConfigurationBuilder";
 
-import { selectConsumptionForStint } from "../../../stores/consumption/selectors/lapConsumptionSelector";
+import { selectConsumptionForStint } from "../../../../stores/consumption/selectors/lapConsumptionSelector";
 
 let store = undefined;
 

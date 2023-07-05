@@ -1,12 +1,12 @@
 import { describe, test, expect, beforeEach } from "@jest/globals";
 
-import setupStore from "../../stores/configureStore";
+import setupStore from "../../../stores/configureStore";
 
-import { changeConsumption } from "../../stores/consumption/actions/lapConsumption";
-import { changeFuelTankLiter } from "../../stores/consumption/actions/laptimeFuelTank";
-import { changeLaptimeMinutes } from "../../stores/consumption/actions/laptimeMinute";
-import { changeLaptimeSeconds } from "../../stores/consumption/actions/laptimeSecond";
-import { changeWouldBeStintDuration } from "../../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
+import { changeConsumption } from "../../../stores/consumption/actions/lapConsumption";
+import { changeFuelTankLiter } from "../../../stores/consumption/actions/laptimeFuelTank";
+import { changeLaptimeMinutes } from "../../../stores/consumption/actions/laptimeMinute";
+import { changeLaptimeSeconds } from "../../../stores/consumption/actions/laptimeSecond";
+import { changeWouldBeStintDuration } from "../../../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
 
 let store = undefined;
 
