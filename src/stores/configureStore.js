@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import laptimeReducer from './consumption/reducers/laptimeReducer';
+import consumptionReducer from './consumption/reducers/laptimeReducer';
 
 const rootReducer = combineReducers(
-    { stintDetails: laptimeReducer }
+    { consumption: consumptionReducer }
 );
 
 const setupStore = () => {

@@ -22,7 +22,7 @@ const percentOfStint = [
 ];
 
 const computeConsumption = (state) => {
-  let localState = state.stintDetails;
+  let localState = state.consumption;
 
   let lap = new Lap(localState.laptimeMinutes, localState.laptimeSeconds);
 

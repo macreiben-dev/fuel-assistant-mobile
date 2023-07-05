@@ -20,7 +20,7 @@ describe("Store - stint details", () => {
 
     store.dispatch(action);
 
-    let actual = store.getState().stintDetails.consumptionLiterPerLap;
+    let actual = store.getState().consumption.consumptionLiterPerLap;
 
     console.log(store.getState());
 
@@ -32,7 +32,7 @@ describe("Store - stint details", () => {
 
     store.dispatch(action);
 
-    let actual = store.getState().stintDetails.fuelTankLiter;
+    let actual = store.getState().consumption.fuelTankLiter;
 
     console.log(store.getState());
 
@@ -44,7 +44,7 @@ describe("Store - stint details", () => {
 
     store.dispatch(action);
 
-    let actual = store.getState().stintDetails.laptimeMinutes;
+    let actual = store.getState().consumption.laptimeMinutes;
 
     console.log(store.getState());
 
@@ -56,7 +56,7 @@ describe("Store - stint details", () => {
 
     store.dispatch(action);
 
-    let actual = store.getState().stintDetails.laptimeSeconds;
+    let actual = store.getState().consumption.laptimeSeconds;
 
     console.log(store.getState());
 
@@ -68,7 +68,7 @@ describe("Store - stint details", () => {
 
     store.dispatch(action);
 
-    let actual = store.getState().stintDetails.wouldBeStintDurationMinutes;
+    let actual = store.getState().consumption.wouldBeStintDurationMinutes;
 
     console.log(store.getState());
 
