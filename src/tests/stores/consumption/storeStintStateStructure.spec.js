@@ -1,6 +1,6 @@
 import { describe, expect } from "@jest/globals";
 
-import setupStore from "../../../stores/configureStore/";
+import setupStore from "../../../stores/configureStore";
 
 let store = undefined;
 
@@ -8,7 +8,7 @@ beforeEach(() => {
   store = setupStore();
 });
 
-describe("Consumption - Initial state structure", () => {
+describe("Consumption - Initial state structure - ", () => {
   test("Then store should contain laptimeMinutes", () => {
     let actualState = store.getState();
 

@@ -19,8 +19,8 @@ beforeEach(() => {
   store = setupStore();
 });
 
-describe("Consumption - Lap Consumption Selectors", () => {
-  describe("Stint duration", () => {
+describe("Consumption - Lap Consumption Selectors - ", () => {
+  describe("Stint duration - ", () => {
     test(
       "Given consumption is [1] " +
       "and laptime is [1] minutes " +
@@ -191,7 +191,7 @@ describe("Consumption - Lap Consumption Selectors", () => {
     );
   });
 
-  describe("Previsional Lap", () => {
+  describe("Previsional Lap - ", () => {
     test(
       "Given consumption is [1] " +
       "and laptime is [1] minutes " +
@@ -362,7 +362,7 @@ describe("Consumption - Lap Consumption Selectors", () => {
     );
   });
 
-  describe("Consumption computing", () => {
+  describe("Consumption computing - ", () => {
     test(
       "Given consumption is [1] " +
       "and laptime is [1] minutes " +
