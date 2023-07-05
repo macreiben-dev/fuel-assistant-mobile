@@ -1,6 +1,6 @@
 import { describe, expect } from "@jest/globals";
 
-import setupStore from "../../stores/configureStore";
+import setupStore from "../../../stores/configureStore";
 
 let store = undefined;
 
