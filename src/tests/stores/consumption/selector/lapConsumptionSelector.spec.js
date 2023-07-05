@@ -19,7 +19,7 @@ beforeEach(() => {
   store = setupStore();
 });
 
-describe("Lap Consumption Selectors", () => {
+describe("Consumption - Lap Consumption Selectors", () => {
   describe("Stint duration", () => {
     test(
       "Given consumption is [1] " +

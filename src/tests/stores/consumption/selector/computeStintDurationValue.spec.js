@@ -2,7 +2,7 @@ import { describe, expect, test } from "@jest/globals";
 
 import computeStintDurationValue from "../../../../stores/consumption/selectors/computeStintDurationValue";
 
-describe("Compute stint duration value", () => {
+describe("Consumption - Compute stint duration value", () => {
   describe("compute seconds", () => {
     test("Given decimal second value Then should not return decimal part in duration", () => {
       const stintPercent = 1;

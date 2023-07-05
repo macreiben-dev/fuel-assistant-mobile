@@ -14,7 +14,7 @@ beforeEach(() => {
   store = setupStore();
 });
 
-describe("Store - stint details", () => {
+describe("Consumption - Store - stint details", () => {
   test("Given action changeConsumption is used Then set store consumptionLiterPerLap", () => {
     let action = changeConsumption(6);
 
