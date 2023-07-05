@@ -102,7 +102,7 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.stintDetails.laptimeMinutes}
+              defaultValue={this.props.consumption.laptimeMinutes}
               onChangeText={(text) =>
                 this.onLapTimeMinuteChange(text, this.props)
               }
@@ -119,7 +119,7 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.stintDetails.laptimeSeconds}
+              defaultValue={this.props.consumption.laptimeSeconds}
               onChangeText={(text) =>
                 this.onLaptimeSecondsChange(text, this.props)
               }
@@ -142,7 +142,7 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={4}
-              defaultValue={this.props.stintDetails.consumptionLiterPerLap}
+              defaultValue={this.props.consumption.consumptionLiterPerLap}
               onChangeText={(text) =>
                 this.onConsumptionLiterPerLap(text, this.props)
               }
@@ -160,7 +160,7 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.stintDetails.fuelTankLiter}
+              defaultValue={this.props.consumption.fuelTankLiter}
               onChangeText={(text) =>
                 this.onchangefuelTankLiter(text, this.props)
               }
@@ -179,7 +179,7 @@ class StintComponent extends React.Component {
             <TextInput
               keyboardType="numeric"
               maxLength={4}
-              defaultValue={this.props.stintDetails.wouldBeStintDurationMinutes}
+              defaultValue={this.props.consumption.wouldBeStintDurationMinutes}
               onChangeText={(text) => {
                 this.onChangeWouldBeStintDuraction(text, this.props);
               }}
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    stintDetails: state.stintDetails,
+    consumption: state.consumption,
   };
 };
 
