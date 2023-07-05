@@ -31,9 +31,5 @@ describe("Compute stint duration value", () => {
 
       expect(actual).toBe("01:15:00");
     });
-
-    test('some failing test', () => {
-      expect(1).toBe(3);
-    })
   });
 });
