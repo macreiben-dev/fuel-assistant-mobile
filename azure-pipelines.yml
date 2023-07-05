@@ -34,6 +34,16 @@ stages:
       displayName: 'Run unit tests'
       workingDirectory: $(srcDirectory)
 
+    - task: PublishTestResults@2
+      displayName: 'Publish Unit Test Results'
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'test-results/junit.xml'
+        mergeTestResults: true
+        failTaskOnFailedTests: true
+        testRunTitle: 'App Test'
+
     - task: PublishCodeCoverageResults@1
       inputs:
         codeCoverageTool: 'Cobertura'
