@@ -100,6 +100,7 @@ class StintComponent extends React.Component {
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              testID="consumptionlaptimeMinutes"
               keyboardType="numeric"
               maxLength={2}
               defaultValue={this.props.consumption.laptimeMinutes}
@@ -117,6 +118,7 @@ class StintComponent extends React.Component {
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              testID="consumptionLaptimeSeconds"
               keyboardType="numeric"
               maxLength={2}
               defaultValue={this.props.consumption.laptimeSeconds}
@@ -140,6 +142,7 @@ class StintComponent extends React.Component {
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              testID="consumptionLiterPerLap"
               keyboardType="numeric"
               maxLength={4}
               defaultValue={this.props.consumption.consumptionLiterPerLap}
@@ -158,6 +161,7 @@ class StintComponent extends React.Component {
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              testID="consumptionFuelTankLiter"
               keyboardType="numeric"
               maxLength={2}
               defaultValue={this.props.consumption.fuelTankLiter}
@@ -177,6 +181,7 @@ class StintComponent extends React.Component {
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              testID="consumptionWouldBeStintDurationMinutes"
               keyboardType="numeric"
               maxLength={4}
               defaultValue={this.props.consumption.wouldBeStintDurationMinutes}
@@ -201,7 +206,6 @@ class StintComponent extends React.Component {
               <DataTable.Title numeric>Consumption</DataTable.Title>
             </DataTable.Header>
             <DisplayStintDataComponent />
-            {/* {displayStintData()} */}
           </DataTable>
         </View>
       </View>

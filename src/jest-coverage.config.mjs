@@ -76,18 +76,17 @@ export default {
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
-    "js",
-    "mjs",
-    "cjs",
-    "jsx",
-    "ts",
+    "web.tsx",
     "tsx",
-    "json",
-    "node"
-  ],
+    "web.ts",
+    "ts",
+    "web.jsx",
+    "jsx",
+    "web.js",
+    "js"],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  moduleNameMapper: { '^react-native$': 'react-native-web' },
+  moduleNameMapper: { 'react-native': 'react-native-web' },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
