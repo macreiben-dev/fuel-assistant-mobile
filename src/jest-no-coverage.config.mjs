@@ -75,20 +75,20 @@ export default {
   // ],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: [
-    "web.tsx",
-    "tsx",
-    "web.ts",
-    "ts",
-    "web.jsx",
-    "jsx",
-    "web.js",
-    "js"],
+  // moduleFileExtensions: [
+  //   "web.tsx",
+  //   "tsx",
+  //   "web.ts",
+  //   "ts",
+  //   "web.jsx",
+  //   "jsx",
+  //   "web.js",
+  //   "js"],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  moduleNameMapper: {
-    '^react-native$': 'react-native-web',
-  },
+  // moduleNameMapper: {
+  //   '^react-native$': 'react-native-web',
+  // },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -143,9 +143,9 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: [
-    "@testing-library/jest-native/extend-expect"
-  ],
+  // setupFilesAfterEnv: [
+  //   "@testing-library/jest-native/extend-expect"
+  // ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -155,6 +155,8 @@ export default {
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
+  // // testEnvironment: "node",
+  // testEnvironment: "jest-environment-jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -169,9 +171,9 @@ export default {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: [
-    "\\\\node_modules\\\\"
-  ],
+  // testPathIgnorePatterns: [
+  //   "\\\\node_modules\\\\"
+  // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -187,9 +189,8 @@ export default {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: [
-    "/node_modules/(?!(react-native|@react-native|@react-navigation)/)",
-    "/node_modules/@testing-library/react-native"
-  ],
+    "/node_modules/(?!(react-native|@react-native|@react-navigation|expo-status-bar)/)"
+  ]
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
