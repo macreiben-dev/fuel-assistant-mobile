@@ -159,7 +159,7 @@ class StintComponent extends React.Component {
           <View>
             <TextInput
               keyboardType="numeric"
-              maxLength={2}
+              maxLength={3}
               defaultValue={this.props.stintDetails.fuelTankLiter}
               onChangeText={(text) =>
                 this.onchangefuelTankLiter(text, this.props)
