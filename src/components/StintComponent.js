@@ -75,6 +75,8 @@ class StintComponent extends React.Component {
         floatConverter,
         floatValidator
       );
+
+      console.log("Properties: ", this.props)
     };
   }
 
@@ -103,7 +105,8 @@ class StintComponent extends React.Component {
               testID="consumptionlaptimeMinutes"
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.consumption.laptimeMinutes}
+              value={this.props.consumption.laptimeMinutes + ""}
+              defaultValue="0"
               onChangeText={(text) =>
                 this.onLapTimeMinuteChange(text, this.props)
               }
@@ -121,7 +124,8 @@ class StintComponent extends React.Component {
               testID="consumptionLaptimeSeconds"
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.consumption.laptimeSeconds}
+              defaultValue="0"
+              value={this.props.consumption.laptimeSeconds}
               onChangeText={(text) =>
                 this.onLaptimeSecondsChange(text, this.props)
               }
@@ -145,7 +149,8 @@ class StintComponent extends React.Component {
               testID="consumptionLiterPerLap"
               keyboardType="numeric"
               maxLength={4}
-              defaultValue={this.props.consumption.consumptionLiterPerLap}
+              defaultValue="0"
+              value={this.props.consumption.consumptionLiterPerLap}
               onChangeText={(text) =>
                 this.onConsumptionLiterPerLap(text, this.props)
               }
@@ -164,7 +169,8 @@ class StintComponent extends React.Component {
               testID="consumptionFuelTankLiter"
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.consumption.fuelTankLiter}
+              defaultValue="0"
+              value={this.props.consumption.fuelTankLiter}
               onChangeText={(text) =>
                 this.onchangefuelTankLiter(text, this.props)
               }
@@ -184,7 +190,8 @@ class StintComponent extends React.Component {
               testID="consumptionWouldBeStintDurationMinutes"
               keyboardType="numeric"
               maxLength={4}
-              defaultValue={this.props.consumption.wouldBeStintDurationMinutes}
+              defaultValue="0"
+              value={this.props.consumption.wouldBeStintDurationMinutes}
               onChangeText={(text) => {
                 this.onChangeWouldBeStintDuraction(text, this.props);
               }}
