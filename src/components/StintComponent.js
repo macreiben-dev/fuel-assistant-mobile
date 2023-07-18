@@ -1,10 +1,12 @@
 import React from "react";
 
+import { TextInput } from 'react-native-paper';
+import { StyleSheet, Text, View } from "react-native";
+import { DataTable } from "react-native-paper";
+
 import { bindActionCreators } from "redux";
 import { connect, useSelector } from "react-redux";
 
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import { DataTable } from "react-native-paper";
 
 import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
@@ -94,19 +96,17 @@ class StintComponent extends React.Component {
         {/* ======================================================== */}
         <View style={styles.rowView}>
           {/* ================== LAPTIMES TYPING ================= */}
-          <View>
-            <Text style={styles.textLabel}>Laptime&nbsp;:</Text>
-          </View>
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              label="Minutes"
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.stintDetails.laptimeMinutes}
+              defaultValue=""
+              value={this.props.stintDetails.laptimeMinutes}
               onChangeText={(text) =>
                 this.onLapTimeMinuteChange(text, this.props)
               }
-              style={styles.textInputLaptimesMinute}
               placeholder="mm"
             ></TextInput>
           </View>
@@ -117,13 +117,14 @@ class StintComponent extends React.Component {
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              label="Seconds"
               keyboardType="numeric"
               maxLength={2}
-              defaultValue={this.props.stintDetails.laptimeSeconds}
+              defaultValue=""
+              value={this.props.stintDetails.laptimeSeconds}
               onChangeText={(text) =>
                 this.onLaptimeSecondsChange(text, this.props)
               }
-              style={styles.textInputLaptimesMinute}
               placeholder="ss"
             ></TextInput>
           </View>
@@ -134,56 +135,50 @@ class StintComponent extends React.Component {
         {/* ======================================================== */}
         <View style={styles.rowView}>
           {/* ==================== CONSUMPTION =================== */}
-          <View>
-            <Text style={styles.textLabel}>Consumption Liter/Lap&nbsp;:</Text>
-          </View>
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              label="Consumption Liter/Lap"
               keyboardType="numeric"
               maxLength={4}
-              defaultValue={this.props.stintDetails.consumptionLiterPerLap}
+              defaultValue=""
+              value={this.props.stintDetails.consumptionLiterPerLap}
               onChangeText={(text) =>
                 this.onConsumptionLiterPerLap(text, this.props)
               }
-              style={styles.textInputLaptimesMinute}
               placeholder="0.00"
             ></TextInput>
           </View>
           {/* ---------------------------------------------------- */}
           {/* ==================== FUEL TANK ===================== */}
-          <View>
-            <Text style={styles.textLabel}>Fuel tank (Liter)&nbsp;:</Text>
-          </View>
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              label="Fuel tank (Liter)"
               keyboardType="numeric"
               maxLength={3}
-              defaultValue={this.props.stintDetails.fuelTankLiter}
+              defaultValue=""
+              value={this.props.stintDetails.fuelTankLiter}
               onChangeText={(text) =>
                 this.onchangefuelTankLiter(text, this.props)
               }
-              style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
           </View>
           {/* ---------------------------------------------------- */}
         </View>
         <View style={styles.rowView}>
-          <View>
-            <Text style={styles.textLabel}>Total time (min)&nbsp;:</Text>
-          </View>
           {/* ---------------------------------------------------- */}
           <View>
             <TextInput
+              label="Total time (min)"
               keyboardType="numeric"
               maxLength={4}
-              defaultValue={this.props.stintDetails.wouldBeStintDurationMinutes}
+              defaultValue=""
+              value={this.props.stintDetails.wouldBeStintDurationMinutes}
               onChangeText={(text) => {
                 this.onChangeWouldBeStintDuraction(text, this.props);
               }}
-              style={styles.textInputLaptimesMinute}
               placeholder="0"
             ></TextInput>
           </View>
