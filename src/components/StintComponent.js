@@ -97,24 +97,25 @@ const styles = StyleSheet.create({
 // =============================================================
 
 const CurrentComponent = ({ stintDetails }) => {
+  const [laptimeMinutes, setlaptimeMinutes] = React.useState('');
+  const [isErrorLapTimeMinute, setIsErrorLapTimeMinute] = React.useState(false);
+
   const selectorStintDetails = useSelector(state => state.stintDetails)
 
   const dispatch = useDispatch();
 
   let onLapTimeMinuteChange = (text) => {
-    setlapTimeLiterPerLap(text);
+    setlaptimeMinutes(text);
     let validation = floatConverter(text);
     if (validation == undefined) {
-      // setIsValidLapTimeMinute(true)
+      console.warn("laptime minute invalid", text)
+      setIsErrorLapTimeMinute(true);
       return;
     }
+    setIsErrorLapTimeMinute(false);
     let action = changeLaptimeMinutes(text);
     dispatch(action)
   }
-
-  const [laptimeLiterPerLap, setlapTimeLiterPerLap] = React.useState('');
-  const [isErrorLapTimeMinute, setIsErrorLapTimeMinute] = React.useState(true);
-
 
   return (
     <View
@@ -138,7 +139,8 @@ const CurrentComponent = ({ stintDetails }) => {
             keyboardType="numeric"
             maxLength={2}
             defaultValue=""
-
+            error={isErrorLapTimeMinute}
+            value={laptimeMinutes}
             onChangeText={text => onLapTimeMinuteChange(text)}
             placeholder="mm"
           ></TextInput>
