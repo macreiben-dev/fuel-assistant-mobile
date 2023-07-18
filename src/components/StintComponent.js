@@ -102,11 +102,19 @@ const CurrentComponent = ({ stintDetails }) => {
   const dispatch = useDispatch();
 
   let onLapTimeMinuteChange = (text) => {
+    setlapTimeLiterPerLap(text);
+    let validation = floatConverter(text);
+    if (validation == undefined) {
+      // setIsValidLapTimeMinute(true)
+      return;
+    }
     let action = changeLaptimeMinutes(text);
     dispatch(action)
   }
 
   const [laptimeLiterPerLap, setlapTimeLiterPerLap] = React.useState('');
+  const [isErrorLapTimeMinute, setIsErrorLapTimeMinute] = React.useState(true);
+
 
   return (
     <View
@@ -130,6 +138,7 @@ const CurrentComponent = ({ stintDetails }) => {
             keyboardType="numeric"
             maxLength={2}
             defaultValue=""
+
             onChangeText={text => onLapTimeMinuteChange(text)}
             placeholder="mm"
           ></TextInput>
