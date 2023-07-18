@@ -1,12 +1,10 @@
 import React from "react";
 
-import { TextInput } from 'react-native-paper';
 import { StyleSheet, Text, View } from "react-native";
+import { TextInput } from 'react-native-paper';
 import { DataTable } from "react-native-paper";
 
-import { bindActionCreators } from "redux";
-import { connect, useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
 
 import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
@@ -31,182 +29,42 @@ import { floatConverter } from "../business/converter";
 
 import { DisplayStintDataComponent } from "./SintDataComponent";
 
-class StintComponent extends React.Component {
-  constructor() {
-    super();
-    this.onLapTimeMinuteChange = (text, componentProps) => {
-      console.log("onLapTimeMinuteChange invoked");
-      stintServiceLaptimeMinutes(
-        text,
-        componentProps,
-        floatConverter,
-        floatValidator
-      );
-    };
+let onLaptimeSecondsChange = (text, componentProps) => {
+  console.log("onLaptimeSecondsChange invoked");
+  stintServiceLaptimeSeconds(
+    text,
+    componentProps,
+    floatConverter,
+    floatValidator
+  );
+};
 
-    this.onLaptimeSecondsChange = (text, componentProps) => {
-      console.log("onLaptimeSecondsChange invoked");
-      stintServiceLaptimeSeconds(
-        text,
-        componentProps,
-        floatConverter,
-        floatValidator
-      );
-    };
+let onConsumptionLiterPerLap = (text, componentProps) => {
+  console.log("onConsumptionLiterPerLap invoked");
+  stintSetLiterPerLap(text, componentProps, floatConverter, floatValidator);
+};
 
-    this.onConsumptionLiterPerLap = (text, componentProps) => {
-      console.log("onConsumptionLiterPerLap invoked");
-      stintSetLiterPerLap(text, componentProps, floatConverter, floatValidator);
-    };
+let onchangefuelTankLiter = (text, componentProps) => {
+  console.log("onchangefuelTankLiter invoked");
+  stintSetFuelTankLiter(
+    text,
+    componentProps,
+    floatConverter,
+    floatValidator
+  );
+};
 
-    this.onchangefuelTankLiter = (text, componentProps) => {
-      console.log("onchangefuelTankLiter invoked");
-      stintSetFuelTankLiter(
-        text,
-        componentProps,
-        floatConverter,
-        floatValidator
-      );
-    };
+let onChangeWouldBeStintDuraction = (text, componentProps) => {
+  console.log("onChangeWouldBeStintDuraction invoked");
+  stintSetStintDuration(
+    text,
+    componentProps,
+    floatConverter,
+    floatValidator
+  );
+};
 
-    this.onChangeWouldBeStintDuraction = (text, componentProps) => {
-      console.log("onChangeWouldBeStintDuraction invoked");
-      stintSetStintDuration(
-        text,
-        componentProps,
-        floatConverter,
-        floatValidator
-      );
-    };
-  }
 
-  render() {
-    return (
-      <View
-        style={[
-          {
-            flexDirection: "column",
-            rowGap: 5,
-            columnGap: 5,
-          },
-        ]}
-      >
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        <View style={styles.rowView}>
-          {/* ================== LAPTIMES TYPING ================= */}
-          {/* ---------------------------------------------------- */}
-          <View>
-            <TextInput
-              label="Minutes"
-              keyboardType="numeric"
-              maxLength={2}
-              defaultValue=""
-              value={this.props.stintDetails.laptimeMinutes}
-              onChangeText={(text) =>
-                this.onLapTimeMinuteChange(text, this.props)
-              }
-              placeholder="mm"
-            ></TextInput>
-          </View>
-          {/* ---------------------------------------------------- */}
-          <View>
-            <Text>:</Text>
-          </View>
-          {/* ---------------------------------------------------- */}
-          <View>
-            <TextInput
-              label="Seconds"
-              keyboardType="numeric"
-              maxLength={2}
-              defaultValue=""
-              value={this.props.stintDetails.laptimeSeconds}
-              onChangeText={(text) =>
-                this.onLaptimeSecondsChange(text, this.props)
-              }
-              placeholder="ss"
-            ></TextInput>
-          </View>
-          {/* ---------------------------------------------------- */}
-        </View>
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        <View style={styles.rowView}>
-          {/* ==================== CONSUMPTION =================== */}
-          {/* ---------------------------------------------------- */}
-          <View>
-            <TextInput
-              label="Consumption Liter/Lap"
-              keyboardType="numeric"
-              maxLength={4}
-              defaultValue=""
-              value={this.props.stintDetails.consumptionLiterPerLap}
-              onChangeText={(text) =>
-                this.onConsumptionLiterPerLap(text, this.props)
-              }
-              placeholder="0.00"
-            ></TextInput>
-          </View>
-          {/* ---------------------------------------------------- */}
-          {/* ==================== FUEL TANK ===================== */}
-          {/* ---------------------------------------------------- */}
-          <View>
-            <TextInput
-              label="Fuel tank (Liter)"
-              keyboardType="numeric"
-              maxLength={3}
-              defaultValue=""
-              value={this.props.stintDetails.fuelTankLiter}
-              onChangeText={(text) =>
-                this.onchangefuelTankLiter(text, this.props)
-              }
-              placeholder="0"
-            ></TextInput>
-          </View>
-          {/* ---------------------------------------------------- */}
-        </View>
-        <View style={styles.rowView}>
-          {/* ---------------------------------------------------- */}
-          <View>
-            <TextInput
-              label="Total time (min)"
-              keyboardType="numeric"
-              maxLength={4}
-              defaultValue=""
-              value={this.props.stintDetails.wouldBeStintDurationMinutes}
-              onChangeText={(text) => {
-                this.onChangeWouldBeStintDuraction(text, this.props);
-              }}
-              placeholder="0"
-            ></TextInput>
-          </View>
-          {/* ---------------------------------------------------- */}
-        </View>
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        <View style={styles.rowView}>
-          <DataTable>
-            <DataTable.Header>
-              <DataTable.Title>&nbsp;</DataTable.Title>
-              <DataTable.Title numeric>Stint (min)</DataTable.Title>
-              <DataTable.Title numeric>Lap Prev</DataTable.Title>
-              <DataTable.Title numeric>Consumption</DataTable.Title>
-            </DataTable.Header>
-            <DisplayStintDataComponent />
-            {/* {displayStintData()} */}
-          </DataTable>
-        </View>
-      </View>
-    );
-  }
-
-  readLaptimeMinutes() {
-    return this.selectorLaptimeMinute();
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -230,28 +88,129 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return {
-    stintDetails: state.stintDetails,
-  };
-};
+// ---------------------- REDUX ----------------------
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const boundActions = bindActionCreators(
-    {
-      changeLaptimeMinutes,
-      changeLaptimeSeconds,
-      changeConsumption,
-      changeFuelTankLiter,
-      changeWouldBeStintDuration,
-    },
-    dispatch
-  );
 
-  return {
-    ...boundActions,
-    dispatch,
-  };
-};
+// ---------------------- REDUX ---------------------- ___EOF___
 
-export default connect(mapStateToProps, mapDispatchToProps)(StintComponent);
+
+// =============================================================
+
+const CurrentComponent = ({ stintDetails }) => {
+  const selectorStintDetails = useSelector(state => state.stintDetails)
+
+  const dispatch = useDispatch();
+
+  let onLapTimeMinuteChange = (text) => {
+    let action = changeLaptimeMinutes(text);
+    dispatch(action)
+  }
+
+  const [laptimeLiterPerLap, setlapTimeLiterPerLap] = React.useState('');
+
+  return (
+    <View
+      style={[
+        {
+          flexDirection: "column",
+          rowGap: 5,
+          columnGap: 5,
+        },
+      ]}
+    >
+      {/* ======================================================== */}
+      {/* ======================================================== */}
+      {/* ======================================================== */}
+      <View style={styles.rowView}>
+        {/* ================== LAPTIMES TYPING ================= */}
+        {/* ---------------------------------------------------- */}
+        <View>
+          <TextInput
+            label="Minutes"
+            keyboardType="numeric"
+            maxLength={2}
+            defaultValue=""
+            onChangeText={text => onLapTimeMinuteChange(text)}
+            placeholder="mm"
+          ></TextInput>
+        </View>
+        {/* ---------------------------------------------------- */}
+        <View>
+          <Text>:</Text>
+        </View>
+        {/* ---------------------------------------------------- */}
+        <View>
+          <TextInput
+            label="Seconds"
+            keyboardType="numeric"
+            maxLength={2}
+            defaultValue=""
+            value={selectorStintDetails.laptimeSeconds}
+            placeholder="ss"
+          ></TextInput>
+        </View>
+        {/* ---------------------------------------------------- */}
+      </View>
+      {/* ======================================================== */}
+      {/* ======================================================== */}
+      {/* ======================================================== */}
+      <View style={styles.rowView}>
+        {/* ==================== CONSUMPTION =================== */}
+        {/* ---------------------------------------------------- */}
+        <View>
+          <TextInput
+            label="Consumption Liter/Lap"
+            keyboardType="numeric"
+            maxLength={4}
+            defaultValue=""
+            value={selectorStintDetails.consumptionLiterPerLap}
+            placeholder="0.00"
+          ></TextInput>
+        </View>
+        {/* ---------------------------------------------------- */}
+        {/* ==================== FUEL TANK ===================== */}
+        {/* ---------------------------------------------------- */}
+        <View>
+          <TextInput
+            label="Fuel tank (Liter)"
+            keyboardType="numeric"
+            maxLength={3}
+            defaultValue=""
+            value={selectorStintDetails.fuelTankLiter}
+            placeholder="0"
+          ></TextInput>
+        </View>
+        {/* ---------------------------------------------------- */}
+      </View>
+      <View style={styles.rowView}>
+        {/* ---------------------------------------------------- */}
+        <View>
+          <TextInput
+            label="Total time (min)"
+            keyboardType="numeric"
+            maxLength={4}
+            defaultValue=""
+            value={selectorStintDetails.wouldBeStintDurationMinutes}
+            placeholder="0"
+          ></TextInput>
+        </View>
+        {/* ---------------------------------------------------- */}
+      </View>
+      {/* ======================================================== */}
+      {/* ======================================================== */}
+      {/* ======================================================== */}
+      <View style={styles.rowView}>
+        <DataTable>
+          <DataTable.Header>
+            <DataTable.Title>&nbsp;</DataTable.Title>
+            <DataTable.Title numeric>Stint (min)</DataTable.Title>
+            <DataTable.Title numeric>Lap Prev</DataTable.Title>
+            <DataTable.Title numeric>Consumption</DataTable.Title>
+          </DataTable.Header>
+          <DisplayStintDataComponent />
+        </DataTable>
+      </View>
+    </View >);
+}
+
+export default (CurrentComponent)
