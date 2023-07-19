@@ -8,63 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
-import { changeConsumption } from "../stores/consumption/actions/lapConsumption";
-import { changeFuelTankLiter } from "../stores/consumption/actions/laptimeFuelTank";
-import { changeWouldBeStintDuration } from "../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
 
-import {
-  stintServiceLaptimeMinutes,
-  stintServiceLaptimeSeconds,
-} from "../business/stint/stintLaptimeService";
-
-import {
-  stintSetLiterPerLap,
-  stintSetFuelTankLiter,
-} from "../business/stint/stintConsumptionService";
-
-import { stintSetStintDuration } from "../business/stint/stintDurationService";
-
-import { floatValidator } from "../business/validators";
 import { floatConverter } from "../business/converter";
 
 import { DisplayStintDataComponent } from "./SintDataComponent";
-
-let onLaptimeSecondsChange = (text, componentProps) => {
-  console.log("onLaptimeSecondsChange invoked");
-  stintServiceLaptimeSeconds(
-    text,
-    componentProps,
-    floatConverter,
-    floatValidator
-  );
-};
-
-let onConsumptionLiterPerLap = (text, componentProps) => {
-  console.log("onConsumptionLiterPerLap invoked");
-  stintSetLiterPerLap(text, componentProps, floatConverter, floatValidator);
-};
-
-let onchangefuelTankLiter = (text, componentProps) => {
-  console.log("onchangefuelTankLiter invoked");
-  stintSetFuelTankLiter(
-    text,
-    componentProps,
-    floatConverter,
-    floatValidator
-  );
-};
-
-let onChangeWouldBeStintDuraction = (text, componentProps) => {
-  console.log("onChangeWouldBeStintDuraction invoked");
-  stintSetStintDuration(
-    text,
-    componentProps,
-    floatConverter,
-    floatValidator
-  );
-};
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -88,33 +35,51 @@ const styles = StyleSheet.create({
   },
 });
 
-// ---------------------- REDUX ----------------------
-
-
-// ---------------------- REDUX ---------------------- ___EOF___
-
+const onDataChange = (text, setStateValue, setError, converter, setStoreValue, dispatch) => {
+  setStateValue(text);
+  let floatValue = converter(text);
+  if (floatValue == undefined) {
+    console.warn("laptime minute invalid", text)
+    setError(true);
+    return;
+  }
+  setError(false);
+  let action = setStoreValue(floatValue);
+  dispatch(action)
+}
 
 // =============================================================
 
-const CurrentComponent = ({ stintDetails }) => {
+const CurrentComponent = () => {
   const [laptimeMinutes, setlaptimeMinutes] = React.useState('');
-  const [isErrorLapTimeMinute, setIsErrorLapTimeMinute] = React.useState(false);
+  const [isErrorLaptimeMinutes, setIsErrorLapTimeMinute] = React.useState(false);
+
+  const [laptimeSeconds, setLaptimeSeconds] = React.useState('');
+  const [isErrorLaptimeSeconds, setIsErrorLaptimeSeconds] = React.useState(false);
+
+  // ---- STORE INTERACTIONS ----
 
   const selectorStintDetails = useSelector(state => state.stintDetails)
 
   const dispatch = useDispatch();
 
-  let onLapTimeMinuteChange = (text) => {
-    setlaptimeMinutes(text);
-    let validation = floatConverter(text);
-    if (validation == undefined) {
-      console.warn("laptime minute invalid", text)
-      setIsErrorLapTimeMinute(true);
-      return;
-    }
-    setIsErrorLapTimeMinute(false);
-    let action = changeLaptimeMinutes(text);
-    dispatch(action)
+  let onLaptimeMinutesChange = (text) => {
+
+    onDataChange(text,
+      setlaptimeMinutes,
+      setIsErrorLapTimeMinute,
+      floatConverter,
+      changeLaptimeMinutes,
+      dispatch);
+  }
+
+  let onLaptimeSecondsChange = (text) => {
+    onDataChange(text,
+      setLaptimeSeconds,
+      setIsErrorLaptimeSeconds,
+      floatConverter,
+      changeLaptimeSeconds,
+      dispatch);
   }
 
   return (
@@ -139,9 +104,9 @@ const CurrentComponent = ({ stintDetails }) => {
             keyboardType="numeric"
             maxLength={2}
             defaultValue=""
-            error={isErrorLapTimeMinute}
+            error={isErrorLaptimeMinutes}
             value={laptimeMinutes}
-            onChangeText={text => onLapTimeMinuteChange(text)}
+            onChangeText={text => onLaptimeMinutesChange(text)}
             placeholder="mm"
           ></TextInput>
         </View>
@@ -156,7 +121,9 @@ const CurrentComponent = ({ stintDetails }) => {
             keyboardType="numeric"
             maxLength={2}
             defaultValue=""
-            value={selectorStintDetails.laptimeSeconds}
+            error={isErrorLaptimeSeconds}
+            value={laptimeSeconds}
+            onChangeText={text => onLaptimeSecondsChange(text)}
             placeholder="ss"
           ></TextInput>
         </View>
