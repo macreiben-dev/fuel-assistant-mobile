@@ -57,10 +57,7 @@ const computeConsumption = (state) => {
       stintPercent
     );
 
-    let pitwarning = 0;
-    if (previsionalLapCount > 5) {
-      pitwarning = 1;
-    }
+    let pitwarning = computePitWarning(previsionalLapCount);
 
     output.push({
       stintPercent: stintPercent,
@@ -108,3 +105,21 @@ const computePrevisionalLapCountValue = (
 };
 
 export const selectConsumptionForStint = computeConsumption;
+function computePitWarning(previsionalLapCount) {
+  let pitwarning = 0;
+
+  if (previsionalLapCount == 12) {
+    return 0;
+  }
+
+  if (previsionalLapCount == 14) {
+    return 0;
+  }
+
+  if (previsionalLapCount > 5) {
+    pitwarning = 1;
+  }
+
+  return pitwarning;
+}
+

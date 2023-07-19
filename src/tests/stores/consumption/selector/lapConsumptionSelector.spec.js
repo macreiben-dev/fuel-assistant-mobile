@@ -953,6 +953,55 @@ describe("Lap Consumption Selectors", () => {
       "AND stint duration is 10 minutes " +
       "WHEN I compute consumption details ", () => {
         test(
+          "THEN lap prev 12 is NOT highlighted ", () => {
+            let storeConfigBuilder = new StoreConfigurationBuilder();
+
+            storeConfigBuilder
+              .withLaptimeMinutes(0)
+              .withLapTimeSeconds(30)
+              .withConsumption(2)
+              .withFuelTankLiter(20)
+              .withWouldBeStintDuration(10)
+              .withStore(store)
+              .build();
+
+            let state = store.getState();
+
+            let intermediary = selectConsumptionForStint(state);
+
+            let actual = intermediary.find(
+              // TODO Add the assertion here.
+              (element) => element.previsionalLapCount == 12
+            );
+
+            expect(actual.pitwarning).toBe(0);
+          });
+        test(
+          "THEN lap prev 14 is NOT highlighted ", () => {
+            let storeConfigBuilder = new StoreConfigurationBuilder();
+
+            storeConfigBuilder
+              .withLaptimeMinutes(0)
+              .withLapTimeSeconds(30)
+              .withConsumption(2)
+              .withFuelTankLiter(20)
+              .withWouldBeStintDuration(10)
+              .withStore(store)
+              .build();
+
+            let state = store.getState();
+
+            let intermediary = selectConsumptionForStint(state);
+
+            let actual = intermediary.find(
+              // TODO Add the assertion here.
+              (element) => element.previsionalLapCount == 14
+            );
+
+            expect(actual.pitwarning).toBe(0);
+          });
+
+        test(
           "THEN lap prev 16 is highlighted ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
