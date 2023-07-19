@@ -22,6 +22,8 @@ const percentOfStint = [
 ];
 
 const computeConsumption = (state) => {
+  console.info('computing consumption ...');
+
   let localState = state.stintDetails;
 
   let lap = new Lap(localState.laptimeMinutes, localState.laptimeSeconds);
@@ -64,6 +66,10 @@ const computeConsumption = (state) => {
       stintDuration: stintDuration,
     });
   });
+
+  console.debug('computed data', output);
+
+  console.info('computing consumption DONE!');
 
   return output;
 };

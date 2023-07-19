@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
 import { changeConsumption } from "../stores/consumption/actions/lapConsumption";
+import { changeFuelTankLiter } from "../stores/consumption/actions/laptimeFuelTank"
 
 import { floatConverter } from "../business/converter";
 
@@ -61,6 +62,11 @@ const CurrentComponent = () => {
   const [consumptionLiterPerLap, setConsumptionLiterPerLap] = React.useState('');
   const [isErrorConsumptionLiterPerLap, setIsErrorConsumptionLiterPerLap] = React.useState(false);
 
+  const [fuelTankLiter, setFuelTankLiter] = React.useState('');
+  const [isErrorFuelTankLiter, setIsErrorFuelTankLiter] = React.useState(false);
+
+  const [wouldBeStintDurationMinutes, setWouldBeStintDurationMinutes] = React.useState('');
+  const [isErrorWouldBeStintDurationMinutes, setIsErrorWouldBeStintDurationMinutes] = React.useState(false);
   // ---- STORE INTERACTIONS ----
 
   const selectorStintDetails = useSelector(state => state.stintDetails)
@@ -91,6 +97,24 @@ const CurrentComponent = () => {
       setIsErrorConsumptionLiterPerLap,
       floatConverter,
       changeConsumption,
+      dispatch);
+  }
+
+  const onFuelTankLiterChange = (text) => {
+    onDataChange(text,
+      setFuelTankLiter,
+      setIsErrorFuelTankLiter,
+      floatConverter,
+      changeFuelTankLiter,
+      dispatch);
+  }
+
+  const onWouldBeStintDurationMinutesChange = (text) => {
+    onDataChange(text,
+      setWouldBeStintDurationMinutes,
+      setIsErrorWouldBeStintDurationMinutes,
+      floatConverter,
+      changeFuelTankLiter,
       dispatch);
   }
 
@@ -153,10 +177,10 @@ const CurrentComponent = () => {
             keyboardType="numeric"
             maxLength={4}
             defaultValue=""
+            placeholder="0.00"
             error={isErrorConsumptionLiterPerLap}
             value={consumptionLiterPerLap}
             onChangeText={text => onConsumptionLiterPerLapChange(text)}
-            placeholder="0.00"
           ></TextInput>
         </View>
         {/* ---------------------------------------------------- */}
@@ -168,8 +192,10 @@ const CurrentComponent = () => {
             keyboardType="numeric"
             maxLength={3}
             defaultValue=""
-            value={selectorStintDetails.fuelTankLiter}
             placeholder="0"
+            error={isErrorFuelTankLiter}
+            value={fuelTankLiter}
+            onChangeText={text => onFuelTankLiterChange(text)}
           ></TextInput>
         </View>
         {/* ---------------------------------------------------- */}
@@ -182,8 +208,10 @@ const CurrentComponent = () => {
             keyboardType="numeric"
             maxLength={4}
             defaultValue=""
-            value={selectorStintDetails.wouldBeStintDurationMinutes}
             placeholder="0"
+            error={isErrorWouldBeStintDurationMinutes}
+            value={wouldBeStintDurationMinutes}
+            onChangeText={text => onWouldBeStintDurationMinutesChange(text)}
           ></TextInput>
         </View>
         {/* ---------------------------------------------------- */}
