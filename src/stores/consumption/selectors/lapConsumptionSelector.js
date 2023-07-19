@@ -57,11 +57,17 @@ const computeConsumption = (state) => {
       stintPercent
     );
 
+    let pitwarning = 0;
+    if (previsionalLapCount > 5) {
+      pitwarning = 1;
+    }
+
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
       previsionalLapCount: previsionalLapCount,
       stintDuration: stintDuration,
+      pitwarning: pitwarning
     });
   });
 

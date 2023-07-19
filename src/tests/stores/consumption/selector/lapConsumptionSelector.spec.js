@@ -760,17 +760,14 @@ describe("Lap Consumption Selectors", () => {
     );
   });
 
-  describe("Pit alert", () => {
+  describe("Pitwarning alert", () => {
     test("GIVEN laptime minutes is 1 " +
       "AND laptime seconds is 0 " +
       "AND consumption per lap is 2 liter per lap " +
       "AND fuelTank is 20 liter " +
-      "AND stint duration is 30 minutes " +
+      "AND stint duration is 10 minutes " +
       "WHEN I compute consumption details " +
-      "THEN lap prev 16 is highlighted " +
-      "AND lap prev 18 is highlighted " +
-      "AND lap prev 19 is highlighted " +
-      "AND lap prev 20 is highlighted", () => {
+      "THEN lap prev 5 pitwarning is  0 ", () => {
         let storeConfigBuilder = new StoreConfigurationBuilder();
 
         storeConfigBuilder
@@ -778,7 +775,7 @@ describe("Lap Consumption Selectors", () => {
           .withLapTimeSeconds(0)
           .withConsumption(2)
           .withFuelTankLiter(20)
-          .withWouldBeStintDuration(30)
+          .withWouldBeStintDuration(10)
           .withStore(store)
           .build();
 
@@ -788,8 +785,200 @@ describe("Lap Consumption Selectors", () => {
 
         let actual = intermediary.find(
           // TODO Add the assertion here.
-          (element) => element.stintPercent == STINT_HUNDRED_PERCENT
+          (element) => element.previsionalLapCount == 5
         );
+
+        expect(actual.pitwarning).toBe(0);
       })
+
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 10 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 6 pitwarning is  1 ", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.previsionalLapCount == 6
+        );
+
+        expect(actual.pitwarning).toBe(1);
+      })
+
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 10 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 7 ipitwarning is 1 ", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.previsionalLapCount == 7
+        );
+
+        expect(actual.pitwarning).toBe(1);
+      })
+
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 10 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 8 pitwarning is 1 ", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.previsionalLapCount == 8
+        );
+
+        expect(actual.pitwarning).toBe(1);
+      })
+
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 10 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 9 pitwarning is 1 ", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.previsionalLapCount == 9
+        );
+
+        expect(actual.pitwarning).toBe(1);
+      })
+
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 10 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 9.5 pitwarning is 1 ", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.previsionalLapCount == 9.5
+        );
+
+        expect(actual.pitwarning).toBe(1);
+      })
+
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 10 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 10 pitwarning is 1 ", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(10)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.previsionalLapCount == 10
+        );
+
+        expect(actual.pitwarning).toBe(1);
+      })
+
+    // test("GIVEN laptime minutes is 0 " +
+    //   "AND laptime seconds is 30 " +
+    //   "AND consumption per lap is 2 liter per lap " +
+    //   "AND fuelTank is 20 liter " +
+    //   "AND stint duration is 10 minutes " +
+    //   "WHEN I compute consumption details " +
+    //   "THEN lap prev 6 is highlighted ", () => {
+
+    //   });
   })
 });
