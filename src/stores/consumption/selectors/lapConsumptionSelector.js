@@ -24,7 +24,8 @@ const percentOfStint = [
 const computeConsumption = (state) => {
   let localState = state.stintDetails;
 
-  let lap = new Lap(localState.laptimeMinutes, localState.laptimeSeconds);
+  let lap = new Lap(localState.laptimeMinutes,
+    localState.laptimeSeconds);
 
   if (lap.isLaptimeZero() || localState.wouldBeStintDurationMinutes == 0) {
     return [];
@@ -37,6 +38,8 @@ const computeConsumption = (state) => {
   );
 
   let output = [];
+
+  let maxDoableLapCount = localState.fuelTankLiter / localState.consumptionLiterPerLap;
 
   percentOfStint.forEach((stintPercent) => {
     let computedConsumption = computeConsumptionValue(
@@ -57,7 +60,7 @@ const computeConsumption = (state) => {
       stintPercent
     );
 
-    let pitwarning = computePitWarning(previsionalLapCount);
+    let pitwarning = computePitWarning(previsionalLapCount, maxDoableLapCount);
 
     output.push({
       stintPercent: stintPercent,
@@ -104,22 +107,15 @@ const computePrevisionalLapCountValue = (
   return truncateTwoDecimals(intermediary);
 };
 
-export const selectConsumptionForStint = computeConsumption;
-function computePitWarning(previsionalLapCount) {
+const computePitWarning = (previsionalLapCount, maxDoableLapCount) => {
   let pitwarning = 0;
 
-  if (previsionalLapCount == 12) {
-    return 0;
-  }
+  let deltaMaxLapCount = maxDoableLapCount - previsionalLapCount;
 
-  if (previsionalLapCount == 14) {
-    return 0;
+  if (deltaMaxLapCount < 5) {
+    return 1;
   }
-
-  if (previsionalLapCount > 5) {
-    pitwarning = 1;
-  }
-
-  return pitwarning;
+  return 0;
 }
 
+export const selectConsumptionForStint = computeConsumption;
