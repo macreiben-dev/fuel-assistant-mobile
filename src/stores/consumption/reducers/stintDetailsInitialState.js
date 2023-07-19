@@ -1,7 +1,7 @@
 export const initialState = {
-  laptimeMinutes: null,
-  laptimeSeconds: null,
-  consumptionLiterPerLap: null,
-  fuelTankLiter: null,
-  wouldBeStintDurationMinutes: null,
+  laptimeMinutes: 0,
+  laptimeSeconds: 0,
+  consumptionLiterPerLap: 0,
+  fuelTankLiter: 0,
+  wouldBeStintDurationMinutes: 0,
 };

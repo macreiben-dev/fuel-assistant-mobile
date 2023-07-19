@@ -4,12 +4,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from 'react-native-paper';
 import { DataTable } from "react-native-paper";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
 import { changeConsumption } from "../stores/consumption/actions/lapConsumption";
-import { changeFuelTankLiter } from "../stores/consumption/actions/laptimeFuelTank"
+import { changeFuelTankLiter } from "../stores/consumption/actions/laptimeFuelTank";
+import { changeWouldBeStintDuration } from "../stores/consumption/actions/laptimeWouldBeStintDurationMinutes"
 
 import { floatConverter } from "../business/converter";
 
@@ -69,8 +70,6 @@ const CurrentComponent = () => {
   const [isErrorWouldBeStintDurationMinutes, setIsErrorWouldBeStintDurationMinutes] = React.useState(false);
   // ---- STORE INTERACTIONS ----
 
-  const selectorStintDetails = useSelector(state => state.stintDetails)
-
   const dispatch = useDispatch();
 
   const onLaptimeMinutesChange = (text) => {
@@ -114,7 +113,7 @@ const CurrentComponent = () => {
       setWouldBeStintDurationMinutes,
       setIsErrorWouldBeStintDurationMinutes,
       floatConverter,
-      changeFuelTankLiter,
+      changeWouldBeStintDuration,
       dispatch);
   }
 
