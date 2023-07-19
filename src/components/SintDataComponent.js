@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { DataTable } from "react-native-paper";
+import { DataTable, Chip } from "react-native-paper";
 
 import { selectConsumptionForStint } from "../stores/consumption/selectors/lapConsumptionSelector";
 
@@ -16,7 +16,7 @@ export const DisplayStintDataComponent = () => {
           {formatAsPercent(element.stintPercent)}
         </DataTable.Title>
         <DataTable.Cell numeric>{element.stintDuration}</DataTable.Cell>
-        <DataTable.Cell numeric>{element.previsionalLapCount}</DataTable.Cell>
+        <DataTable.Cell numeric><Chip icon="gas-station" >Pit</Chip> {element.previsionalLapCount}</DataTable.Cell>
         <DataTable.Cell numeric>{element.consumption}</DataTable.Cell>
       </DataTable.Row>
     );

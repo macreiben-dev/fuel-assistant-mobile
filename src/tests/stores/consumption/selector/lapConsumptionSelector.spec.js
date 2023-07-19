@@ -553,6 +553,7 @@ describe("Lap Consumption Selectors", () => {
       }
     );
   });
+
   describe("F488 usecase", () => {
     test(
       "Given consumption is [2.77] " +
@@ -758,4 +759,37 @@ describe("Lap Consumption Selectors", () => {
       }
     );
   });
+
+  describe("Pit alert", () => {
+    test("GIVEN laptime minutes is 1 " +
+      "AND laptime seconds is 0 " +
+      "AND consumption per lap is 2 liter per lap " +
+      "AND fuelTank is 20 liter " +
+      "AND stint duration is 30 minutes " +
+      "WHEN I compute consumption details " +
+      "THEN lap prev 16 is highlighted " +
+      "AND lap prev 18 is highlighted " +
+      "AND lap prev 19 is highlighted " +
+      "AND lap prev 20 is highlighted", () => {
+        let storeConfigBuilder = new StoreConfigurationBuilder();
+
+        storeConfigBuilder
+          .withLaptimeMinutes(1)
+          .withLapTimeSeconds(0)
+          .withConsumption(2)
+          .withFuelTankLiter(20)
+          .withWouldBeStintDuration(30)
+          .withStore(store)
+          .build();
+
+        let state = store.getState();
+
+        let intermediary = selectConsumptionForStint(state);
+
+        let actual = intermediary.find(
+          // TODO Add the assertion here.
+          (element) => element.stintPercent == STINT_HUNDRED_PERCENT
+        );
+      })
+  })
 });
