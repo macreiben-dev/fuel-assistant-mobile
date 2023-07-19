@@ -153,6 +153,7 @@ const CurrentComponent = () => {
             keyboardType="numeric"
             maxLength={4}
             defaultValue=""
+            error={isErrorConsumptionLiterPerLap}
             value={consumptionLiterPerLap}
             onChangeText={text => onConsumptionLiterPerLapChange(text)}
             placeholder="0.00"
