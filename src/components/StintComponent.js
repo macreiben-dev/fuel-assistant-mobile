@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinute";
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
+import { changeConsumption } from "../stores/consumption/actions/lapConsumption";
 
 import { floatConverter } from "../business/converter";
 
@@ -57,6 +58,9 @@ const CurrentComponent = () => {
   const [laptimeSeconds, setLaptimeSeconds] = React.useState('');
   const [isErrorLaptimeSeconds, setIsErrorLaptimeSeconds] = React.useState(false);
 
+  const [consumptionLiterPerLap, setConsumptionLiterPerLap] = React.useState('');
+  const [isErrorConsumptionLiterPerLap, setIsErrorConsumptionLiterPerLap] = React.useState(false);
+
   // ---- STORE INTERACTIONS ----
 
   const selectorStintDetails = useSelector(state => state.stintDetails)
@@ -78,6 +82,15 @@ const CurrentComponent = () => {
       setIsErrorLaptimeSeconds,
       floatConverter,
       changeLaptimeSeconds,
+      dispatch);
+  }
+
+  const onConsumptionLiterPerLapChange = (text) => {
+    onDataChange(text,
+      setConsumptionLiterPerLap,
+      setIsErrorConsumptionLiterPerLap,
+      floatConverter,
+      changeConsumption,
       dispatch);
   }
 
@@ -140,7 +153,8 @@ const CurrentComponent = () => {
             keyboardType="numeric"
             maxLength={4}
             defaultValue=""
-            value={selectorStintDetails.consumptionLiterPerLap}
+            value={consumptionLiterPerLap}
+            onChangeText={text => onConsumptionLiterPerLapChange(text)}
             placeholder="0.00"
           ></TextInput>
         </View>
