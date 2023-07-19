@@ -63,8 +63,7 @@ const CurrentComponent = () => {
 
   const dispatch = useDispatch();
 
-  let onLaptimeMinutesChange = (text) => {
-
+  const onLaptimeMinutesChange = (text) => {
     onDataChange(text,
       setlaptimeMinutes,
       setIsErrorLapTimeMinute,
@@ -73,7 +72,7 @@ const CurrentComponent = () => {
       dispatch);
   }
 
-  let onLaptimeSecondsChange = (text) => {
+  const onLaptimeSecondsChange = (text) => {
     onDataChange(text,
       setLaptimeSeconds,
       setIsErrorLaptimeSeconds,
