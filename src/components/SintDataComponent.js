@@ -10,7 +10,7 @@ export const DisplayStintDataComponent = () => {
   const selector = useSelector(selectConsumptionForStint);
 
   const shouldShow = (element) => {
-    return element.pitwarning == 1
+    return element.pitwarning == 1;
   };
 
   let dataItems = selector.map((element) => {
@@ -20,7 +20,10 @@ export const DisplayStintDataComponent = () => {
           {formatAsPercent(element.stintPercent)}
         </DataTable.Title>
         <DataTable.Cell numeric>{element.stintDuration}</DataTable.Cell>
-        <DataTable.Cell numeric>{shouldShow(element) ? (<Chip icon="gas-station">Pit</Chip>) : null} {element.executedLapCount}</DataTable.Cell>
+        <DataTable.Cell numeric>
+          {shouldShow(element) ? <Chip icon="gas-station">Pit</Chip> : null}{" "}
+          {element.executedLapCount}
+        </DataTable.Cell>
         <DataTable.Cell numeric>{element.consumption}</DataTable.Cell>
       </DataTable.Row>
     );

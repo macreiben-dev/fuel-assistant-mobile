@@ -1,7 +1,7 @@
 import React from "react";
 
 import { StyleSheet, Text, View } from "react-native";
-import { TextInput } from 'react-native-paper';
+import { TextInput } from "react-native-paper";
 import { DataTable } from "react-native-paper";
 
 import { useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ import { changeLaptimeMinutes } from "../stores/consumption/actions/laptimeMinut
 import { changeLaptimeSeconds } from "../stores/consumption/actions/laptimeSecond";
 import { changeConsumption } from "../stores/consumption/actions/lapConsumption";
 import { changeFuelTankLiter } from "../stores/consumption/actions/laptimeFuelTank";
-import { changeWouldBeStintDuration } from "../stores/consumption/actions/laptimeWouldBeStintDurationMinutes"
+import { changeWouldBeStintDuration } from "../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
 
 import { floatConverter } from "../business/converter";
 
@@ -38,84 +38,109 @@ const styles = StyleSheet.create({
   },
 });
 
-const onDataChange = (text, setStateValue, setError, converter, setStoreValue, dispatch) => {
+const onDataChange = (
+  text,
+  setStateValue,
+  setError,
+  converter,
+  setStoreValue,
+  dispatch
+) => {
   setStateValue(text);
   let floatValue = converter(text);
   if (floatValue == undefined) {
-    console.warn("laptime minute invalid", text)
+    console.warn("laptime minute invalid", text);
     setError(true);
     return;
   }
   setError(false);
   let action = setStoreValue(floatValue);
-  dispatch(action)
-}
+  dispatch(action);
+};
 
 // =============================================================
 
 const CurrentComponent = () => {
-  const [laptimeMinutes, setlaptimeMinutes] = React.useState('');
-  const [isErrorLaptimeMinutes, setIsErrorLapTimeMinute] = React.useState(false);
+  const [laptimeMinutes, setlaptimeMinutes] = React.useState("");
+  const [isErrorLaptimeMinutes, setIsErrorLapTimeMinute] =
+    React.useState(false);
 
-  const [laptimeSeconds, setLaptimeSeconds] = React.useState('');
-  const [isErrorLaptimeSeconds, setIsErrorLaptimeSeconds] = React.useState(false);
+  const [laptimeSeconds, setLaptimeSeconds] = React.useState("");
+  const [isErrorLaptimeSeconds, setIsErrorLaptimeSeconds] =
+    React.useState(false);
 
-  const [consumptionLiterPerLap, setConsumptionLiterPerLap] = React.useState('');
-  const [isErrorConsumptionLiterPerLap, setIsErrorConsumptionLiterPerLap] = React.useState(false);
+  const [consumptionLiterPerLap, setConsumptionLiterPerLap] =
+    React.useState("");
+  const [isErrorConsumptionLiterPerLap, setIsErrorConsumptionLiterPerLap] =
+    React.useState(false);
 
-  const [fuelTankLiter, setFuelTankLiter] = React.useState('');
+  const [fuelTankLiter, setFuelTankLiter] = React.useState("");
   const [isErrorFuelTankLiter, setIsErrorFuelTankLiter] = React.useState(false);
 
-  const [wouldBeStintDurationMinutes, setWouldBeStintDurationMinutes] = React.useState('');
-  const [isErrorWouldBeStintDurationMinutes, setIsErrorWouldBeStintDurationMinutes] = React.useState(false);
+  const [wouldBeStintDurationMinutes, setWouldBeStintDurationMinutes] =
+    React.useState("");
+  const [
+    isErrorWouldBeStintDurationMinutes,
+    setIsErrorWouldBeStintDurationMinutes,
+  ] = React.useState(false);
   // ---- STORE INTERACTIONS ----
 
   const dispatch = useDispatch();
 
   const onLaptimeMinutesChange = (text) => {
-    onDataChange(text,
+    onDataChange(
+      text,
       setlaptimeMinutes,
       setIsErrorLapTimeMinute,
       floatConverter,
       changeLaptimeMinutes,
-      dispatch);
-  }
+      dispatch
+    );
+  };
 
   const onLaptimeSecondsChange = (text) => {
-    onDataChange(text,
+    onDataChange(
+      text,
       setLaptimeSeconds,
       setIsErrorLaptimeSeconds,
       floatConverter,
       changeLaptimeSeconds,
-      dispatch);
-  }
+      dispatch
+    );
+  };
 
   const onConsumptionLiterPerLapChange = (text) => {
-    onDataChange(text,
+    onDataChange(
+      text,
       setConsumptionLiterPerLap,
       setIsErrorConsumptionLiterPerLap,
       floatConverter,
       changeConsumption,
-      dispatch);
-  }
+      dispatch
+    );
+  };
 
   const onFuelTankLiterChange = (text) => {
-    onDataChange(text,
+    onDataChange(
+      text,
       setFuelTankLiter,
       setIsErrorFuelTankLiter,
       floatConverter,
       changeFuelTankLiter,
-      dispatch);
-  }
+      dispatch
+    );
+  };
 
   const onWouldBeStintDurationMinutesChange = (text) => {
-    onDataChange(text,
+    onDataChange(
+      text,
       setWouldBeStintDurationMinutes,
       setIsErrorWouldBeStintDurationMinutes,
       floatConverter,
       changeWouldBeStintDuration,
-      dispatch);
-  }
+      dispatch
+    );
+  };
 
   return (
     <View
@@ -141,7 +166,7 @@ const CurrentComponent = () => {
             defaultValue=""
             error={isErrorLaptimeMinutes}
             value={laptimeMinutes}
-            onChangeText={text => onLaptimeMinutesChange(text)}
+            onChangeText={(text) => onLaptimeMinutesChange(text)}
             placeholder="mm"
           ></TextInput>
         </View>
@@ -158,7 +183,7 @@ const CurrentComponent = () => {
             defaultValue=""
             error={isErrorLaptimeSeconds}
             value={laptimeSeconds}
-            onChangeText={text => onLaptimeSecondsChange(text)}
+            onChangeText={(text) => onLaptimeSecondsChange(text)}
             placeholder="ss"
           ></TextInput>
         </View>
@@ -179,7 +204,7 @@ const CurrentComponent = () => {
             placeholder="0.00"
             error={isErrorConsumptionLiterPerLap}
             value={consumptionLiterPerLap}
-            onChangeText={text => onConsumptionLiterPerLapChange(text)}
+            onChangeText={(text) => onConsumptionLiterPerLapChange(text)}
           ></TextInput>
         </View>
         {/* ---------------------------------------------------- */}
@@ -194,7 +219,7 @@ const CurrentComponent = () => {
             placeholder="0"
             error={isErrorFuelTankLiter}
             value={fuelTankLiter}
-            onChangeText={text => onFuelTankLiterChange(text)}
+            onChangeText={(text) => onFuelTankLiterChange(text)}
           ></TextInput>
         </View>
         {/* ---------------------------------------------------- */}
@@ -210,7 +235,7 @@ const CurrentComponent = () => {
             placeholder="0"
             error={isErrorWouldBeStintDurationMinutes}
             value={wouldBeStintDurationMinutes}
-            onChangeText={text => onWouldBeStintDurationMinutesChange(text)}
+            onChangeText={(text) => onWouldBeStintDurationMinutesChange(text)}
           ></TextInput>
         </View>
         {/* ---------------------------------------------------- */}
@@ -229,7 +254,8 @@ const CurrentComponent = () => {
           <DisplayStintDataComponent />
         </DataTable>
       </View>
-    </View >);
-}
+    </View>
+  );
+};
 
-export default (CurrentComponent)
+export default CurrentComponent;

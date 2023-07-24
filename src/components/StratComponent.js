@@ -7,7 +7,13 @@ import {
   VirtualizedList,
 } from "react-native";
 
-import { Button, Checkbox, DataTable, IconButton, TextInput } from "react-native-paper";
+import {
+  Button,
+  Checkbox,
+  DataTable,
+  IconButton,
+  TextInput,
+} from "react-native-paper";
 
 let items = [
   {
@@ -38,24 +44,27 @@ const ItemComponent = (props) => {
       </View>
       <View>
         <Checkbox
-          status={isTyre ? 'checked' : 'unchecked'}
+          status={isTyre ? "checked" : "unchecked"}
           onPress={() => {
             setIsTyreChecked(!isTyre);
-          }}></Checkbox>
+          }}
+        ></Checkbox>
       </View>
       <View>
         <Checkbox
-          status={isFuel ? 'checked' : 'unchecked'}
+          status={isFuel ? "checked" : "unchecked"}
           onPress={() => {
             setIsFuelChecked(!isFuel);
-          }}></Checkbox>
+          }}
+        ></Checkbox>
       </View>
       <View>
         <Checkbox
-          status={isPilot ? 'checked' : 'unchecked'}
+          status={isPilot ? "checked" : "unchecked"}
           onPress={() => {
             setIsPilotChecked(!isPilot);
-          }}></Checkbox>
+          }}
+        ></Checkbox>
       </View>
       <View>
         <TextInput placeholder="Spotter" Text="TyreCompound" />
@@ -109,8 +118,8 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     gap: 4,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
 
