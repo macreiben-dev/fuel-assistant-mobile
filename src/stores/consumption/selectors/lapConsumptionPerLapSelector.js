@@ -1,4 +1,5 @@
 import Lap from "../../../business/stint/lap";
+import Stint from "../../../business/stint/stint";
 
 const compute = (state) => {
   let localState = state.stintDetails;
@@ -9,25 +10,22 @@ const compute = (state) => {
     return [];
   }
 
-  // TODO move this to a stint class
-  const stintDurationInMinute = localState.wouldBeStintDurationMinutes;
-  const consumptionPerLap = localState.consumptionLiterPerLap;
-
-  const durationAsSeconds = stintDurationInMinute * 60;
-
-  const maxLapExecutedForStintDuration =
-    durationAsSeconds / lap.laptimeAsSeconds();
+  const stint = new Stint(
+    localState.wouldBeStintDurationMinutes,
+    localState.consumptionLiterPerLap,
+    lap
+  );
 
   let output = [];
 
   for (
     let executedLap = 1;
-    executedLap <= maxLapExecutedForStintDuration;
+    executedLap <= stint.getMaxExecutableLapsTimeBased();
     executedLap++
   ) {
     let oneLap = {
-      stintPercent: executedLap / maxLapExecutedForStintDuration,
-      consumption: executedLap * consumptionPerLap,
+      stintPercent: executedLap / stint.getMaxExecutableLapsTimeBased(),
+      consumption: executedLap * stint.getConsumptionLiterPerLap(),
       executedLapCount: executedLap,
     };
 
