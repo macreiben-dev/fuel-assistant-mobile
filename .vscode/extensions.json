@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "orta.vscode-jest",
-        "ms-vscode.test-adapter-converter"
+        "ms-vscode.test-adapter-converter",
+        "semasquare.vscode-coverage-gutters"
     ]
 }
