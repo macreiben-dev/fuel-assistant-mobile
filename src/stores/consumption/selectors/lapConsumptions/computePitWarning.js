@@ -16,11 +16,9 @@ const computePitWarning = (previsionalLapCount, maxDoableLapCount) => {
             maxDoableLapCount)
     }
 
-    let pitwarning = 0;
+    let deltaMaxLapCount = previsionalLapCount - maxDoableLapCount;
 
-    let deltaMaxLapCount = maxDoableLapCount - previsionalLapCount;
-
-    if (deltaMaxLapCount < 5) {
+    if (deltaMaxLapCount > 0 && deltaMaxLapCount < 5) {
         return 1;
     }
     return 0;
