@@ -9,6 +9,13 @@ const computePitWarning = (previsionalLapCount, maxDoableLapCount) => {
             previsionalLapCount)
     }
 
+    if (maxDoableLapCount === undefined) {
+        throw new ArgumentError(
+            "maxDoableLapCount",
+            "argument is undefined",
+            maxDoableLapCount)
+    }
+
     let pitwarning = 0;
 
     let deltaMaxLapCount = maxDoableLapCount - previsionalLapCount;

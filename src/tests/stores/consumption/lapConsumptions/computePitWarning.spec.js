@@ -15,4 +15,16 @@ describe('Compute Pit Warning', () => {
             expect(actual.message)
                 .toBe('Argument [previsionalLapCount] is invalid because "argument is undefined", received value is [undefined].')
         })
+
+    test("GIVEN maxDoableLapCount is indefined " +
+        "THEN fail", () => {
+            let actual = undefined
+
+            try { computePitWarning(1, undefined) }
+            catch (e) {
+                actual = e
+            }
+            expect(actual.message)
+                .toBe('Argument [maxDoableLapCount] is invalid because "argument is undefined", received value is [undefined].')
+        })
 })
