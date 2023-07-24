@@ -1,6 +1,6 @@
 import Lap from "../../../business/stint/lap";
 import computeStintDurationValue from "./computeStintDurationValue";
-import { computePitWarning } from "./lapConsumptions/computePitWarning"
+import { computePitWarning } from "./lapConsumptions/computePitWarning";
 
 const SECONDS_IN_ONE_MINUTE = 60.0;
 
@@ -22,11 +22,10 @@ const percentOfStint = [
   STINT_HUNDRED_PERCENT,
 ];
 
-const computeConsumption = (state) => {
+const computeConsumptionPerPecent = (state) => {
   let localState = state.stintDetails;
 
-  let lap = new Lap(localState.laptimeMinutes,
-    localState.laptimeSeconds);
+  let lap = new Lap(localState.laptimeMinutes, localState.laptimeSeconds);
 
   if (lap.isLaptimeZero() || localState.wouldBeStintDurationMinutes == 0) {
     return [];
@@ -40,7 +39,8 @@ const computeConsumption = (state) => {
 
   let output = [];
 
-  let maxDoableLapCount = localState.fuelTankLiter / localState.consumptionLiterPerLap;
+  let maxDoableLapCount =
+    localState.fuelTankLiter / localState.consumptionLiterPerLap;
 
   percentOfStint.forEach((stintPercent) => {
     let computedConsumption = computeConsumptionValue(
@@ -61,14 +61,17 @@ const computeConsumption = (state) => {
       stintPercent
     );
 
-    let pitwarning = computePitWarning(maxDoableLapCount, executedLapCountValue);
+    let pitwarning = computePitWarning(
+      maxDoableLapCount,
+      executedLapCountValue
+    );
 
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
       executedLapCount: executedLapCountValue,
       stintDuration: stintDuration,
-      pitwarning: pitwarning
+      pitwarning: pitwarning,
     });
   });
 
@@ -108,4 +111,4 @@ const computeExecutedLapCountValue = (
   return truncateTwoDecimals(intermediary);
 };
 
-export const selectConsumptionForStint = computeConsumption;
+export const selectConsumptionForStint = computeConsumptionPerPecent;
