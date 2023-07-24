@@ -223,7 +223,7 @@ const CurrentComponent = () => {
           <DataTable.Header>
             <DataTable.Title>&nbsp;</DataTable.Title>
             <DataTable.Title numeric>Stint (min)</DataTable.Title>
-            <DataTable.Title numeric>Lap Prev</DataTable.Title>
+            <DataTable.Title numeric>Executed Laps</DataTable.Title>
             <DataTable.Title numeric>Consumption</DataTable.Title>
           </DataTable.Header>
           <DisplayStintDataComponent />
