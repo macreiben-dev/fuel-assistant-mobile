@@ -8,19 +8,21 @@ function isFiveLapRemaining(deltaMaxLapCount) {
     return deltaMaxLapCount > 0 && deltaMaxLapCount < 5;
 }
 
+const ARGUMENT_NOT_DEFINED = "argument is undefined"
+
 const computePitWarning = (stintMaxLapCount, executedLapCount) => {
 
     if (executedLapCount === undefined) {
         throw new ArgumentError(
             "executedLapCount",
-            "argument is undefined",
+            ARGUMENT_NOT_DEFINED,
             executedLapCount)
     }
 
     if (stintMaxLapCount === undefined) {
         throw new ArgumentError(
             "stintMaxLapCount",
-            "argument is undefined",
+            ARGUMENT_NOT_DEFINED,
             stintMaxLapCount)
     }
 
