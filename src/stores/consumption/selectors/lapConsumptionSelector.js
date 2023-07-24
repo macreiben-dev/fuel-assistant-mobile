@@ -1,5 +1,6 @@
 import Lap from "../../../business/stint/lap";
 import computeStintDurationValue from "./computeStintDurationValue";
+import { computePitWarning } from "./lapConsumptions/computePitWarning"
 
 const SECONDS_IN_ONE_MINUTE = 60.0;
 
@@ -49,7 +50,7 @@ const computeConsumption = (state) => {
       localState.consumptionLiterPerLap
     );
 
-    let previsionalLapCount = computePrevisionalLapCountValue(
+    let executedLapCountValue = computeExecutedLapCountValue(
       stintPercent,
       stintTotalTimeSeconds,
       laptimeSeconds
@@ -60,12 +61,12 @@ const computeConsumption = (state) => {
       stintPercent
     );
 
-    let pitwarning = computePitWarning(previsionalLapCount, maxDoableLapCount);
+    let pitwarning = computePitWarning(maxDoableLapCount, executedLapCountValue);
 
     output.push({
       stintPercent: stintPercent,
       consumption: computedConsumption,
-      previsionalLapCount: previsionalLapCount,
+      executedLapCount: executedLapCountValue,
       stintDuration: stintDuration,
       pitwarning: pitwarning
     });
@@ -97,7 +98,7 @@ const computeConsumptionValue = (
   return truncateTwoDecimals(consumption);
 };
 
-const computePrevisionalLapCountValue = (
+const computeExecutedLapCountValue = (
   percent,
   totalTimeSeconds,
   laptimeSeconds
@@ -106,16 +107,5 @@ const computePrevisionalLapCountValue = (
 
   return truncateTwoDecimals(intermediary);
 };
-
-const computePitWarning = (previsionalLapCount, maxDoableLapCount) => {
-  let pitwarning = 0;
-
-  let deltaMaxLapCount = maxDoableLapCount - previsionalLapCount;
-
-  if (deltaMaxLapCount < 5) {
-    return 1;
-  }
-  return 0;
-}
 
 export const selectConsumptionForStint = computeConsumption;

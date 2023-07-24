@@ -1,5 +1,13 @@
 import ArgumentError from "./ArgumentError";
 
+function isExecutedLapCountGreaterThanStintMaxLap(executedLapCount, stintMaxLapCount) {
+    return executedLapCount >= stintMaxLapCount;
+}
+
+function isFiveLapRemaining(deltaMaxLapCount) {
+    return deltaMaxLapCount > 0 && deltaMaxLapCount < 5;
+}
+
 const computePitWarning = (stintMaxLapCount, executedLapCount) => {
 
     if (executedLapCount === undefined) {
@@ -18,7 +26,8 @@ const computePitWarning = (stintMaxLapCount, executedLapCount) => {
 
     let deltaMaxLapCount = stintMaxLapCount - executedLapCount;
 
-    if (deltaMaxLapCount > 0 && deltaMaxLapCount < 5) {
+    if (isFiveLapRemaining(deltaMaxLapCount)
+        || isExecutedLapCountGreaterThanStintMaxLap(executedLapCount, stintMaxLapCount)) {
         return 1;
     }
     return 0;

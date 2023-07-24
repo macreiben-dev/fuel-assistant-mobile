@@ -9,6 +9,10 @@ import { formatAsPercent } from "./formating/formating";
 export const DisplayStintDataComponent = () => {
   const selector = useSelector(selectConsumptionForStint);
 
+  const shouldShow = (element) => {
+    return element.pitwarning == 1
+  };
+
   let dataItems = selector.map((element) => {
     return (
       <DataTable.Row key={element.stintPercent}>
@@ -16,7 +20,7 @@ export const DisplayStintDataComponent = () => {
           {formatAsPercent(element.stintPercent)}
         </DataTable.Title>
         <DataTable.Cell numeric>{element.stintDuration}</DataTable.Cell>
-        <DataTable.Cell numeric><Chip icon="gas-station" >Pit</Chip> {element.previsionalLapCount}</DataTable.Cell>
+        <DataTable.Cell numeric>{shouldShow(element) ? (<Chip icon="gas-station">Pit</Chip>) : null} {element.executedLapCount}</DataTable.Cell>
         <DataTable.Cell numeric>{element.consumption}</DataTable.Cell>
       </DataTable.Row>
     );

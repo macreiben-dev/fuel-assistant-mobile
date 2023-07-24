@@ -217,7 +217,7 @@ describe("Lap Consumption Selectors", () => {
           (element) => element.stintPercent == STINT_FIFTY_PERCENT
         );
 
-        expect(actual.previsionalLapCount).toBe(5.0);
+        expect(actual.executedLapCount).toBe(5.0);
       }
     );
     test(
@@ -245,7 +245,7 @@ describe("Lap Consumption Selectors", () => {
           (element) => element.stintPercent == STINT_SIXTY_PERCENT
         );
 
-        expect(actual.previsionalLapCount).toBe(6.0);
+        expect(actual.executedLapCount).toBe(6.0);
       }
     );
     test(
@@ -273,7 +273,7 @@ describe("Lap Consumption Selectors", () => {
           (element) => element.stintPercent == STINT_SEVENTY_PERCENT
         );
 
-        expect(actual.previsionalLapCount).toBe(7.0);
+        expect(actual.executedLapCount).toBe(7.0);
       }
     );
     test(
@@ -301,7 +301,7 @@ describe("Lap Consumption Selectors", () => {
           (element) => element.stintPercent == STINT_EIGHTY_PERCENT
         );
 
-        expect(actual.previsionalLapCount).toBe(8.0);
+        expect(actual.executedLapCount).toBe(8.0);
       }
     );
     test(
@@ -329,7 +329,7 @@ describe("Lap Consumption Selectors", () => {
           (element) => element.stintPercent == STINT_NINETY_PERCENT
         );
 
-        expect(actual.previsionalLapCount).toBe(9.0);
+        expect(actual.executedLapCount).toBe(9.0);
       }
     );
     test(
@@ -357,7 +357,7 @@ describe("Lap Consumption Selectors", () => {
           (element) => element.stintPercent == STINT_NINETYFIVE_PERCENT
         );
 
-        expect(actual.previsionalLapCount).toBe(9.5);
+        expect(actual.executedLapCount).toBe(9.5);
       }
     );
   });
@@ -762,7 +762,6 @@ describe("Lap Consumption Selectors", () => {
 
   describe("Pitwarning alert", () => {
 
-
     describe("GIVEN laptime minutes is 1 " +
       "AND laptime seconds is 0 " +
       "AND consumption per lap is 2 liter per lap " +
@@ -770,7 +769,7 @@ describe("Lap Consumption Selectors", () => {
       "AND stint duration is 10 minutes " +
       "WHEN I compute consumption details ", () => {
         test(
-          "THEN lap prev 5 pitwarning is  0 ", () => {
+          "THEN consumption 10 pitwarning is 0 ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
             storeConfigBuilder
@@ -788,14 +787,13 @@ describe("Lap Consumption Selectors", () => {
 
             let actual = intermediary.find(
               // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 5
+              (element) => element.consumption == 10
             );
 
             expect(actual.pitwarning).toBe(0);
           })
-
         test(
-          "THEN lap prev 6 pitwarning is  1 ", () => {
+          "THEN consumption 12 pitwarning is 0 ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
             storeConfigBuilder
@@ -813,14 +811,14 @@ describe("Lap Consumption Selectors", () => {
 
             let actual = intermediary.find(
               // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 6
+              (element) => element.consumption == 12
             );
 
             expect(actual.pitwarning).toBe(1);
           })
 
         test(
-          "THEN lap prev 7 ipitwarning is 1 ", () => {
+          "THEN consumption 14 pitwarning is 1 ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
             storeConfigBuilder
@@ -838,14 +836,14 @@ describe("Lap Consumption Selectors", () => {
 
             let actual = intermediary.find(
               // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 7
+              (element) => element.consumption == 14
             );
 
             expect(actual.pitwarning).toBe(1);
           })
 
         test(
-          "THEN lap prev 8 pitwarning is 1 ", () => {
+          "THEN consumption 16 pitwarning is 1 ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
             storeConfigBuilder
@@ -863,86 +861,12 @@ describe("Lap Consumption Selectors", () => {
 
             let actual = intermediary.find(
               // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 8
+              (element) => element.consumption == 16
             );
 
             expect(actual.pitwarning).toBe(1);
           })
 
-        test(
-          "THEN lap prev 9 pitwarning is 1 ", () => {
-            let storeConfigBuilder = new StoreConfigurationBuilder();
-
-            storeConfigBuilder
-              .withLaptimeMinutes(1)
-              .withLapTimeSeconds(0)
-              .withConsumption(2)
-              .withFuelTankLiter(20)
-              .withWouldBeStintDuration(10)
-              .withStore(store)
-              .build();
-
-            let state = store.getState();
-
-            let intermediary = selectConsumptionForStint(state);
-
-            let actual = intermediary.find(
-              // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 9
-            );
-
-            expect(actual.pitwarning).toBe(1);
-          })
-
-        test(
-          "THEN lap prev 9.5 pitwarning is 1 ", () => {
-            let storeConfigBuilder = new StoreConfigurationBuilder();
-
-            storeConfigBuilder
-              .withLaptimeMinutes(1)
-              .withLapTimeSeconds(0)
-              .withConsumption(2)
-              .withFuelTankLiter(20)
-              .withWouldBeStintDuration(10)
-              .withStore(store)
-              .build();
-
-            let state = store.getState();
-
-            let intermediary = selectConsumptionForStint(state);
-
-            let actual = intermediary.find(
-              // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 9.5
-            );
-
-            expect(actual.pitwarning).toBe(1);
-          })
-
-        test(
-          "THEN lap prev 10 pitwarning is 1 ", () => {
-            let storeConfigBuilder = new StoreConfigurationBuilder();
-
-            storeConfigBuilder
-              .withLaptimeMinutes(1)
-              .withLapTimeSeconds(0)
-              .withConsumption(2)
-              .withFuelTankLiter(20)
-              .withWouldBeStintDuration(10)
-              .withStore(store)
-              .build();
-
-            let state = store.getState();
-
-            let intermediary = selectConsumptionForStint(state);
-
-            let actual = intermediary.find(
-              // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 10
-            );
-
-            expect(actual.pitwarning).toBe(1);
-          })
       })
 
 
@@ -953,7 +877,7 @@ describe("Lap Consumption Selectors", () => {
       "AND stint duration is 10 minutes " +
       "WHEN I compute consumption details ", () => {
         test(
-          "THEN lap prev 12 is NOT highlighted ", () => {
+          "THEN executedLapCount 12 IS highlighted ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
             storeConfigBuilder
@@ -971,13 +895,13 @@ describe("Lap Consumption Selectors", () => {
 
             let actual = intermediary.find(
               // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 12
+              (element) => element.executedLapCount == 12
             );
 
-            expect(actual.pitwarning).toBe(0);
+            expect(actual.pitwarning).toBe(1);
           });
         test(
-          "THEN lap prev 14 is NOT highlighted ", () => {
+          "THEN executedLapCount 14 IS highlighted ", () => {
             let storeConfigBuilder = new StoreConfigurationBuilder();
 
             storeConfigBuilder
@@ -995,38 +919,38 @@ describe("Lap Consumption Selectors", () => {
 
             let actual = intermediary.find(
               // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 14
-            );
-
-            expect(actual.pitwarning).toBe(0);
-          });
-
-        test(
-          "THEN lap prev 16 is highlighted ", () => {
-            let storeConfigBuilder = new StoreConfigurationBuilder();
-
-            storeConfigBuilder
-              .withLaptimeMinutes(0)
-              .withLapTimeSeconds(30)
-              .withConsumption(2)
-              .withFuelTankLiter(20)
-              .withWouldBeStintDuration(10)
-              .withStore(store)
-              .build();
-
-            let state = store.getState();
-
-            let intermediary = selectConsumptionForStint(state);
-
-            let actual = intermediary.find(
-              // TODO Add the assertion here.
-              (element) => element.previsionalLapCount == 16
+              (element) => element.executedLapCount == 14
             );
 
             expect(actual.pitwarning).toBe(1);
           });
 
-        test("THEN lap prev 17 is highlighted ", () => {
+        test(
+          "THEN executedLapCount 16 is highlighted ", () => {
+            let storeConfigBuilder = new StoreConfigurationBuilder();
+
+            storeConfigBuilder
+              .withLaptimeMinutes(0)
+              .withLapTimeSeconds(30)
+              .withConsumption(2)
+              .withFuelTankLiter(20)
+              .withWouldBeStintDuration(10)
+              .withStore(store)
+              .build();
+
+            let state = store.getState();
+
+            let intermediary = selectConsumptionForStint(state);
+
+            let actual = intermediary.find(
+              // TODO Add the assertion here.
+              (element) => element.executedLapCount == 16
+            );
+
+            expect(actual.pitwarning).toBe(1);
+          });
+
+        test("THEN executedLapCount 17 is highlighted ", () => {
           let storeConfigBuilder = new StoreConfigurationBuilder();
 
           storeConfigBuilder
@@ -1044,13 +968,13 @@ describe("Lap Consumption Selectors", () => {
 
           let actual = intermediary.find(
             // TODO Add the assertion here.
-            (element) => element.previsionalLapCount == 18
+            (element) => element.executedLapCount == 18
           );
 
           expect(actual.pitwarning).toBe(1);
         });
 
-        test("THEN lap prev 19 is highlighted ", () => {
+        test("THEN executedLapCount 19 is highlighted ", () => {
           let storeConfigBuilder = new StoreConfigurationBuilder();
 
           storeConfigBuilder
@@ -1068,13 +992,13 @@ describe("Lap Consumption Selectors", () => {
 
           let actual = intermediary.find(
             // TODO Add the assertion here.
-            (element) => element.previsionalLapCount == 19
+            (element) => element.executedLapCount == 19
           );
 
           expect(actual.pitwarning).toBe(1);
         });
 
-        test("THEN lap prev 20 is highlighted ", () => {
+        test("THEN executedLapCount 20 is highlighted ", () => {
           let storeConfigBuilder = new StoreConfigurationBuilder();
 
           storeConfigBuilder
@@ -1092,7 +1016,7 @@ describe("Lap Consumption Selectors", () => {
 
           let actual = intermediary.find(
             // TODO Add the assertion here.
-            (element) => element.previsionalLapCount == 20
+            (element) => element.executedLapCount == 20
           );
 
           expect(actual.pitwarning).toBe(1);

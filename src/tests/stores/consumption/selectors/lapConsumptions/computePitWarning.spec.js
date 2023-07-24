@@ -5,7 +5,7 @@ import ArgumentError from '../../../../../stores/consumption/selectors/lapConsum
 
 describe('Compute Pit Warning', () => {
     describe('Parameter Sanitization', () => {
-        test("GIVEN previsionalLapCount is indefined THEN fail", () => {
+        test("GIVEN stintMaxLapCount is indefined THEN fail", () => {
             let actual = undefined
 
             try { computePitWarning(undefined, 1) }
@@ -13,10 +13,10 @@ describe('Compute Pit Warning', () => {
                 actual = e
             }
             expect(actual.message)
-                .toBe('Argument [executedLapCount] is invalid because "argument is undefined", received value is [undefined].')
+                .toBe('Argument [stintMaxLapCount] is invalid because "argument is undefined", received value is [undefined].')
         })
 
-        test("GIVEN maxDoableLapCount is indefined THEN fail", () => {
+        test("GIVEN executedLapCount is indefined THEN fail", () => {
             let actual = undefined
 
             try { computePitWarning(1, undefined) }
@@ -24,7 +24,7 @@ describe('Compute Pit Warning', () => {
                 actual = e
             }
             expect(actual.message)
-                .toBe('Argument [stintMaxLapCount] is invalid because "argument is undefined", received value is [undefined].')
+                .toBe('Argument [executedLapCount] is invalid because "argument is undefined", received value is [undefined].')
         })
     })
     test('GIVEN remainingLapCount is 4 '
@@ -49,20 +49,27 @@ describe('Compute Pit Warning', () => {
                 let actual = computePitWarning(numbers[0], numbers[1])
                 expect(actual).toBe(result)
             })
+
+        it.each([
+            [[5, 6], PIT_WARNING_ON],
+            [[5, 7], PIT_WARNING_ON],
+            [[5, 8], PIT_WARNING_ON]
+        ])('GIVEN [stintMaxLapCount,executedLapCount] is %p THEN return %p',
+            (numbers, result) => {
+                let actual = computePitWarning(numbers[0], numbers[1])
+                expect(actual).toBe(result)
+            })
     })
 
     describe('Pit warning is off', () => {
         const PIT_WARNING_OFF = 0;
 
         it.each([
-            [[5, 5], PIT_WARNING_OFF],
-            [[5, 6], PIT_WARNING_OFF],
-            [[5, 7], PIT_WARNING_OFF],
-            [[5, 8], PIT_WARNING_OFF],
-            [[5, 9], PIT_WARNING_OFF],
-            [[35, 36], PIT_WARNING_OFF],
-            [[35, 37], PIT_WARNING_OFF],
-        ])('GIVEN [remainigLapCount,maxDoableLapCount] is %p THEN return %p',
+            [[35, 22], PIT_WARNING_OFF],
+            [[35, 23], PIT_WARNING_OFF],
+            [[35, 24], PIT_WARNING_OFF],
+            [[35, 25], PIT_WARNING_OFF],
+        ])('GIVEN [stintMaxLapCount,executedLapCount] is %p THEN return %p',
             (numbers, result) => {
                 let actual = computePitWarning(numbers[0], numbers[1])
                 expect(actual).toBe(result)
