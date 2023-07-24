@@ -1,22 +1,22 @@
 import ArgumentError from "./ArgumentError";
 
-const computePitWarning = (previsionalLapCount, maxDoableLapCount) => {
+const computePitWarning = (stintMaxLapCount, executedLapCount) => {
 
-    if (previsionalLapCount === undefined) {
+    if (executedLapCount === undefined) {
         throw new ArgumentError(
-            "previsionalLapCount",
+            "executedLapCount",
             "argument is undefined",
-            previsionalLapCount)
+            executedLapCount)
     }
 
-    if (maxDoableLapCount === undefined) {
+    if (stintMaxLapCount === undefined) {
         throw new ArgumentError(
-            "maxDoableLapCount",
+            "stintMaxLapCount",
             "argument is undefined",
-            maxDoableLapCount)
+            stintMaxLapCount)
     }
 
-    let deltaMaxLapCount = previsionalLapCount - maxDoableLapCount;
+    let deltaMaxLapCount = stintMaxLapCount - executedLapCount;
 
     if (deltaMaxLapCount > 0 && deltaMaxLapCount < 5) {
         return 1;

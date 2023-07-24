@@ -1,7 +1,7 @@
 import { describe, expect } from '@jest/globals'
 
-import { computePitWarning } from '../../../../stores/consumption/selectors/lapConsumptions/computePitWarning'
-import ArgumentError from '../../../../stores/consumption/selectors/lapConsumptions/ArgumentError'
+import { computePitWarning } from '../../../../../stores/consumption/selectors/lapConsumptions/computePitWarning'
+import ArgumentError from '../../../../../stores/consumption/selectors/lapConsumptions/ArgumentError'
 
 describe('Compute Pit Warning', () => {
     describe('Parameter Sanitization', () => {
@@ -13,7 +13,7 @@ describe('Compute Pit Warning', () => {
                 actual = e
             }
             expect(actual.message)
-                .toBe('Argument [previsionalLapCount] is invalid because "argument is undefined", received value is [undefined].')
+                .toBe('Argument [executedLapCount] is invalid because "argument is undefined", received value is [undefined].')
         })
 
         test("GIVEN maxDoableLapCount is indefined THEN fail", () => {
@@ -24,7 +24,7 @@ describe('Compute Pit Warning', () => {
                 actual = e
             }
             expect(actual.message)
-                .toBe('Argument [maxDoableLapCount] is invalid because "argument is undefined", received value is [undefined].')
+                .toBe('Argument [stintMaxLapCount] is invalid because "argument is undefined", received value is [undefined].')
         })
     })
     test('GIVEN remainingLapCount is 4 '
@@ -44,7 +44,7 @@ describe('Compute Pit Warning', () => {
             [[5, 1], PIT_WARNING_ON],
             [[35, 32], PIT_WARNING_ON],
             [[35, 31], PIT_WARNING_ON],
-        ])('GIVEN [remainigLapCount,maxDoableLapCount] is %p THEN return %p',
+        ])('GIVEN [stintMaxLapCount,executedLapCount] is %p THEN return %p',
             (numbers, result) => {
                 let actual = computePitWarning(numbers[0], numbers[1])
                 expect(actual).toBe(result)
