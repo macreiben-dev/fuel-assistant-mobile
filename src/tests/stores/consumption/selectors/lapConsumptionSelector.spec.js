@@ -191,7 +191,7 @@ describe("Lap Consumption Selectors", () => {
     );
   });
 
-  describe("Previsional Lap", () => {
+  describe("Executed LapCount", () => {
     test(
       "Given consumption is [1] " +
         "and laptime is [1] minutes " +
