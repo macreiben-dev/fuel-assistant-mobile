@@ -1,5 +1,19 @@
 import Lap from "./lap";
 
+/**
+ *
+ * @param {Lap} lap
+ * @param {number} durationAsSeconds
+ * @returns
+ */
+const computeMaxLapExecutedForStintDuration = (lap, durationAsSeconds) => {
+  if (lap == undefined) {
+    return 0;
+  }
+
+  return durationAsSeconds / lap.laptimeAsSeconds();
+};
+
 class Stint {
   /**
    * Compute stint information
@@ -9,13 +23,18 @@ class Stint {
    * @param {Lap} lap
    */
   constructor(wouldBeStintDurationMinutes, consumptionLiterPerLap, lap) {
-    const durationAsSeconds = wouldBeStintDurationMinutes * 60;
+    const sanitizedWouldBeStintDurationMinutes =
+      wouldBeStintDurationMinutes == undefined
+        ? 0
+        : wouldBeStintDurationMinutes;
+
+    const stintDurationAsSeconds = sanitizedWouldBeStintDurationMinutes * 60;
     const consumption = consumptionLiterPerLap;
 
     const maxLapExecutedForStintDuration =
-      durationAsSeconds / lap.laptimeAsSeconds();
+      computeMaxLapExecutedForStintDuration(lap, stintDurationAsSeconds);
 
-    this.getDurationAsSeconds = () => this.durationAsSeconds;
+    this.getDurationAsSeconds = () => stintDurationAsSeconds;
     this.getMaxExecutableLapsFromStintDuration = () =>
       maxLapExecutedForStintDuration;
     this.getConsumptionLiterPerLap = () => consumption;
