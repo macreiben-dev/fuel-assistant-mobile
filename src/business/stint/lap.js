@@ -27,9 +27,10 @@ class Lap {
    * @returns number
    */
   laptimeAsSeconds() {
-    let rebaseLaptimeSeconds = this.laptimeMinutes * SECONDS_IN_ONE_MINUTE;
+    const rebaseLaptimeSeconds = this.laptimeMinutes * SECONDS_IN_ONE_MINUTE;
 
-    let laptimeConvertedInSeconds = rebaseLaptimeSeconds + this.laptimeSeconds;
+    const laptimeConvertedInSeconds =
+      rebaseLaptimeSeconds + this.laptimeSeconds;
 
     return laptimeConvertedInSeconds;
   }
