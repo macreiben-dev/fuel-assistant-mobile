@@ -16,7 +16,8 @@ class Stint {
       durationAsSeconds / lap.laptimeAsSeconds();
 
     this.getDurationAsSeconds = () => this.durationAsSeconds;
-    this.getMaxExecutableLapsTimeBased = () => maxLapExecutedForStintDuration;
+    this.getMaxExecutableLapsFromStintDuration = () =>
+      maxLapExecutedForStintDuration;
     this.getConsumptionLiterPerLap = () => consumption;
   }
 }

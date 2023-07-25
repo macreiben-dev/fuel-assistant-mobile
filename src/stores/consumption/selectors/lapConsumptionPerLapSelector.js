@@ -20,11 +20,11 @@ const compute = (state) => {
 
   for (
     let executedLap = 1;
-    executedLap <= stint.getMaxExecutableLapsTimeBased();
+    executedLap <= stint.getMaxExecutableLapsFromStintDuration();
     executedLap++
   ) {
     let oneLap = {
-      stintPercent: executedLap / stint.getMaxExecutableLapsTimeBased(),
+      stintPercent: executedLap / stint.getMaxExecutableLapsFromStintDuration(),
       consumption: executedLap * stint.getConsumptionLiterPerLap(),
       executedLapCount: executedLap,
     };
