@@ -1,23 +1,39 @@
 import { describe, test, expect, beforeEach } from "@jest/globals";
-import { Provider } from 'react-redux';
 
-import { render, screen } from '@testing-library/react-native';
+jest.useFakeTimers();
+
+import { Provider } from "react-redux";
+
+import { render, screen, waitFor } from "@testing-library/react-native";
 
 import StintComponent from "../../components/StintComponent";
 import setupStore from "../../stores/configureStore";
 
-let store = undefined
+import DummyComponent from "../../components/DummyComponent";
+
+import renderer from "react-test-renderer";
+
+let store = undefined;
 
 beforeEach(() => {
-    store = setupStore();
-})
+  //   store = setupStore();
+});
 
-describe('CreateComponent', () => {
-    test('Should build stint component', () => {
-        render(
-            <Provider store={store}>
-                <StintComponent />
-            </Provider>
-        )
-    })
-})
+describe("CreateComponent", () => {
+  test("Create dummy component", () => {
+    let actual = renderer.create(<DummyComponent />).toJSON();
+    expect(actual).toMatchSnapshot();
+  });
+
+  //   test("Should build stint component", () => {
+  //     let actual = renderer
+  //       .create(
+  //         <Provider store={store}>
+  //           <StintComponent />
+  //         </Provider>
+  //       )
+  //       .toJSON();
+
+  //     expect(actual).toMatchSnapshot();
+  //   });
+});

@@ -34,11 +34,7 @@ export default {
   // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-    "text",
-    "lcov",
-    "cobertura"
-  ],
+  coverageReporters: ["text", "lcov", "cobertura"],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -83,11 +79,12 @@ export default {
     "web.jsx",
     "jsx",
     "web.js",
-    "js"],
+    "js",
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^react-native$': 'react-native-web',
+    // "^react-native$": "react-native-web",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -106,14 +103,15 @@ export default {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  reporters: ["default",
+  reporters: [
+    "default",
     [
       "jest-junit",
       {
-        "outputDirectory": "../test-results",
-        "outputName": "junit.xml"
-      }
-    ]
+        outputDirectory: "../test-results",
+        outputName: "junit.xml",
+      },
+    ],
   ],
 
   // Automatically reset mock state before every test
@@ -143,9 +141,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: [
-    "@testing-library/jest-native/extend-expect"
-  ],
+  // setupFilesAfterEnv: ["@testing-library/jest-native/extend-expect"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -154,7 +150,7 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  // testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -169,9 +165,7 @@ export default {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: [
-    "\\\\node_modules\\\\"
-  ],
+  testPathIgnorePatterns: ["\\\\node_modules\\\\"],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -188,7 +182,7 @@ export default {
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: [
     "/node_modules/(?!(react-native|@react-native|@react-navigation)/)",
-    "/node_modules/@testing-library/react-native"
+    "/node_modules/@testing-library/react-native",
   ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
