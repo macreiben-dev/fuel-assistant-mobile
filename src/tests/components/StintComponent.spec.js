@@ -16,7 +16,7 @@ import renderer from "react-test-renderer";
 let store = undefined;
 
 beforeEach(() => {
-  //   store = setupStore();
+  store = setupStore();
 });
 
 describe("CreateComponent", () => {
@@ -25,15 +25,15 @@ describe("CreateComponent", () => {
     expect(actual).toMatchSnapshot();
   });
 
-  //   test("Should build stint component", () => {
-  //     let actual = renderer
-  //       .create(
-  //         <Provider store={store}>
-  //           <StintComponent />
-  //         </Provider>
-  //       )
-  //       .toJSON();
+  test("Should build stint component", () => {
+    let actual = renderer
+      .create(
+        <Provider store={store}>
+          <StintComponent />
+        </Provider>
+      )
+      .toJSON();
 
-  //     expect(actual).toMatchSnapshot();
-  //   });
+    expect(actual).toMatchSnapshot();
+  });
 });
