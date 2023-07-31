@@ -1,9 +1,3 @@
-# Node.js
-
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 variables:
   outputDirectory: $(Build.ArtifactStagingDirectory)
   srcDirectory: "./src"
@@ -27,10 +21,7 @@ stages:
             displayName: "Install packages"
             workingDirectory: $(srcDirectory)
 
-          - script: npm install -g expo-cli
-            displayName: "Install expo"
-
-          - script: npm run test:coverage
+          - script: npm run test
             displayName: "Run unit tests"
             workingDirectory: $(srcDirectory)
 
@@ -51,7 +42,7 @@ stages:
               pathToSource: "$(System.DefaultWorkingDirectory)/src"
               failIfCoverageEmpty: true
 
-          - script: expo build:web
+          - script: npx expo export:web
             displayName: "Generating web version"
             workingDirectory: $(srcDirectory)
 
