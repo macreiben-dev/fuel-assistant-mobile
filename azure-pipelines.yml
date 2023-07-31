@@ -21,7 +21,7 @@ stages:
             displayName: "Install packages"
             workingDirectory: $(srcDirectory)
 
-          - script: npm run test
+          - script: npm run test:coverage
             displayName: "Run unit tests"
             workingDirectory: $(srcDirectory)
 
