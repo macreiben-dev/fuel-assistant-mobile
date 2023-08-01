@@ -1,63 +1,54 @@
-# Node.js
-
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 variables:
   outputDirectory: $(Build.ArtifactStagingDirectory)
-  srcDirectory: './src'
+  srcDirectory: "./src"
 
 trigger:
-- main
+  - main
 
 stages:
-- stage: ContinuousIntegration
-  displayName: Local Build and Tests
-  jobs:
-  - job: BuildAndRunTests
-    displayName: Build solution and run tests
-    steps:
-    - task: NodeTool@0
-      displayName: 'Install Node.js'
-      inputs:
-        versionSpec: '16.x'
+  - stage: ContinuousIntegration
+    displayName: Local Build and Tests
+    jobs:
+      - job: BuildAndRunTests
+        displayName: Build solution and run tests
+        steps:
+          - task: NodeTool@0
+            displayName: "Install Node.js"
+            inputs:
+              versionSpec: "16.x"
 
-    - script: npm install
-      displayName: 'Install packages'
-      workingDirectory: $(srcDirectory)
+          - script: npm install
+            displayName: "Install packages"
+            workingDirectory: $(srcDirectory)
 
-    - script: npm install -g expo-cli
-      displayName: 'Install expo'
+          - script: npm run test:coverage
+            displayName: "Run unit tests"
+            workingDirectory: $(srcDirectory)
 
-    - script: npm run test
-      displayName: 'Run unit tests'
-      workingDirectory: $(srcDirectory)
+          - task: PublishTestResults@2
+            displayName: "Publish Unit Test Results"
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: "JUnit"
+              testResultsFiles: "test-results/junit.xml"
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+              testRunTitle: "App Test"
 
-    - task: PublishTestResults@2
-      displayName: 'Publish Unit Test Results'
-      condition: succeededOrFailed()
-      inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: 'test-results/junit.xml'
-        mergeTestResults: true
-        failTaskOnFailedTests: true
-        testRunTitle: 'App Test'
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: "Cobertura"
+              summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
+              pathToSource: "$(System.DefaultWorkingDirectory)/src"
+              failIfCoverageEmpty: true
 
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: 'Cobertura'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
-        pathToSource: '$(System.DefaultWorkingDirectory)/src'
-        failIfCoverageEmpty: true
+          - script: npx expo export:web
+            displayName: "Generating web version"
+            workingDirectory: $(srcDirectory)
 
-    - script: expo build:web
-      displayName: 'Generating web version'
-      workingDirectory: $(srcDirectory)
-
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish artifact'
-      inputs:
-       PathtoPublish: $(srcDirectory)/web-build
-       ArtifactName: 'drop'
-       publishLocation: 'Container'
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish artifact"
+            inputs:
+              PathtoPublish: $(srcDirectory)/web-build
+              ArtifactName: "drop"
+              publishLocation: "Container"

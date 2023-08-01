@@ -17,7 +17,7 @@ describe("Store configuration builder", () => {
     builder.withConsumption(6);
     builder.build();
 
-    let actual = store.getState().stintDetails.consumptionLiterPerLap;
+    let actual = store.getState().consumption.consumptionLiterPerLap;
 
     expect(actual).toBe(6);
   });
@@ -27,7 +27,7 @@ describe("Store configuration builder", () => {
     builder.withFuelTankLiter(6);
     builder.build();
 
-    let actual = store.getState().stintDetails.fuelTankLiter;
+    let actual = store.getState().consumption.fuelTankLiter;
 
     expect(actual).toBe(6);
   });
@@ -37,7 +37,7 @@ describe("Store configuration builder", () => {
     builder.withLaptimeMinutes(6);
     builder.build();
 
-    let actual = store.getState().stintDetails.laptimeMinutes;
+    let actual = store.getState().consumption.laptimeMinutes;
 
     expect(actual).toBe(6);
   });
@@ -47,7 +47,7 @@ describe("Store configuration builder", () => {
     builder.withLapTimeSeconds(6);
     builder.build();
 
-    let actual = store.getState().stintDetails.laptimeSeconds;
+    let actual = store.getState().consumption.laptimeSeconds;
 
     expect(actual).toBe(6);
   });
@@ -57,7 +57,7 @@ describe("Store configuration builder", () => {
     builder.withWouldBeStintDuration(6);
     builder.build();
 
-    let actual = store.getState().stintDetails.wouldBeStintDurationMinutes;
+    let actual = store.getState().consumption.wouldBeStintDurationMinutes;
 
     expect(actual).toBe(6);
   });
