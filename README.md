@@ -27,6 +27,13 @@ npm install
 npm run web
 ```
 
+## Testing component with redux
+
+- https://jestjs.io/docs/tutorial-react-native
+  - This is what has been used.
+- https://callstack.github.io/react-native-testing-library/docs/redux-integration
+- https://github.com/callstack/react-native-testing-library/tree/main/examples/redux
+
 ## Documenting
 
 - [https://jsdoc.app/tags-param.html](https://jsdoc.app/tags-param.html)
