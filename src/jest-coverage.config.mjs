@@ -14,10 +14,10 @@ export default {
   coverageDirectory: "../coverage",
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ["**/*.{js,jsx}"],
+  collectCoverageFrom: ["**/*.{js,jsx}", "!**/node_modules/**"],
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ["tests", "node_modules"],
+  coveragePathIgnorePatterns: ["/tests/", "/node_modules/", "/web-build/"],
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: ["text", "lcov", "cobertura"],
