@@ -1,13 +1,12 @@
-import { combineReducers } from 'redux';
-import { configureStore } from '@reduxjs/toolkit';
-import consumptionReducer from './consumption/reducers/laptimeReducer';
+import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers(
-    { consumption: consumptionReducer }
-);
+import laptimeSlice from "./consumption/reducers/laptimeSlice";
+
+const rootReducer = combineReducers({ consumption: laptimeSlice });
 
 const setupStore = () => {
-    return configureStore({ reducer: rootReducer });
-}
+  return configureStore({ reducer: rootReducer });
+};
 
 export default setupStore;

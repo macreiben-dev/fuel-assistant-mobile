@@ -6,8 +6,8 @@ let routeToIcon = (route) => {
 };
 
 let screenName = {
-  StratDetail: "StratDetail",
-  StintDetail: "StingDetail",
+  StratDetail: "Strat Detail",
+  StintDetail: "Stint Detail",
 };
 
 export { routeToIcon, screenName };

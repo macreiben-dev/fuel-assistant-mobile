@@ -1,8 +1,10 @@
-import { changeConsumption } from "../../../stores/consumption/actions/lapConsumption";
-import { changeFuelTankLiter } from "../../../stores/consumption/actions/laptimeFuelTank";
-import { changeLaptimeMinutes } from "../../../stores/consumption/actions/laptimeMinute";
-import { changeLaptimeSeconds } from "../../../stores/consumption/actions/laptimeSecond";
-import { changeWouldBeStintDuration } from "../../../stores/consumption/actions/laptimeWouldBeStintDurationMinutes";
+import {
+  fuelTankLiterUpdate,
+  laptimeMinuteUpdate,
+  laptimeSecondsUpdate,
+  wouldBeStintDurationMinutesUpdate,
+  consumptionLiterPerLapUpdate,
+} from "../../../stores/consumption/reducers/laptimeSlice";
 
 let storeCtxt = {
   store: undefined,
@@ -48,23 +50,23 @@ export default class StoreConfigurationBuilder {
     this.build = function () {
       let instructionToBuild = [
         {
-          action: changeConsumption,
+          action: consumptionLiterPerLapUpdate,
           payload: storeCtxt.consumption,
         },
         {
-          action: changeFuelTankLiter,
+          action: fuelTankLiterUpdate,
           payload: storeCtxt.fuelTankLiter,
         },
         {
-          action: changeLaptimeMinutes,
+          action: laptimeMinuteUpdate,
           payload: storeCtxt.laptimeMinutes,
         },
         {
-          action: changeLaptimeSeconds,
+          action: laptimeSecondsUpdate,
           payload: storeCtxt.lapTimeSeconds,
         },
         {
-          action: changeWouldBeStintDuration,
+          action: wouldBeStintDurationMinutesUpdate,
           payload: storeCtxt.wouldBeStintDuration,
         },
       ];
