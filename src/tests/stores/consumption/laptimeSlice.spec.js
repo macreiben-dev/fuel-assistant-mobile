@@ -5,8 +5,9 @@ import {
   laptimeSecondsUpdate,
   fuelTankLiterUpdate,
   wouldBeStintDurationMinutesUpdate,
+  consumptionLiterPerLapUpdate,
 } from "../../../stores/consumption/reducers/laptimeSlice";
-import setupStore from "../../../stores/configureStore2";
+import setupStore from "../../../stores/configureStore";
 
 let store = undefined;
 
@@ -38,5 +39,11 @@ describe("Store - laptimeSlice", () => {
     store.dispatch(wouldBeStintDurationMinutesUpdate(2));
 
     expect(readFromConsumptionState().wouldBeStintDurationMinutes).toBe(2);
+  });
+
+  test("GIVEN consumptionLiterPerLap with 2 THEN consumptionLiterPerLap IS 2", () => {
+    store.dispatch(consumptionLiterPerLapUpdate(2));
+
+    expect(readFromConsumptionState().consumptionLiterPerLap).toBe(2);
   });
 });

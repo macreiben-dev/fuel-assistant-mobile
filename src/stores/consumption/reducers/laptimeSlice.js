@@ -29,6 +29,12 @@ const laptimeSlice = createSlice({
         wouldBeStintDurationMinutes: action.payload,
       };
     },
+    consumptionLiterPerLapUpdate(state, action) {
+      return {
+        ...state,
+        consumptionLiterPerLap: action.payload,
+      };
+    },
   },
 });
 
@@ -37,5 +43,6 @@ export const {
   laptimeSecondsUpdate,
   fuelTankLiterUpdate,
   wouldBeStintDurationMinutesUpdate,
+  consumptionLiterPerLapUpdate,
 } = laptimeSlice.actions;
 export default laptimeSlice.reducer;
